@@ -38,6 +38,7 @@ namespace ConvStore
             this.btnLogout = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnUser = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -59,7 +60,7 @@ namespace ConvStore
             this.btnSupplier.BackColor = System.Drawing.SystemColors.Info;
             this.btnSupplier.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSupplier.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.btnSupplier.Location = new System.Drawing.Point(10, 103);
+            this.btnSupplier.Location = new System.Drawing.Point(11, 162);
             this.btnSupplier.Margin = new System.Windows.Forms.Padding(2);
             this.btnSupplier.Name = "btnSupplier";
             this.btnSupplier.Size = new System.Drawing.Size(178, 56);
@@ -72,7 +73,7 @@ namespace ConvStore
             // 
             this.btnOrder.BackColor = System.Drawing.SystemColors.Info;
             this.btnOrder.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnOrder.Location = new System.Drawing.Point(10, 176);
+            this.btnOrder.Location = new System.Drawing.Point(11, 231);
             this.btnOrder.Margin = new System.Windows.Forms.Padding(2);
             this.btnOrder.Name = "btnOrder";
             this.btnOrder.Size = new System.Drawing.Size(178, 56);
@@ -85,7 +86,7 @@ namespace ConvStore
             // 
             this.btnInventory.BackColor = System.Drawing.SystemColors.Info;
             this.btnInventory.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnInventory.Location = new System.Drawing.Point(10, 247);
+            this.btnInventory.Location = new System.Drawing.Point(11, 303);
             this.btnInventory.Margin = new System.Windows.Forms.Padding(2);
             this.btnInventory.Name = "btnInventory";
             this.btnInventory.Size = new System.Drawing.Size(178, 56);
@@ -98,7 +99,7 @@ namespace ConvStore
             // 
             this.btnChangelog.BackColor = System.Drawing.SystemColors.Info;
             this.btnChangelog.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnChangelog.Location = new System.Drawing.Point(10, 321);
+            this.btnChangelog.Location = new System.Drawing.Point(11, 376);
             this.btnChangelog.Margin = new System.Windows.Forms.Padding(2);
             this.btnChangelog.Name = "btnChangelog";
             this.btnChangelog.Size = new System.Drawing.Size(178, 56);
@@ -111,7 +112,7 @@ namespace ConvStore
             // 
             this.btnLogout.BackColor = System.Drawing.SystemColors.Info;
             this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnLogout.Location = new System.Drawing.Point(10, 395);
+            this.btnLogout.Location = new System.Drawing.Point(11, 451);
             this.btnLogout.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(178, 56);
@@ -140,12 +141,27 @@ namespace ConvStore
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // btnUser
+            // 
+            this.btnUser.BackColor = System.Drawing.SystemColors.Info;
+            this.btnUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUser.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.btnUser.Location = new System.Drawing.Point(11, 92);
+            this.btnUser.Margin = new System.Windows.Forms.Padding(2);
+            this.btnUser.Name = "btnUser";
+            this.btnUser.Size = new System.Drawing.Size(178, 56);
+            this.btnUser.TabIndex = 8;
+            this.btnUser.Text = "User";
+            this.btnUser.UseVisualStyleBackColor = false;
+            this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1199, 712);
+            this.Controls.Add(this.btnUser);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnChangelog);
             this.Controls.Add(this.btnInventory);
@@ -174,5 +190,6 @@ namespace ConvStore
         private System.Windows.Forms.Button btnInventory;
         private System.Windows.Forms.Button btnChangelog;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Button btnUser;
     }
 }

@@ -21,6 +21,12 @@ namespace ConvStore
 
         private void MainForm_Load(object sender, EventArgs e) { }
 
+        private void btnUser_Click(object sender, EventArgs e)
+        {
+            UserForm userForm = new UserForm();
+            userForm.Show();
+        }
+
         private void btnSupplier_Click(object sender, EventArgs e)
         {
             SupplierForm supplierForm = new SupplierForm();

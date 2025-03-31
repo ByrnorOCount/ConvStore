@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ConvStore
 {
-    public partial class InventoryForm: Form
+    public partial class UserForm : Form
     {
-        public InventoryForm()
+        public UserForm()
         {
             InitializeComponent();
         }
