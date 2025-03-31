@@ -14,7 +14,7 @@ namespace ConvStore
             DBHelper.TestConnection(); //remove once connection is confirmed
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ProductManagementApp());
+            Application.Run(new LoginForm());
         }
     }
 }

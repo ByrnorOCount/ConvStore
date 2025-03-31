@@ -8,7 +8,8 @@ namespace ConvStore
     class DBHelper : IDisposable
     {
         private readonly SqlConnection connection;
-        public SqlConnection Connection
+        private bool disposed = false;
+        public SqlConnection Connection 
         {
             get { return connection; }
         }
@@ -50,10 +51,25 @@ namespace ConvStore
 
         public void Dispose()
         {
-            if (connection != null)
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
             {
-                connection.Dispose();
+                if (disposing)
+                {
+                    connection?.Dispose();
+                }
+                disposed = true;
             }
+        }
+
+        ~DBHelper()
+        {
+            Dispose(false);
         }
     }
 }
