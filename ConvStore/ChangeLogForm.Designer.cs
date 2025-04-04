@@ -28,49 +28,63 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbl_ChangeLog = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.lblChangeLog = new System.Windows.Forms.Label();
+            this.dgvChangeLog = new System.Windows.Forms.DataGridView();
+            this.btn_RefreshChangeLog = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvChangeLog)).BeginInit();
             this.SuspendLayout();
             // 
-            // lbl_ChangeLog
+            // lblChangeLog
             // 
-            this.lbl_ChangeLog.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lbl_ChangeLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_ChangeLog.Location = new System.Drawing.Point(2, -2);
-            this.lbl_ChangeLog.Name = "lbl_ChangeLog";
-            this.lbl_ChangeLog.Size = new System.Drawing.Size(1004, 68);
-            this.lbl_ChangeLog.TabIndex = 0;
-            this.lbl_ChangeLog.Text = "CHANGELOG";
-            this.lbl_ChangeLog.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblChangeLog.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblChangeLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChangeLog.Location = new System.Drawing.Point(2, -2);
+            this.lblChangeLog.Name = "lblChangeLog";
+            this.lblChangeLog.Size = new System.Drawing.Size(1004, 68);
+            this.lblChangeLog.TabIndex = 0;
+            this.lblChangeLog.Text = "CHANGELOG";
+            this.lblChangeLog.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dataGridView1
+            // dgvChangeLog
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 69);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1006, 429);
-            this.dataGridView1.TabIndex = 1;
+            this.dgvChangeLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvChangeLog.Location = new System.Drawing.Point(0, 69);
+            this.dgvChangeLog.Name = "dgvChangeLog";
+            this.dgvChangeLog.RowHeadersWidth = 51;
+            this.dgvChangeLog.RowTemplate.Height = 24;
+            this.dgvChangeLog.Size = new System.Drawing.Size(1006, 429);
+            this.dgvChangeLog.TabIndex = 1;
             // 
-            // ChangeLog
+            // btn_RefreshChangeLog
+            // 
+            this.btn_RefreshChangeLog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btn_RefreshChangeLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_RefreshChangeLog.Location = new System.Drawing.Point(429, 504);
+            this.btn_RefreshChangeLog.Name = "btn_RefreshChangeLog";
+            this.btn_RefreshChangeLog.Size = new System.Drawing.Size(113, 43);
+            this.btn_RefreshChangeLog.TabIndex = 2;
+            this.btn_RefreshChangeLog.Text = "Refresh";
+            this.btn_RefreshChangeLog.UseVisualStyleBackColor = false;
+            // 
+            // ChangeLogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1007, 577);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.lbl_ChangeLog);
-            this.Name = "ChangeLog";
+            this.Controls.Add(this.btn_RefreshChangeLog);
+            this.Controls.Add(this.dgvChangeLog);
+            this.Controls.Add(this.lblChangeLog);
+            this.Name = "ChangeLogForm";
             this.Text = "ChangeLog";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvChangeLog)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label lbl_ChangeLog;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label lblChangeLog;
+        private System.Windows.Forms.DataGridView dgvChangeLog;
+        private System.Windows.Forms.Button btn_RefreshChangeLog;
     }
 }

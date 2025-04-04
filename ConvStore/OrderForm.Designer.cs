@@ -30,35 +30,36 @@
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label_staff = new System.Windows.Forms.Label();
-            this.button_supplier = new System.Windows.Forms.Button();
-            this.button_order = new System.Windows.Forms.Button();
-            this.button_Inventory = new System.Windows.Forms.Button();
-            this.button_changelog = new System.Windows.Forms.Button();
-            this.button_logout = new System.Windows.Forms.Button();
-            this.dataGridView_order = new System.Windows.Forms.DataGridView();
-            this.button_cancel = new System.Windows.Forms.Button();
-            this.button_save = new System.Windows.Forms.Button();
-            this.button_update = new System.Windows.Forms.Button();
-            this.button_delete = new System.Windows.Forms.Button();
-            this.label_osupplier = new System.Windows.Forms.Label();
-            this.label_selectproduct = new System.Windows.Forms.Label();
-            this.label_quanity = new System.Windows.Forms.Label();
-            this.label_price = new System.Windows.Forms.Label();
-            this.label_total = new System.Windows.Forms.Label();
-            this.textBox_quanity = new System.Windows.Forms.TextBox();
-            this.textBox_price = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.comboBox_osupplier = new System.Windows.Forms.ComboBox();
-            this.comboBox_selectproduct = new System.Windows.Forms.ComboBox();
+            this.btnSupplier = new System.Windows.Forms.Button();
+            this.btnOrder = new System.Windows.Forms.Button();
+            this.btnInventory = new System.Windows.Forms.Button();
+            this.btnChangelog = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.dgvOrder = new System.Windows.Forms.DataGridView();
+            this.btnCancelOrder = new System.Windows.Forms.Button();
+            this.btnSaveOrder = new System.Windows.Forms.Button();
+            this.btnUpdateOrder = new System.Windows.Forms.Button();
+            this.btnDeleteOrder = new System.Windows.Forms.Button();
+            this.lblOSupplier = new System.Windows.Forms.Label();
+            this.lblSelectProduct = new System.Windows.Forms.Label();
+            this.lblQuanity = new System.Windows.Forms.Label();
+            this.lblPrice = new System.Windows.Forms.Label();
+            this.lblTotalCost = new System.Windows.Forms.Label();
+            this.txtQuanity = new System.Windows.Forms.TextBox();
+            this.txtPrice = new System.Windows.Forms.TextBox();
+            this.txtTotalCost = new System.Windows.Forms.TextBox();
+            this.cmbOSupplier = new System.Windows.Forms.ComboBox();
+            this.cmbSelectProduct = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_order)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrder)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(9, 8);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(117, 77);
+            this.pictureBox1.Size = new System.Drawing.Size(85, 51);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -66,227 +67,262 @@
             // label_staff
             // 
             this.label_staff.BackColor = System.Drawing.Color.Yellow;
-            this.label_staff.Location = new System.Drawing.Point(135, 12);
+            this.label_staff.Location = new System.Drawing.Point(98, 8);
+            this.label_staff.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_staff.Name = "label_staff";
-            this.label_staff.Size = new System.Drawing.Size(1330, 77);
+            this.label_staff.Size = new System.Drawing.Size(967, 51);
             this.label_staff.TabIndex = 2;
             this.label_staff.Text = "STAFF";
             this.label_staff.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // button_supplier
+            // btnSupplier
             // 
-            this.button_supplier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button_supplier.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.button_supplier.Location = new System.Drawing.Point(12, 123);
-            this.button_supplier.Name = "button_supplier";
-            this.button_supplier.Size = new System.Drawing.Size(218, 67);
-            this.button_supplier.TabIndex = 4;
-            this.button_supplier.Text = "SUPPLIER";
-            this.button_supplier.UseVisualStyleBackColor = false;
+            this.btnSupplier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnSupplier.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.btnSupplier.Location = new System.Drawing.Point(9, 82);
+            this.btnSupplier.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSupplier.Name = "btnSupplier";
+            this.btnSupplier.Size = new System.Drawing.Size(159, 45);
+            this.btnSupplier.TabIndex = 4;
+            this.btnSupplier.Text = "SUPPLIER";
+            this.btnSupplier.UseVisualStyleBackColor = false;
             // 
-            // button_order
+            // btnOrder
             // 
-            this.button_order.BackColor = System.Drawing.SystemColors.Info;
-            this.button_order.Location = new System.Drawing.Point(12, 222);
-            this.button_order.Name = "button_order";
-            this.button_order.Size = new System.Drawing.Size(218, 67);
-            this.button_order.TabIndex = 5;
-            this.button_order.Text = "ORDER";
-            this.button_order.UseVisualStyleBackColor = false;
+            this.btnOrder.BackColor = System.Drawing.SystemColors.Info;
+            this.btnOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnOrder.Location = new System.Drawing.Point(9, 148);
+            this.btnOrder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnOrder.Name = "btnOrder";
+            this.btnOrder.Size = new System.Drawing.Size(159, 45);
+            this.btnOrder.TabIndex = 5;
+            this.btnOrder.Text = "ORDER";
+            this.btnOrder.UseVisualStyleBackColor = false;
             // 
-            // button_Inventory
+            // btnInventory
             // 
-            this.button_Inventory.BackColor = System.Drawing.SystemColors.Info;
-            this.button_Inventory.Location = new System.Drawing.Point(12, 332);
-            this.button_Inventory.Name = "button_Inventory";
-            this.button_Inventory.Size = new System.Drawing.Size(218, 67);
-            this.button_Inventory.TabIndex = 6;
-            this.button_Inventory.Text = "INVENTORY";
-            this.button_Inventory.UseVisualStyleBackColor = false;
+            this.btnInventory.BackColor = System.Drawing.SystemColors.Info;
+            this.btnInventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnInventory.Location = new System.Drawing.Point(9, 221);
+            this.btnInventory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnInventory.Name = "btnInventory";
+            this.btnInventory.Size = new System.Drawing.Size(159, 45);
+            this.btnInventory.TabIndex = 6;
+            this.btnInventory.Text = "INVENTORY";
+            this.btnInventory.UseVisualStyleBackColor = false;
             // 
-            // button_changelog
+            // btnChangelog
             // 
-            this.button_changelog.BackColor = System.Drawing.SystemColors.Info;
-            this.button_changelog.Location = new System.Drawing.Point(12, 448);
-            this.button_changelog.Name = "button_changelog";
-            this.button_changelog.Size = new System.Drawing.Size(218, 67);
-            this.button_changelog.TabIndex = 7;
-            this.button_changelog.Text = "CHANGELOG";
-            this.button_changelog.UseVisualStyleBackColor = false;
+            this.btnChangelog.BackColor = System.Drawing.SystemColors.Info;
+            this.btnChangelog.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnChangelog.Location = new System.Drawing.Point(9, 299);
+            this.btnChangelog.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnChangelog.Name = "btnChangelog";
+            this.btnChangelog.Size = new System.Drawing.Size(159, 45);
+            this.btnChangelog.TabIndex = 7;
+            this.btnChangelog.Text = "CHANGELOG";
+            this.btnChangelog.UseVisualStyleBackColor = false;
             // 
-            // button_logout
+            // btnLogout
             // 
-            this.button_logout.BackColor = System.Drawing.SystemColors.Info;
-            this.button_logout.Location = new System.Drawing.Point(12, 564);
-            this.button_logout.Name = "button_logout";
-            this.button_logout.Size = new System.Drawing.Size(218, 67);
-            this.button_logout.TabIndex = 8;
-            this.button_logout.Text = "LOG OUT";
-            this.button_logout.UseVisualStyleBackColor = false;
+            this.btnLogout.BackColor = System.Drawing.SystemColors.Info;
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnLogout.Location = new System.Drawing.Point(9, 376);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(159, 45);
+            this.btnLogout.TabIndex = 8;
+            this.btnLogout.Text = "LOG OUT";
+            this.btnLogout.UseVisualStyleBackColor = false;
             // 
-            // dataGridView_order
+            // dgvOrder
             // 
-            this.dataGridView_order.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_order.Location = new System.Drawing.Point(276, 451);
-            this.dataGridView_order.Name = "dataGridView_order";
-            this.dataGridView_order.RowHeadersWidth = 72;
-            this.dataGridView_order.RowTemplate.Height = 31;
-            this.dataGridView_order.Size = new System.Drawing.Size(1178, 391);
-            this.dataGridView_order.TabIndex = 9;
+            this.dgvOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrder.Location = new System.Drawing.Point(201, 301);
+            this.dgvOrder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvOrder.Name = "dgvOrder";
+            this.dgvOrder.RowHeadersWidth = 72;
+            this.dgvOrder.RowTemplate.Height = 31;
+            this.dgvOrder.Size = new System.Drawing.Size(857, 261);
+            this.dgvOrder.TabIndex = 9;
             // 
-            // button_cancel
+            // btnCancelOrder
             // 
-            this.button_cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button_cancel.Location = new System.Drawing.Point(1280, 391);
-            this.button_cancel.Name = "button_cancel";
-            this.button_cancel.Size = new System.Drawing.Size(162, 54);
-            this.button_cancel.TabIndex = 10;
-            this.button_cancel.Text = "Cancel Order";
-            this.button_cancel.UseVisualStyleBackColor = false;
+            this.btnCancelOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnCancelOrder.Location = new System.Drawing.Point(931, 261);
+            this.btnCancelOrder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancelOrder.Name = "btnCancelOrder";
+            this.btnCancelOrder.Size = new System.Drawing.Size(118, 36);
+            this.btnCancelOrder.TabIndex = 10;
+            this.btnCancelOrder.Text = "Cancel Order";
+            this.btnCancelOrder.UseVisualStyleBackColor = false;
             // 
-            // button_save
+            // btnSaveOrder
             // 
-            this.button_save.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.button_save.Location = new System.Drawing.Point(1042, 176);
-            this.button_save.Name = "button_save";
-            this.button_save.Size = new System.Drawing.Size(126, 55);
-            this.button_save.TabIndex = 11;
-            this.button_save.Text = "Save";
-            this.button_save.UseVisualStyleBackColor = false;
+            this.btnSaveOrder.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnSaveOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnSaveOrder.Location = new System.Drawing.Point(758, 117);
+            this.btnSaveOrder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSaveOrder.Name = "btnSaveOrder";
+            this.btnSaveOrder.Size = new System.Drawing.Size(92, 37);
+            this.btnSaveOrder.TabIndex = 11;
+            this.btnSaveOrder.Text = "Save";
+            this.btnSaveOrder.UseVisualStyleBackColor = false;
             // 
-            // button_update
+            // btnUpdateOrder
             // 
-            this.button_update.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.button_update.Location = new System.Drawing.Point(1042, 254);
-            this.button_update.Name = "button_update";
-            this.button_update.Size = new System.Drawing.Size(126, 56);
-            this.button_update.TabIndex = 12;
-            this.button_update.Text = "Update";
-            this.button_update.UseVisualStyleBackColor = false;
+            this.btnUpdateOrder.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnUpdateOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnUpdateOrder.Location = new System.Drawing.Point(758, 169);
+            this.btnUpdateOrder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnUpdateOrder.Name = "btnUpdateOrder";
+            this.btnUpdateOrder.Size = new System.Drawing.Size(92, 37);
+            this.btnUpdateOrder.TabIndex = 12;
+            this.btnUpdateOrder.Text = "Update";
+            this.btnUpdateOrder.UseVisualStyleBackColor = false;
             // 
-            // button_delete
+            // btnDeleteOrder
             // 
-            this.button_delete.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button_delete.Location = new System.Drawing.Point(1042, 338);
-            this.button_delete.Name = "button_delete";
-            this.button_delete.Size = new System.Drawing.Size(126, 55);
-            this.button_delete.TabIndex = 13;
-            this.button_delete.Text = "Delete";
-            this.button_delete.UseVisualStyleBackColor = false;
+            this.btnDeleteOrder.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnDeleteOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnDeleteOrder.Location = new System.Drawing.Point(758, 225);
+            this.btnDeleteOrder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDeleteOrder.Name = "btnDeleteOrder";
+            this.btnDeleteOrder.Size = new System.Drawing.Size(92, 37);
+            this.btnDeleteOrder.TabIndex = 13;
+            this.btnDeleteOrder.Text = "Delete";
+            this.btnDeleteOrder.UseVisualStyleBackColor = false;
             // 
-            // label_osupplier
+            // lblOSupplier
             // 
-            this.label_osupplier.AutoSize = true;
-            this.label_osupplier.Location = new System.Drawing.Point(630, 107);
-            this.label_osupplier.Name = "label_osupplier";
-            this.label_osupplier.Size = new System.Drawing.Size(90, 25);
-            this.label_osupplier.TabIndex = 14;
-            this.label_osupplier.Text = "Supplier:";
+            this.lblOSupplier.AutoSize = true;
+            this.lblOSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.lblOSupplier.Location = new System.Drawing.Point(458, 71);
+            this.lblOSupplier.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblOSupplier.Name = "lblOSupplier";
+            this.lblOSupplier.Size = new System.Drawing.Size(99, 25);
+            this.lblOSupplier.TabIndex = 14;
+            this.lblOSupplier.Text = "Supplier:";
             // 
-            // label_selectproduct
+            // lblSelectProduct
             // 
-            this.label_selectproduct.AutoSize = true;
-            this.label_selectproduct.Location = new System.Drawing.Point(402, 191);
-            this.label_selectproduct.Name = "label_selectproduct";
-            this.label_selectproduct.Size = new System.Drawing.Size(145, 25);
-            this.label_selectproduct.TabIndex = 15;
-            this.label_selectproduct.Text = "Select Product:";
+            this.lblSelectProduct.AutoSize = true;
+            this.lblSelectProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.lblSelectProduct.Location = new System.Drawing.Point(277, 123);
+            this.lblSelectProduct.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSelectProduct.Name = "lblSelectProduct";
+            this.lblSelectProduct.Size = new System.Drawing.Size(160, 25);
+            this.lblSelectProduct.TabIndex = 15;
+            this.lblSelectProduct.Text = "Select Product:";
             // 
-            // label_quanity
+            // lblQuanity
             // 
-            this.label_quanity.AutoSize = true;
-            this.label_quanity.Location = new System.Drawing.Point(456, 244);
-            this.label_quanity.Name = "label_quanity";
-            this.label_quanity.Size = new System.Drawing.Size(91, 25);
-            this.label_quanity.TabIndex = 16;
-            this.label_quanity.Text = "Quantity:";
+            this.lblQuanity.AutoSize = true;
+            this.lblQuanity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.lblQuanity.Location = new System.Drawing.Point(332, 163);
+            this.lblQuanity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblQuanity.Name = "lblQuanity";
+            this.lblQuanity.Size = new System.Drawing.Size(100, 25);
+            this.lblQuanity.TabIndex = 16;
+            this.lblQuanity.Text = "Quantity:";
             // 
-            // label_price
+            // lblPrice
             // 
-            this.label_price.AutoSize = true;
-            this.label_price.Location = new System.Drawing.Point(411, 311);
-            this.label_price.Name = "label_price";
-            this.label_price.Size = new System.Drawing.Size(136, 25);
-            this.label_price.TabIndex = 17;
-            this.label_price.Text = "Price Per Unit:";
+            this.lblPrice.AutoSize = true;
+            this.lblPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.lblPrice.Location = new System.Drawing.Point(286, 205);
+            this.lblPrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPrice.Name = "lblPrice";
+            this.lblPrice.Size = new System.Drawing.Size(151, 25);
+            this.lblPrice.TabIndex = 17;
+            this.lblPrice.Text = "Price Per Unit:";
             // 
-            // label_total
+            // lblTotalCost
             // 
-            this.label_total.AutoSize = true;
-            this.label_total.Location = new System.Drawing.Point(444, 375);
-            this.label_total.Name = "label_total";
-            this.label_total.Size = new System.Drawing.Size(103, 25);
-            this.label_total.TabIndex = 18;
-            this.label_total.Text = "Total cost:";
+            this.lblTotalCost.AutoSize = true;
+            this.lblTotalCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.lblTotalCost.Location = new System.Drawing.Point(323, 250);
+            this.lblTotalCost.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTotalCost.Name = "lblTotalCost";
+            this.lblTotalCost.Size = new System.Drawing.Size(114, 25);
+            this.lblTotalCost.TabIndex = 18;
+            this.lblTotalCost.Text = "Total cost:";
             // 
-            // textBox_quanity
+            // txtQuanity
             // 
-            this.textBox_quanity.Location = new System.Drawing.Point(599, 240);
-            this.textBox_quanity.Name = "textBox_quanity";
-            this.textBox_quanity.Size = new System.Drawing.Size(270, 29);
-            this.textBox_quanity.TabIndex = 21;
+            this.txtQuanity.Location = new System.Drawing.Point(436, 160);
+            this.txtQuanity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtQuanity.Name = "txtQuanity";
+            this.txtQuanity.Size = new System.Drawing.Size(197, 22);
+            this.txtQuanity.TabIndex = 21;
             // 
-            // textBox_price
+            // txtPrice
             // 
-            this.textBox_price.Location = new System.Drawing.Point(599, 307);
-            this.textBox_price.Name = "textBox_price";
-            this.textBox_price.Size = new System.Drawing.Size(270, 29);
-            this.textBox_price.TabIndex = 22;
+            this.txtPrice.Location = new System.Drawing.Point(436, 205);
+            this.txtPrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(197, 22);
+            this.txtPrice.TabIndex = 22;
             // 
-            // textBox5
+            // txtTotalCost
             // 
-            this.textBox5.Location = new System.Drawing.Point(599, 371);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(270, 29);
-            this.textBox5.TabIndex = 23;
+            this.txtTotalCost.Location = new System.Drawing.Point(436, 247);
+            this.txtTotalCost.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTotalCost.Name = "txtTotalCost";
+            this.txtTotalCost.Size = new System.Drawing.Size(197, 22);
+            this.txtTotalCost.TabIndex = 23;
             // 
-            // comboBox_osupplier
+            // cmbOSupplier
             // 
-            this.comboBox_osupplier.FormattingEnabled = true;
-            this.comboBox_osupplier.Location = new System.Drawing.Point(784, 104);
-            this.comboBox_osupplier.Name = "comboBox_osupplier";
-            this.comboBox_osupplier.Size = new System.Drawing.Size(121, 32);
-            this.comboBox_osupplier.TabIndex = 24;
+            this.cmbOSupplier.FormattingEnabled = true;
+            this.cmbOSupplier.Location = new System.Drawing.Point(570, 69);
+            this.cmbOSupplier.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbOSupplier.Name = "cmbOSupplier";
+            this.cmbOSupplier.Size = new System.Drawing.Size(89, 24);
+            this.cmbOSupplier.TabIndex = 24;
             // 
-            // comboBox_selectproduct
+            // cmbSelectProduct
             // 
-            this.comboBox_selectproduct.FormattingEnabled = true;
-            this.comboBox_selectproduct.Location = new System.Drawing.Point(599, 184);
-            this.comboBox_selectproduct.Name = "comboBox_selectproduct";
-            this.comboBox_selectproduct.Size = new System.Drawing.Size(121, 32);
-            this.comboBox_selectproduct.TabIndex = 25;
+            this.cmbSelectProduct.FormattingEnabled = true;
+            this.cmbSelectProduct.Location = new System.Drawing.Point(436, 123);
+            this.cmbSelectProduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbSelectProduct.Name = "cmbSelectProduct";
+            this.cmbSelectProduct.Size = new System.Drawing.Size(89, 24);
+            this.cmbSelectProduct.TabIndex = 25;
             // 
-            // OrderFormApp
+            // OrderForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1466, 854);
-            this.Controls.Add(this.comboBox_selectproduct);
-            this.Controls.Add(this.comboBox_osupplier);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox_price);
-            this.Controls.Add(this.textBox_quanity);
-            this.Controls.Add(this.label_total);
-            this.Controls.Add(this.label_price);
-            this.Controls.Add(this.label_quanity);
-            this.Controls.Add(this.label_selectproduct);
-            this.Controls.Add(this.label_osupplier);
-            this.Controls.Add(this.button_delete);
-            this.Controls.Add(this.button_update);
-            this.Controls.Add(this.button_save);
-            this.Controls.Add(this.button_cancel);
-            this.Controls.Add(this.dataGridView_order);
-            this.Controls.Add(this.button_logout);
-            this.Controls.Add(this.button_changelog);
-            this.Controls.Add(this.button_Inventory);
-            this.Controls.Add(this.button_order);
-            this.Controls.Add(this.button_supplier);
+            this.ClientSize = new System.Drawing.Size(1066, 569);
+            this.Controls.Add(this.cmbSelectProduct);
+            this.Controls.Add(this.cmbOSupplier);
+            this.Controls.Add(this.txtTotalCost);
+            this.Controls.Add(this.txtPrice);
+            this.Controls.Add(this.txtQuanity);
+            this.Controls.Add(this.lblTotalCost);
+            this.Controls.Add(this.lblPrice);
+            this.Controls.Add(this.lblQuanity);
+            this.Controls.Add(this.lblSelectProduct);
+            this.Controls.Add(this.lblOSupplier);
+            this.Controls.Add(this.btnDeleteOrder);
+            this.Controls.Add(this.btnUpdateOrder);
+            this.Controls.Add(this.btnSaveOrder);
+            this.Controls.Add(this.btnCancelOrder);
+            this.Controls.Add(this.dgvOrder);
+            this.Controls.Add(this.btnLogout);
+            this.Controls.Add(this.btnChangelog);
+            this.Controls.Add(this.btnInventory);
+            this.Controls.Add(this.btnOrder);
+            this.Controls.Add(this.btnSupplier);
             this.Controls.Add(this.label_staff);
             this.Controls.Add(this.pictureBox1);
-            this.Name = "OrderFormApp";
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Name = "OrderForm";
             this.Text = "OrderFormApp";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_order)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrder)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -296,25 +332,25 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label_staff;
-        private System.Windows.Forms.Button button_supplier;
-        private System.Windows.Forms.Button button_order;
-        private System.Windows.Forms.Button button_Inventory;
-        private System.Windows.Forms.Button button_changelog;
-        private System.Windows.Forms.Button button_logout;
-        private System.Windows.Forms.DataGridView dataGridView_order;
-        private System.Windows.Forms.Button button_cancel;
-        private System.Windows.Forms.Button button_save;
-        private System.Windows.Forms.Button button_update;
-        private System.Windows.Forms.Button button_delete;
-        private System.Windows.Forms.Label label_osupplier;
-        private System.Windows.Forms.Label label_selectproduct;
-        private System.Windows.Forms.Label label_quanity;
-        private System.Windows.Forms.Label label_price;
-        private System.Windows.Forms.Label label_total;
-        private System.Windows.Forms.TextBox textBox_quanity;
-        private System.Windows.Forms.TextBox textBox_price;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.ComboBox comboBox_osupplier;
-        private System.Windows.Forms.ComboBox comboBox_selectproduct;
+        private System.Windows.Forms.Button btnSupplier;
+        private System.Windows.Forms.Button btnOrder;
+        private System.Windows.Forms.Button btnInventory;
+        private System.Windows.Forms.Button btnChangelog;
+        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.DataGridView dgvOrder;
+        private System.Windows.Forms.Button btnCancelOrder;
+        private System.Windows.Forms.Button btnSaveOrder;
+        private System.Windows.Forms.Button btnUpdateOrder;
+        private System.Windows.Forms.Button btnDeleteOrder;
+        private System.Windows.Forms.Label lblOSupplier;
+        private System.Windows.Forms.Label lblSelectProduct;
+        private System.Windows.Forms.Label lblQuanity;
+        private System.Windows.Forms.Label lblPrice;
+        private System.Windows.Forms.Label lblTotalCost;
+        private System.Windows.Forms.TextBox txtQuanity;
+        private System.Windows.Forms.TextBox txtPrice;
+        private System.Windows.Forms.TextBox txtTotalCost;
+        private System.Windows.Forms.ComboBox cmbOSupplier;
+        private System.Windows.Forms.ComboBox cmbSelectProduct;
     }
 }
