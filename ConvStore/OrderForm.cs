@@ -18,5 +18,10 @@ namespace ConvStore
             pictureBox1.Image = Image.FromFile("../../images/warehouse.jpg");
 
         }
+
+        private void lblPrice_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

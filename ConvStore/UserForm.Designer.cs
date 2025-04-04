@@ -28,154 +28,200 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.dgvNotification = new System.Windows.Forms.DataGridView();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label_staff = new System.Windows.Forms.Label();
+            this.btnSupplier = new System.Windows.Forms.Button();
+            this.btnOrder = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.btnChangelog = new System.Windows.Forms.Button();
+            this.btnInventory = new System.Windows.Forms.Button();
+            this.lblUserID = new System.Windows.Forms.Label();
+            this.lblRole = new System.Windows.Forms.Label();
+            this.lblStoreBranch = new System.Windows.Forms.Label();
+            this.cmbUserID = new System.Windows.Forms.ComboBox();
+            this.cmbRole = new System.Windows.Forms.ComboBox();
+            this.cmbStoreBranch = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.lbl_Invoice = new System.Windows.Forms.Label();
-            this.groupBox_InvoiceList = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btn_ViewInvoice = new System.Windows.Forms.Button();
-            this.groupBox_InvoiceList.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNotification)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // dgvNotification
+            // 
+            this.dgvNotification.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvNotification.Location = new System.Drawing.Point(324, 312);
+            this.dgvNotification.Name = "dgvNotification";
+            this.dgvNotification.RowHeadersWidth = 72;
+            this.dgvNotification.RowTemplate.Height = 31;
+            this.dgvNotification.Size = new System.Drawing.Size(998, 466);
+            this.dgvNotification.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(117, 76);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label_staff
+            // 
+            this.label_staff.BackColor = System.Drawing.Color.Yellow;
+            this.label_staff.Font = new System.Drawing.Font("Segoe UI", 20.14286F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_staff.Location = new System.Drawing.Point(135, 12);
+            this.label_staff.Name = "label_staff";
+            this.label_staff.Size = new System.Drawing.Size(1330, 76);
+            this.label_staff.TabIndex = 3;
+            this.label_staff.Text = "STAFF";
+            this.label_staff.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnSupplier
+            // 
+            this.btnSupplier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnSupplier.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnSupplier.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.btnSupplier.Location = new System.Drawing.Point(12, 131);
+            this.btnSupplier.Name = "btnSupplier";
+            this.btnSupplier.Size = new System.Drawing.Size(217, 68);
+            this.btnSupplier.TabIndex = 5;
+            this.btnSupplier.Text = "SUPPLIER";
+            this.btnSupplier.UseVisualStyleBackColor = false;
+            // 
+            // btnOrder
+            // 
+            this.btnOrder.BackColor = System.Drawing.SystemColors.Info;
+            this.btnOrder.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnOrder.Location = new System.Drawing.Point(12, 248);
+            this.btnOrder.Name = "btnOrder";
+            this.btnOrder.Size = new System.Drawing.Size(217, 68);
+            this.btnOrder.TabIndex = 6;
+            this.btnOrder.Text = "ORDER";
+            this.btnOrder.UseVisualStyleBackColor = false;
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.BackColor = System.Drawing.SystemColors.Info;
+            this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLogout.Location = new System.Drawing.Point(12, 589);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(217, 68);
+            this.btnLogout.TabIndex = 12;
+            this.btnLogout.Text = "LOG OUT";
+            this.btnLogout.UseVisualStyleBackColor = false;
+            // 
+            // btnChangelog
+            // 
+            this.btnChangelog.BackColor = System.Drawing.SystemColors.Info;
+            this.btnChangelog.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnChangelog.Location = new System.Drawing.Point(12, 479);
+            this.btnChangelog.Name = "btnChangelog";
+            this.btnChangelog.Size = new System.Drawing.Size(217, 68);
+            this.btnChangelog.TabIndex = 11;
+            this.btnChangelog.Text = "CHANGELOG";
+            this.btnChangelog.UseVisualStyleBackColor = false;
+            // 
+            // btnInventory
+            // 
+            this.btnInventory.BackColor = System.Drawing.SystemColors.Info;
+            this.btnInventory.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnInventory.Location = new System.Drawing.Point(12, 362);
+            this.btnInventory.Name = "btnInventory";
+            this.btnInventory.Size = new System.Drawing.Size(217, 68);
+            this.btnInventory.TabIndex = 10;
+            this.btnInventory.Text = "INVENTORY";
+            this.btnInventory.UseVisualStyleBackColor = false;
+            // 
+            // lblUserID
+            // 
+            this.lblUserID.AutoSize = true;
+            this.lblUserID.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblUserID.Location = new System.Drawing.Point(494, 99);
+            this.lblUserID.Name = "lblUserID";
+            this.lblUserID.Size = new System.Drawing.Size(98, 32);
+            this.lblUserID.TabIndex = 13;
+            this.lblUserID.Text = "UserID:";
+            // 
+            // lblRole
+            // 
+            this.lblRole.AutoSize = true;
+            this.lblRole.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblRole.Location = new System.Drawing.Point(521, 167);
+            this.lblRole.Name = "lblRole";
+            this.lblRole.Size = new System.Drawing.Size(71, 32);
+            this.lblRole.TabIndex = 14;
+            this.lblRole.Text = "Role:";
+            // 
+            // lblStoreBranch
+            // 
+            this.lblStoreBranch.AutoSize = true;
+            this.lblStoreBranch.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblStoreBranch.Location = new System.Drawing.Point(433, 237);
+            this.lblStoreBranch.Name = "lblStoreBranch";
+            this.lblStoreBranch.Size = new System.Drawing.Size(159, 32);
+            this.lblStoreBranch.TabIndex = 15;
+            this.lblStoreBranch.Text = "StoreBranch:";
+            // 
+            // cmbUserID
+            // 
+            this.cmbUserID.FormattingEnabled = true;
+            this.cmbUserID.Location = new System.Drawing.Point(653, 99);
+            this.cmbUserID.Name = "cmbUserID";
+            this.cmbUserID.Size = new System.Drawing.Size(300, 32);
+            this.cmbUserID.TabIndex = 16;
+            // 
+            // cmbRole
+            // 
+            this.cmbRole.FormattingEnabled = true;
+            this.cmbRole.Location = new System.Drawing.Point(653, 167);
+            this.cmbRole.Name = "cmbRole";
+            this.cmbRole.Size = new System.Drawing.Size(300, 32);
+            this.cmbRole.TabIndex = 17;
+            // 
+            // cmbStoreBranch
+            // 
+            this.cmbStoreBranch.FormattingEnabled = true;
+            this.cmbStoreBranch.Location = new System.Drawing.Point(653, 237);
+            this.cmbStoreBranch.Name = "cmbStoreBranch";
+            this.cmbStoreBranch.Size = new System.Drawing.Size(300, 32);
+            this.cmbStoreBranch.TabIndex = 18;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(31, 114);
+            this.label1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(1171, 277);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Invoice ID:";
+            this.label1.Size = new System.Drawing.Size(151, 32);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Notification";
             // 
-            // label2
+            // UserForm
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(31, 162);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 20);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Supplier:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(371, 112);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 20);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Date:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(371, 160);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(154, 20);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Payment Method:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(139, 112);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(178, 22);
-            this.textBox1.TabIndex = 1;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(139, 160);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(178, 22);
-            this.textBox2.TabIndex = 1;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(531, 110);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker1.TabIndex = 2;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(531, 156);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 24);
-            this.comboBox1.TabIndex = 3;
-            // 
-            // lbl_Invoice
-            // 
-            this.lbl_Invoice.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lbl_Invoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Invoice.Location = new System.Drawing.Point(0, -1);
-            this.lbl_Invoice.Name = "lbl_Invoice";
-            this.lbl_Invoice.Size = new System.Drawing.Size(846, 79);
-            this.lbl_Invoice.TabIndex = 4;
-            this.lbl_Invoice.Text = "INVOICE INFORMATION";
-            this.lbl_Invoice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // groupBox_InvoiceList
-            // 
-            this.groupBox_InvoiceList.Controls.Add(this.btn_ViewInvoice);
-            this.groupBox_InvoiceList.Controls.Add(this.dataGridView1);
-            this.groupBox_InvoiceList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox_InvoiceList.Location = new System.Drawing.Point(6, 221);
-            this.groupBox_InvoiceList.Name = "groupBox_InvoiceList";
-            this.groupBox_InvoiceList.Size = new System.Drawing.Size(840, 484);
-            this.groupBox_InvoiceList.TabIndex = 5;
-            this.groupBox_InvoiceList.TabStop = false;
-            this.groupBox_InvoiceList.Text = "Invoice List";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 35);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(834, 352);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // btn_ViewInvoice
-            // 
-            this.btn_ViewInvoice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btn_ViewInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ViewInvoice.Location = new System.Drawing.Point(346, 425);
-            this.btn_ViewInvoice.Name = "btn_ViewInvoice";
-            this.btn_ViewInvoice.Size = new System.Drawing.Size(147, 40);
-            this.btn_ViewInvoice.TabIndex = 6;
-            this.btn_ViewInvoice.Text = "View Invoice";
-            this.btn_ViewInvoice.UseVisualStyleBackColor = false;
-            // 
-            // Invoice
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(847, 717);
-            this.Controls.Add(this.groupBox_InvoiceList);
-            this.Controls.Add(this.lbl_Invoice);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.ClientSize = new System.Drawing.Size(1350, 812);
             this.Controls.Add(this.label1);
-            this.Name = "Invoice";
-            this.Text = "Invoice";
-            this.groupBox_InvoiceList.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Controls.Add(this.cmbStoreBranch);
+            this.Controls.Add(this.cmbRole);
+            this.Controls.Add(this.cmbUserID);
+            this.Controls.Add(this.lblStoreBranch);
+            this.Controls.Add(this.lblRole);
+            this.Controls.Add(this.lblUserID);
+            this.Controls.Add(this.btnLogout);
+            this.Controls.Add(this.btnChangelog);
+            this.Controls.Add(this.btnInventory);
+            this.Controls.Add(this.btnOrder);
+            this.Controls.Add(this.btnSupplier);
+            this.Controls.Add(this.label_staff);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.dgvNotification);
+            this.Name = "UserForm";
+            this.Text = "UserForm";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNotification)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,17 +229,20 @@
 
         #endregion
 
+        private System.Windows.Forms.DataGridView dgvNotification;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label_staff;
+        private System.Windows.Forms.Button btnSupplier;
+        private System.Windows.Forms.Button btnOrder;
+        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Button btnChangelog;
+        private System.Windows.Forms.Button btnInventory;
+        private System.Windows.Forms.Label lblUserID;
+        private System.Windows.Forms.Label lblRole;
+        private System.Windows.Forms.Label lblStoreBranch;
+        private System.Windows.Forms.ComboBox cmbUserID;
+        private System.Windows.Forms.ComboBox cmbRole;
+        private System.Windows.Forms.ComboBox cmbStoreBranch;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label lbl_Invoice;
-        private System.Windows.Forms.GroupBox groupBox_InvoiceList;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btn_ViewInvoice;
     }
 }
