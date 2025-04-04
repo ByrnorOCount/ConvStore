@@ -28,104 +28,104 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbl_ProductID = new System.Windows.Forms.Label();
-            this.lbl_ProductName = new System.Windows.Forms.Label();
-            this.lbl_KindOfProduct = new System.Windows.Forms.Label();
-            this.lbl_ProductStatus = new System.Windows.Forms.Label();
-            this.txt_InventoryID = new System.Windows.Forms.TextBox();
-            this.txt_ProductID = new System.Windows.Forms.TextBox();
-            this.txt_ProductName = new System.Windows.Forms.TextBox();
-            this.lbl_Inventory = new System.Windows.Forms.Label();
+            this.lblProductID = new System.Windows.Forms.Label();
+            this.lblProductName = new System.Windows.Forms.Label();
+            this.lblProductType = new System.Windows.Forms.Label();
+            this.lblProductStatus = new System.Windows.Forms.Label();
+            this.txtInventoryID = new System.Windows.Forms.TextBox();
+            this.txtProductID = new System.Windows.Forms.TextBox();
+            this.txtProductName = new System.Windows.Forms.TextBox();
+            this.lblInventoryID = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txt_Status = new System.Windows.Forms.TextBox();
-            this.comboBox_Type = new System.Windows.Forms.ComboBox();
+            this.txtStatus = new System.Windows.Forms.TextBox();
+            this.cmbProductType = new System.Windows.Forms.ComboBox();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.btn_Add = new System.Windows.Forms.Button();
-            this.btn_Modify = new System.Windows.Forms.Button();
-            this.btn_Remove = new System.Windows.Forms.Button();
-            this.btn_Cancel = new System.Windows.Forms.Button();
-            this.btn_Statistic = new System.Windows.Forms.Button();
-            this.lbl_Find = new System.Windows.Forms.Label();
-            this.comboBox_Import = new System.Windows.Forms.ComboBox();
-            this.comboBox_Supplier = new System.Windows.Forms.ComboBox();
-            this.comboBox_Export = new System.Windows.Forms.ComboBox();
-            this.lbl_Management = new System.Windows.Forms.Label();
+            this.dgvInventory = new System.Windows.Forms.DataGridView();
+            this.btnAddProduct = new System.Windows.Forms.Button();
+            this.btnModifyProduct = new System.Windows.Forms.Button();
+            this.btnRemoveProduct = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnStatisticProduct = new System.Windows.Forms.Button();
+            this.lblFindProduct = new System.Windows.Forms.Label();
+            this.cmbImportDay = new System.Windows.Forms.ComboBox();
+            this.cmbSupplier = new System.Windows.Forms.ComboBox();
+            this.cmbExportDay = new System.Windows.Forms.ComboBox();
+            this.lblInventoryManagement = new System.Windows.Forms.Label();
             this.btn_Find = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInventory)).BeginInit();
             this.SuspendLayout();
             // 
-            // lbl_ProductID
+            // lblProductID
             // 
-            this.lbl_ProductID.AutoSize = true;
-            this.lbl_ProductID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_ProductID.Location = new System.Drawing.Point(34, 148);
-            this.lbl_ProductID.Name = "lbl_ProductID";
-            this.lbl_ProductID.Size = new System.Drawing.Size(105, 20);
-            this.lbl_ProductID.TabIndex = 0;
-            this.lbl_ProductID.Text = "Product ID:";
+            this.lblProductID.AutoSize = true;
+            this.lblProductID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProductID.Location = new System.Drawing.Point(34, 148);
+            this.lblProductID.Name = "lblProductID";
+            this.lblProductID.Size = new System.Drawing.Size(105, 20);
+            this.lblProductID.TabIndex = 0;
+            this.lblProductID.Text = "Product ID:";
             // 
-            // lbl_ProductName
+            // lblProductName
             // 
-            this.lbl_ProductName.AutoSize = true;
-            this.lbl_ProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_ProductName.Location = new System.Drawing.Point(34, 190);
-            this.lbl_ProductName.Name = "lbl_ProductName";
-            this.lbl_ProductName.Size = new System.Drawing.Size(134, 20);
-            this.lbl_ProductName.TabIndex = 1;
-            this.lbl_ProductName.Text = "Product Name:";
+            this.lblProductName.AutoSize = true;
+            this.lblProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProductName.Location = new System.Drawing.Point(34, 190);
+            this.lblProductName.Name = "lblProductName";
+            this.lblProductName.Size = new System.Drawing.Size(134, 20);
+            this.lblProductName.TabIndex = 1;
+            this.lblProductName.Text = "Product Name:";
             // 
-            // lbl_KindOfProduct
+            // lblProductType
             // 
-            this.lbl_KindOfProduct.AutoSize = true;
-            this.lbl_KindOfProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_KindOfProduct.Location = new System.Drawing.Point(431, 148);
-            this.lbl_KindOfProduct.Name = "lbl_KindOfProduct";
-            this.lbl_KindOfProduct.Size = new System.Drawing.Size(126, 20);
-            this.lbl_KindOfProduct.TabIndex = 2;
-            this.lbl_KindOfProduct.Text = "Product Type:";
+            this.lblProductType.AutoSize = true;
+            this.lblProductType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProductType.Location = new System.Drawing.Point(431, 148);
+            this.lblProductType.Name = "lblProductType";
+            this.lblProductType.Size = new System.Drawing.Size(126, 20);
+            this.lblProductType.TabIndex = 2;
+            this.lblProductType.Text = "Product Type:";
             // 
-            // lbl_ProductStatus
+            // lblProductStatus
             // 
-            this.lbl_ProductStatus.AutoSize = true;
-            this.lbl_ProductStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_ProductStatus.Location = new System.Drawing.Point(431, 99);
-            this.lbl_ProductStatus.Name = "lbl_ProductStatus";
-            this.lbl_ProductStatus.Size = new System.Drawing.Size(69, 20);
-            this.lbl_ProductStatus.TabIndex = 3;
-            this.lbl_ProductStatus.Text = "Status:";
+            this.lblProductStatus.AutoSize = true;
+            this.lblProductStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProductStatus.Location = new System.Drawing.Point(431, 99);
+            this.lblProductStatus.Name = "lblProductStatus";
+            this.lblProductStatus.Size = new System.Drawing.Size(69, 20);
+            this.lblProductStatus.TabIndex = 3;
+            this.lblProductStatus.Text = "Status:";
             // 
-            // txt_InventoryID
+            // txtInventoryID
             // 
-            this.txt_InventoryID.Location = new System.Drawing.Point(167, 97);
-            this.txt_InventoryID.Name = "txt_InventoryID";
-            this.txt_InventoryID.Size = new System.Drawing.Size(183, 22);
-            this.txt_InventoryID.TabIndex = 4;
+            this.txtInventoryID.Location = new System.Drawing.Point(167, 97);
+            this.txtInventoryID.Name = "txtInventoryID";
+            this.txtInventoryID.Size = new System.Drawing.Size(183, 22);
+            this.txtInventoryID.TabIndex = 4;
             // 
-            // txt_ProductID
+            // txtProductID
             // 
-            this.txt_ProductID.Location = new System.Drawing.Point(167, 146);
-            this.txt_ProductID.Name = "txt_ProductID";
-            this.txt_ProductID.Size = new System.Drawing.Size(183, 22);
-            this.txt_ProductID.TabIndex = 5;
+            this.txtProductID.Location = new System.Drawing.Point(167, 146);
+            this.txtProductID.Name = "txtProductID";
+            this.txtProductID.Size = new System.Drawing.Size(183, 22);
+            this.txtProductID.TabIndex = 5;
             // 
-            // txt_ProductName
+            // txtProductName
             // 
-            this.txt_ProductName.Location = new System.Drawing.Point(167, 188);
-            this.txt_ProductName.Name = "txt_ProductName";
-            this.txt_ProductName.Size = new System.Drawing.Size(183, 22);
-            this.txt_ProductName.TabIndex = 6;
+            this.txtProductName.Location = new System.Drawing.Point(167, 188);
+            this.txtProductName.Name = "txtProductName";
+            this.txtProductName.Size = new System.Drawing.Size(183, 22);
+            this.txtProductName.TabIndex = 6;
             // 
-            // lbl_Inventory
+            // lblInventoryID
             // 
-            this.lbl_Inventory.AutoSize = true;
-            this.lbl_Inventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Inventory.Location = new System.Drawing.Point(34, 97);
-            this.lbl_Inventory.Name = "lbl_Inventory";
-            this.lbl_Inventory.Size = new System.Drawing.Size(116, 20);
-            this.lbl_Inventory.TabIndex = 8;
-            this.lbl_Inventory.Text = "Inventory ID:";
+            this.lblInventoryID.AutoSize = true;
+            this.lblInventoryID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInventoryID.Location = new System.Drawing.Point(34, 97);
+            this.lblInventoryID.Name = "lblInventoryID";
+            this.lblInventoryID.Size = new System.Drawing.Size(116, 20);
+            this.lblInventoryID.TabIndex = 8;
+            this.lblInventoryID.Text = "Inventory ID:";
             // 
             // label6
             // 
@@ -135,149 +135,149 @@
             this.label6.Size = new System.Drawing.Size(0, 16);
             this.label6.TabIndex = 9;
             // 
-            // txt_Status
+            // txtStatus
             // 
-            this.txt_Status.Location = new System.Drawing.Point(563, 95);
-            this.txt_Status.Name = "txt_Status";
-            this.txt_Status.Size = new System.Drawing.Size(196, 22);
-            this.txt_Status.TabIndex = 10;
+            this.txtStatus.Location = new System.Drawing.Point(563, 95);
+            this.txtStatus.Name = "txtStatus";
+            this.txtStatus.Size = new System.Drawing.Size(196, 22);
+            this.txtStatus.TabIndex = 10;
             // 
-            // comboBox_Type
+            // cmbProductType
             // 
-            this.comboBox_Type.FormattingEnabled = true;
-            this.comboBox_Type.Location = new System.Drawing.Point(563, 144);
-            this.comboBox_Type.Name = "comboBox_Type";
-            this.comboBox_Type.Size = new System.Drawing.Size(196, 24);
-            this.comboBox_Type.TabIndex = 11;
+            this.cmbProductType.FormattingEnabled = true;
+            this.cmbProductType.Location = new System.Drawing.Point(563, 144);
+            this.cmbProductType.Name = "cmbProductType";
+            this.cmbProductType.Size = new System.Drawing.Size(196, 24);
+            this.cmbProductType.TabIndex = 11;
             // 
             // fileSystemWatcher1
             // 
             this.fileSystemWatcher1.EnableRaisingEvents = true;
             this.fileSystemWatcher1.SynchronizingObject = this;
             // 
-            // dataGridView
+            // dgvInventory
             // 
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(38, 277);
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.RowHeadersWidth = 51;
-            this.dataGridView.RowTemplate.Height = 24;
-            this.dataGridView.Size = new System.Drawing.Size(835, 360);
-            this.dataGridView.TabIndex = 16;
+            this.dgvInventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInventory.Location = new System.Drawing.Point(38, 277);
+            this.dgvInventory.Name = "dgvInventory";
+            this.dgvInventory.RowHeadersWidth = 51;
+            this.dgvInventory.RowTemplate.Height = 24;
+            this.dgvInventory.Size = new System.Drawing.Size(835, 360);
+            this.dgvInventory.TabIndex = 16;
             // 
-            // btn_Add
+            // btnAddProduct
             // 
-            this.btn_Add.AutoSize = true;
-            this.btn_Add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btn_Add.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Add.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_Add.Location = new System.Drawing.Point(68, 657);
-            this.btn_Add.Name = "btn_Add";
-            this.btn_Add.Size = new System.Drawing.Size(75, 32);
-            this.btn_Add.TabIndex = 12;
-            this.btn_Add.Text = "Add";
-            this.btn_Add.UseVisualStyleBackColor = false;
+            this.btnAddProduct.AutoSize = true;
+            this.btnAddProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnAddProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddProduct.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAddProduct.Location = new System.Drawing.Point(68, 657);
+            this.btnAddProduct.Name = "btnAddProduct";
+            this.btnAddProduct.Size = new System.Drawing.Size(75, 32);
+            this.btnAddProduct.TabIndex = 12;
+            this.btnAddProduct.Text = "Add";
+            this.btnAddProduct.UseVisualStyleBackColor = false;
             // 
-            // btn_Modify
+            // btnModifyProduct
             // 
-            this.btn_Modify.AutoSize = true;
-            this.btn_Modify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btn_Modify.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Modify.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_Modify.Location = new System.Drawing.Point(335, 657);
-            this.btn_Modify.Name = "btn_Modify";
-            this.btn_Modify.Size = new System.Drawing.Size(75, 32);
-            this.btn_Modify.TabIndex = 14;
-            this.btn_Modify.Text = "Modify";
-            this.btn_Modify.UseVisualStyleBackColor = false;
+            this.btnModifyProduct.AutoSize = true;
+            this.btnModifyProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnModifyProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModifyProduct.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnModifyProduct.Location = new System.Drawing.Point(335, 657);
+            this.btnModifyProduct.Name = "btnModifyProduct";
+            this.btnModifyProduct.Size = new System.Drawing.Size(75, 32);
+            this.btnModifyProduct.TabIndex = 14;
+            this.btnModifyProduct.Text = "Modify";
+            this.btnModifyProduct.UseVisualStyleBackColor = false;
             // 
-            // btn_Remove
+            // btnRemoveProduct
             // 
-            this.btn_Remove.AutoSize = true;
-            this.btn_Remove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btn_Remove.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Remove.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_Remove.Location = new System.Drawing.Point(200, 657);
-            this.btn_Remove.Name = "btn_Remove";
-            this.btn_Remove.Size = new System.Drawing.Size(86, 32);
-            this.btn_Remove.TabIndex = 13;
-            this.btn_Remove.Text = "Remove";
-            this.btn_Remove.UseVisualStyleBackColor = false;
+            this.btnRemoveProduct.AutoSize = true;
+            this.btnRemoveProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnRemoveProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveProduct.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnRemoveProduct.Location = new System.Drawing.Point(200, 657);
+            this.btnRemoveProduct.Name = "btnRemoveProduct";
+            this.btnRemoveProduct.Size = new System.Drawing.Size(86, 32);
+            this.btnRemoveProduct.TabIndex = 13;
+            this.btnRemoveProduct.Text = "Remove";
+            this.btnRemoveProduct.UseVisualStyleBackColor = false;
             // 
-            // btn_Cancel
+            // btnCancel
             // 
-            this.btn_Cancel.AutoSize = true;
-            this.btn_Cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btn_Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Cancel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_Cancel.Location = new System.Drawing.Point(631, 657);
-            this.btn_Cancel.Name = "btn_Cancel";
-            this.btn_Cancel.Size = new System.Drawing.Size(76, 32);
-            this.btn_Cancel.TabIndex = 15;
-            this.btn_Cancel.Text = "Cancel";
-            this.btn_Cancel.UseVisualStyleBackColor = false;
+            this.btnCancel.AutoSize = true;
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnCancel.Location = new System.Drawing.Point(631, 657);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(76, 32);
+            this.btnCancel.TabIndex = 15;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = false;
             // 
-            // btn_Statistic
+            // btnStatisticProduct
             // 
-            this.btn_Statistic.AutoSize = true;
-            this.btn_Statistic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btn_Statistic.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Statistic.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_Statistic.Location = new System.Drawing.Point(469, 657);
-            this.btn_Statistic.Name = "btn_Statistic";
-            this.btn_Statistic.Size = new System.Drawing.Size(99, 32);
-            this.btn_Statistic.TabIndex = 17;
-            this.btn_Statistic.Text = "Statistic";
-            this.btn_Statistic.UseVisualStyleBackColor = false;
+            this.btnStatisticProduct.AutoSize = true;
+            this.btnStatisticProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnStatisticProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStatisticProduct.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnStatisticProduct.Location = new System.Drawing.Point(469, 657);
+            this.btnStatisticProduct.Name = "btnStatisticProduct";
+            this.btnStatisticProduct.Size = new System.Drawing.Size(99, 32);
+            this.btnStatisticProduct.TabIndex = 17;
+            this.btnStatisticProduct.Text = "Statistic";
+            this.btnStatisticProduct.UseVisualStyleBackColor = false;
             // 
-            // lbl_Find
+            // lblFindProduct
             // 
-            this.lbl_Find.AutoSize = true;
-            this.lbl_Find.BackColor = System.Drawing.SystemColors.Control;
-            this.lbl_Find.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Find.Location = new System.Drawing.Point(34, 233);
-            this.lbl_Find.Name = "lbl_Find";
-            this.lbl_Find.Size = new System.Drawing.Size(130, 22);
-            this.lbl_Find.TabIndex = 18;
-            this.lbl_Find.Text = "Find Product:";
+            this.lblFindProduct.AutoSize = true;
+            this.lblFindProduct.BackColor = System.Drawing.SystemColors.Control;
+            this.lblFindProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFindProduct.Location = new System.Drawing.Point(34, 233);
+            this.lblFindProduct.Name = "lblFindProduct";
+            this.lblFindProduct.Size = new System.Drawing.Size(130, 22);
+            this.lblFindProduct.TabIndex = 18;
+            this.lblFindProduct.Text = "Find Product:";
             // 
-            // comboBox_Import
+            // cmbImportDay
             // 
-            this.comboBox_Import.FormattingEnabled = true;
-            this.comboBox_Import.Location = new System.Drawing.Point(348, 233);
-            this.comboBox_Import.Name = "comboBox_Import";
-            this.comboBox_Import.Size = new System.Drawing.Size(131, 24);
-            this.comboBox_Import.TabIndex = 19;
-            this.comboBox_Import.Text = "Import Day";
+            this.cmbImportDay.FormattingEnabled = true;
+            this.cmbImportDay.Location = new System.Drawing.Point(348, 233);
+            this.cmbImportDay.Name = "cmbImportDay";
+            this.cmbImportDay.Size = new System.Drawing.Size(131, 24);
+            this.cmbImportDay.TabIndex = 19;
+            this.cmbImportDay.Text = "Import Day";
             // 
-            // comboBox_Supplier
+            // cmbSupplier
             // 
-            this.comboBox_Supplier.FormattingEnabled = true;
-            this.comboBox_Supplier.Location = new System.Drawing.Point(170, 233);
-            this.comboBox_Supplier.Name = "comboBox_Supplier";
-            this.comboBox_Supplier.Size = new System.Drawing.Size(131, 24);
-            this.comboBox_Supplier.TabIndex = 19;
-            this.comboBox_Supplier.Text = "Supplier";
+            this.cmbSupplier.FormattingEnabled = true;
+            this.cmbSupplier.Location = new System.Drawing.Point(170, 233);
+            this.cmbSupplier.Name = "cmbSupplier";
+            this.cmbSupplier.Size = new System.Drawing.Size(131, 24);
+            this.cmbSupplier.TabIndex = 19;
+            this.cmbSupplier.Text = "Supplier";
             // 
-            // comboBox_Export
+            // cmbExportDay
             // 
-            this.comboBox_Export.FormattingEnabled = true;
-            this.comboBox_Export.Location = new System.Drawing.Point(536, 233);
-            this.comboBox_Export.Name = "comboBox_Export";
-            this.comboBox_Export.Size = new System.Drawing.Size(131, 24);
-            this.comboBox_Export.TabIndex = 19;
-            this.comboBox_Export.Text = "Export Day";
+            this.cmbExportDay.FormattingEnabled = true;
+            this.cmbExportDay.Location = new System.Drawing.Point(536, 233);
+            this.cmbExportDay.Name = "cmbExportDay";
+            this.cmbExportDay.Size = new System.Drawing.Size(131, 24);
+            this.cmbExportDay.TabIndex = 19;
+            this.cmbExportDay.Text = "Export Day";
             // 
-            // lbl_Management
+            // lblInventoryManagement
             // 
-            this.lbl_Management.BackColor = System.Drawing.Color.Cyan;
-            this.lbl_Management.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Management.Location = new System.Drawing.Point(-2, -3);
-            this.lbl_Management.Name = "lbl_Management";
-            this.lbl_Management.Size = new System.Drawing.Size(939, 75);
-            this.lbl_Management.TabIndex = 20;
-            this.lbl_Management.Text = "INVENTORY MANAGEMENT";
-            this.lbl_Management.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblInventoryManagement.BackColor = System.Drawing.Color.Cyan;
+            this.lblInventoryManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInventoryManagement.Location = new System.Drawing.Point(-2, -3);
+            this.lblInventoryManagement.Name = "lblInventoryManagement";
+            this.lblInventoryManagement.Size = new System.Drawing.Size(939, 75);
+            this.lblInventoryManagement.TabIndex = 20;
+            this.lblInventoryManagement.Text = "INVENTORY MANAGEMENT";
+            this.lblInventoryManagement.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btn_Find
             // 
@@ -290,39 +290,39 @@
             this.btn_Find.Text = "Find";
             this.btn_Find.UseVisualStyleBackColor = false;
             // 
-            // ProductManagementApp
+            // InventoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 711);
             this.Controls.Add(this.btn_Find);
-            this.Controls.Add(this.lbl_Management);
-            this.Controls.Add(this.comboBox_Supplier);
-            this.Controls.Add(this.comboBox_Export);
-            this.Controls.Add(this.comboBox_Import);
-            this.Controls.Add(this.lbl_Find);
-            this.Controls.Add(this.btn_Statistic);
-            this.Controls.Add(this.dataGridView);
-            this.Controls.Add(this.btn_Cancel);
-            this.Controls.Add(this.btn_Modify);
-            this.Controls.Add(this.btn_Remove);
-            this.Controls.Add(this.btn_Add);
-            this.Controls.Add(this.comboBox_Type);
-            this.Controls.Add(this.txt_Status);
+            this.Controls.Add(this.lblInventoryManagement);
+            this.Controls.Add(this.cmbSupplier);
+            this.Controls.Add(this.cmbExportDay);
+            this.Controls.Add(this.cmbImportDay);
+            this.Controls.Add(this.lblFindProduct);
+            this.Controls.Add(this.btnStatisticProduct);
+            this.Controls.Add(this.dgvInventory);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnModifyProduct);
+            this.Controls.Add(this.btnRemoveProduct);
+            this.Controls.Add(this.btnAddProduct);
+            this.Controls.Add(this.cmbProductType);
+            this.Controls.Add(this.txtStatus);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.lbl_Inventory);
-            this.Controls.Add(this.txt_ProductName);
-            this.Controls.Add(this.txt_ProductID);
-            this.Controls.Add(this.txt_InventoryID);
-            this.Controls.Add(this.lbl_ProductStatus);
-            this.Controls.Add(this.lbl_KindOfProduct);
-            this.Controls.Add(this.lbl_ProductName);
-            this.Controls.Add(this.lbl_ProductID);
+            this.Controls.Add(this.lblInventoryID);
+            this.Controls.Add(this.txtProductName);
+            this.Controls.Add(this.txtProductID);
+            this.Controls.Add(this.txtInventoryID);
+            this.Controls.Add(this.lblProductStatus);
+            this.Controls.Add(this.lblProductType);
+            this.Controls.Add(this.lblProductName);
+            this.Controls.Add(this.lblProductID);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "ProductManagementApp";
+            this.Name = "InventoryForm";
             this.Text = "ProductManagementApp";
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInventory)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -330,29 +330,29 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lbl_ProductID;
-        private System.Windows.Forms.Label lbl_ProductName;
-        private System.Windows.Forms.Label lbl_KindOfProduct;
-        private System.Windows.Forms.Label lbl_ProductStatus;
-        private System.Windows.Forms.TextBox txt_InventoryID;
-        private System.Windows.Forms.TextBox txt_ProductID;
-        private System.Windows.Forms.TextBox txt_ProductName;
-        private System.Windows.Forms.Label lbl_Inventory;
+        private System.Windows.Forms.Label lblProductID;
+        private System.Windows.Forms.Label lblProductName;
+        private System.Windows.Forms.Label lblProductType;
+        private System.Windows.Forms.Label lblProductStatus;
+        private System.Windows.Forms.TextBox txtInventoryID;
+        private System.Windows.Forms.TextBox txtProductID;
+        private System.Windows.Forms.TextBox txtProductName;
+        private System.Windows.Forms.Label lblInventoryID;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txt_Status;
-        private System.Windows.Forms.ComboBox comboBox_Type;
+        private System.Windows.Forms.TextBox txtStatus;
+        private System.Windows.Forms.ComboBox cmbProductType;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
-        private System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.Button btn_Cancel;
-        private System.Windows.Forms.Button btn_Modify;
-        private System.Windows.Forms.Button btn_Remove;
-        private System.Windows.Forms.Button btn_Add;
-        private System.Windows.Forms.Button btn_Statistic;
-        private System.Windows.Forms.Label lbl_Find;
-        private System.Windows.Forms.ComboBox comboBox_Import;
-        private System.Windows.Forms.ComboBox comboBox_Supplier;
-        private System.Windows.Forms.Label lbl_Management;
-        private System.Windows.Forms.ComboBox comboBox_Export;
+        private System.Windows.Forms.DataGridView dgvInventory;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnModifyProduct;
+        private System.Windows.Forms.Button btnRemoveProduct;
+        private System.Windows.Forms.Button btnAddProduct;
+        private System.Windows.Forms.Button btnStatisticProduct;
+        private System.Windows.Forms.Label lblFindProduct;
+        private System.Windows.Forms.ComboBox cmbImportDay;
+        private System.Windows.Forms.ComboBox cmbSupplier;
+        private System.Windows.Forms.Label lblInventoryManagement;
+        private System.Windows.Forms.ComboBox cmbExportDay;
         private System.Windows.Forms.Button btn_Find;
     }
 }

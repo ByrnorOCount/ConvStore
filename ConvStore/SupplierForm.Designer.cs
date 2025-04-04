@@ -30,38 +30,38 @@
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label_staff = new System.Windows.Forms.Label();
-            this.button_supplier = new System.Windows.Forms.Button();
-            this.button_order = new System.Windows.Forms.Button();
-            this.button_Inventory = new System.Windows.Forms.Button();
-            this.button_changelog = new System.Windows.Forms.Button();
-            this.button_logout = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button_supplieradd = new System.Windows.Forms.Button();
-            this.button_supplieredit = new System.Windows.Forms.Button();
-            this.button_suppliercancel = new System.Windows.Forms.Button();
-            this.button_suppliersave = new System.Windows.Forms.Button();
-            this.button_supplierreset = new System.Windows.Forms.Button();
-            this.label_supplierid = new System.Windows.Forms.Label();
-            this.label_suppliercode = new System.Windows.Forms.Label();
-            this.label_suppliername = new System.Windows.Forms.Label();
-            this.label_supplieritems = new System.Windows.Forms.Label();
-            this.label_supplierphone = new System.Windows.Forms.Label();
-            this.textBox_supplierid = new System.Windows.Forms.TextBox();
-            this.textBox_suppliercode = new System.Windows.Forms.TextBox();
-            this.textBox_suppliername = new System.Windows.Forms.TextBox();
-            this.textBox_supplieritems = new System.Windows.Forms.TextBox();
-            this.textBox_supplierphone = new System.Windows.Forms.TextBox();
-            this.radioButton_supplierisactive = new System.Windows.Forms.RadioButton();
+            this.btnSupplier = new System.Windows.Forms.Button();
+            this.btnOrder = new System.Windows.Forms.Button();
+            this.btnInventory = new System.Windows.Forms.Button();
+            this.btnChangelog = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.dgvSupplier = new System.Windows.Forms.DataGridView();
+            this.btnAddSupplier = new System.Windows.Forms.Button();
+            this.btnEditSupplier = new System.Windows.Forms.Button();
+            this.btnCancelSupplier = new System.Windows.Forms.Button();
+            this.btnSaveSupplier = new System.Windows.Forms.Button();
+            this.btnResetSupplier = new System.Windows.Forms.Button();
+            this.lblSupplierID = new System.Windows.Forms.Label();
+            this.lblSupplierCode = new System.Windows.Forms.Label();
+            this.lblSupplierName = new System.Windows.Forms.Label();
+            this.lblSupplierItems = new System.Windows.Forms.Label();
+            this.lblSupplierPhone = new System.Windows.Forms.Label();
+            this.txtSupplierID = new System.Windows.Forms.TextBox();
+            this.txtSupplierCode = new System.Windows.Forms.TextBox();
+            this.txtSupplierName = new System.Windows.Forms.TextBox();
+            this.txtSupplierItems = new System.Windows.Forms.TextBox();
+            this.txtSupplierPhone = new System.Windows.Forms.TextBox();
+            this.rdoSupplierIsActive = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSupplier)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(9, 8);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(96, 64);
+            this.pictureBox1.Size = new System.Drawing.Size(85, 51);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -69,274 +69,274 @@
             // label_staff
             // 
             this.label_staff.BackColor = System.Drawing.Color.Yellow;
-            this.label_staff.Location = new System.Drawing.Point(110, 10);
+            this.label_staff.Location = new System.Drawing.Point(98, 8);
             this.label_staff.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_staff.Name = "label_staff";
-            this.label_staff.Size = new System.Drawing.Size(1088, 64);
+            this.label_staff.Size = new System.Drawing.Size(967, 51);
             this.label_staff.TabIndex = 2;
             this.label_staff.Text = "STAFF";
             this.label_staff.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // button_supplier
+            // btnSupplier
             // 
-            this.button_supplier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button_supplier.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.button_supplier.Location = new System.Drawing.Point(10, 108);
-            this.button_supplier.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button_supplier.Name = "button_supplier";
-            this.button_supplier.Size = new System.Drawing.Size(178, 56);
-            this.button_supplier.TabIndex = 4;
-            this.button_supplier.Text = "SUPPLIER";
-            this.button_supplier.UseVisualStyleBackColor = false;
+            this.btnSupplier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnSupplier.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.btnSupplier.Location = new System.Drawing.Point(9, 86);
+            this.btnSupplier.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSupplier.Name = "btnSupplier";
+            this.btnSupplier.Size = new System.Drawing.Size(158, 45);
+            this.btnSupplier.TabIndex = 4;
+            this.btnSupplier.Text = "SUPPLIER";
+            this.btnSupplier.UseVisualStyleBackColor = false;
             // 
-            // button_order
+            // btnOrder
             // 
-            this.button_order.BackColor = System.Drawing.SystemColors.Info;
-            this.button_order.Location = new System.Drawing.Point(10, 196);
-            this.button_order.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button_order.Name = "button_order";
-            this.button_order.Size = new System.Drawing.Size(178, 56);
-            this.button_order.TabIndex = 5;
-            this.button_order.Text = "ORDER";
-            this.button_order.UseVisualStyleBackColor = false;
+            this.btnOrder.BackColor = System.Drawing.SystemColors.Info;
+            this.btnOrder.Location = new System.Drawing.Point(9, 157);
+            this.btnOrder.Margin = new System.Windows.Forms.Padding(2);
+            this.btnOrder.Name = "btnOrder";
+            this.btnOrder.Size = new System.Drawing.Size(158, 45);
+            this.btnOrder.TabIndex = 5;
+            this.btnOrder.Text = "ORDER";
+            this.btnOrder.UseVisualStyleBackColor = false;
             // 
-            // button_Inventory
+            // btnInventory
             // 
-            this.button_Inventory.BackColor = System.Drawing.SystemColors.Info;
-            this.button_Inventory.Location = new System.Drawing.Point(10, 283);
-            this.button_Inventory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button_Inventory.Name = "button_Inventory";
-            this.button_Inventory.Size = new System.Drawing.Size(178, 56);
-            this.button_Inventory.TabIndex = 6;
-            this.button_Inventory.Text = "INVENTORY";
-            this.button_Inventory.UseVisualStyleBackColor = false;
+            this.btnInventory.BackColor = System.Drawing.SystemColors.Info;
+            this.btnInventory.Location = new System.Drawing.Point(9, 226);
+            this.btnInventory.Margin = new System.Windows.Forms.Padding(2);
+            this.btnInventory.Name = "btnInventory";
+            this.btnInventory.Size = new System.Drawing.Size(158, 45);
+            this.btnInventory.TabIndex = 6;
+            this.btnInventory.Text = "INVENTORY";
+            this.btnInventory.UseVisualStyleBackColor = false;
             // 
-            // button_changelog
+            // btnChangelog
             // 
-            this.button_changelog.BackColor = System.Drawing.SystemColors.Info;
-            this.button_changelog.Location = new System.Drawing.Point(10, 379);
-            this.button_changelog.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button_changelog.Name = "button_changelog";
-            this.button_changelog.Size = new System.Drawing.Size(178, 56);
-            this.button_changelog.TabIndex = 7;
-            this.button_changelog.Text = "CHANGELOG";
-            this.button_changelog.UseVisualStyleBackColor = false;
+            this.btnChangelog.BackColor = System.Drawing.SystemColors.Info;
+            this.btnChangelog.Location = new System.Drawing.Point(9, 303);
+            this.btnChangelog.Margin = new System.Windows.Forms.Padding(2);
+            this.btnChangelog.Name = "btnChangelog";
+            this.btnChangelog.Size = new System.Drawing.Size(158, 45);
+            this.btnChangelog.TabIndex = 7;
+            this.btnChangelog.Text = "CHANGELOG";
+            this.btnChangelog.UseVisualStyleBackColor = false;
             // 
-            // button_logout
+            // btnLogout
             // 
-            this.button_logout.BackColor = System.Drawing.SystemColors.Info;
-            this.button_logout.Location = new System.Drawing.Point(10, 467);
-            this.button_logout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button_logout.Name = "button_logout";
-            this.button_logout.Size = new System.Drawing.Size(178, 56);
-            this.button_logout.TabIndex = 8;
-            this.button_logout.Text = "LOG OUT";
-            this.button_logout.UseVisualStyleBackColor = false;
+            this.btnLogout.BackColor = System.Drawing.SystemColors.Info;
+            this.btnLogout.Location = new System.Drawing.Point(9, 374);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(158, 45);
+            this.btnLogout.TabIndex = 8;
+            this.btnLogout.Text = "LOG OUT";
+            this.btnLogout.UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
+            // dgvSupplier
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(220, 92);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 72;
-            this.dataGridView1.RowTemplate.Height = 31;
-            this.dataGridView1.Size = new System.Drawing.Size(956, 300);
-            this.dataGridView1.TabIndex = 9;
+            this.dgvSupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSupplier.Location = new System.Drawing.Point(196, 74);
+            this.dgvSupplier.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvSupplier.Name = "dgvSupplier";
+            this.dgvSupplier.RowHeadersWidth = 72;
+            this.dgvSupplier.RowTemplate.Height = 31;
+            this.dgvSupplier.Size = new System.Drawing.Size(850, 240);
+            this.dgvSupplier.TabIndex = 9;
             // 
-            // button_supplieradd
+            // btnAddSupplier
             // 
-            this.button_supplieradd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.button_supplieradd.Location = new System.Drawing.Point(278, 407);
-            this.button_supplieradd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button_supplieradd.Name = "button_supplieradd";
-            this.button_supplieradd.Size = new System.Drawing.Size(84, 48);
-            this.button_supplieradd.TabIndex = 10;
-            this.button_supplieradd.Text = "Add";
-            this.button_supplieradd.UseVisualStyleBackColor = false;
+            this.btnAddSupplier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnAddSupplier.Location = new System.Drawing.Point(247, 326);
+            this.btnAddSupplier.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddSupplier.Name = "btnAddSupplier";
+            this.btnAddSupplier.Size = new System.Drawing.Size(75, 38);
+            this.btnAddSupplier.TabIndex = 10;
+            this.btnAddSupplier.Text = "Add";
+            this.btnAddSupplier.UseVisualStyleBackColor = false;
             // 
-            // button_supplieredit
+            // btnEditSupplier
             // 
-            this.button_supplieredit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.button_supplieredit.Location = new System.Drawing.Point(396, 407);
-            this.button_supplieredit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button_supplieredit.Name = "button_supplieredit";
-            this.button_supplieredit.Size = new System.Drawing.Size(84, 48);
-            this.button_supplieredit.TabIndex = 11;
-            this.button_supplieredit.Text = "Edit";
-            this.button_supplieredit.UseVisualStyleBackColor = false;
+            this.btnEditSupplier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnEditSupplier.Location = new System.Drawing.Point(352, 326);
+            this.btnEditSupplier.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEditSupplier.Name = "btnEditSupplier";
+            this.btnEditSupplier.Size = new System.Drawing.Size(75, 38);
+            this.btnEditSupplier.TabIndex = 11;
+            this.btnEditSupplier.Text = "Edit";
+            this.btnEditSupplier.UseVisualStyleBackColor = false;
             // 
-            // button_suppliercancel
+            // btnCancelSupplier
             // 
-            this.button_suppliercancel.BackColor = System.Drawing.Color.Red;
-            this.button_suppliercancel.Location = new System.Drawing.Point(523, 407);
-            this.button_suppliercancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button_suppliercancel.Name = "button_suppliercancel";
-            this.button_suppliercancel.Size = new System.Drawing.Size(84, 48);
-            this.button_suppliercancel.TabIndex = 12;
-            this.button_suppliercancel.Text = "Cancel";
-            this.button_suppliercancel.UseVisualStyleBackColor = false;
+            this.btnCancelSupplier.BackColor = System.Drawing.Color.Red;
+            this.btnCancelSupplier.Location = new System.Drawing.Point(465, 326);
+            this.btnCancelSupplier.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancelSupplier.Name = "btnCancelSupplier";
+            this.btnCancelSupplier.Size = new System.Drawing.Size(75, 38);
+            this.btnCancelSupplier.TabIndex = 12;
+            this.btnCancelSupplier.Text = "Cancel";
+            this.btnCancelSupplier.UseVisualStyleBackColor = false;
             // 
-            // button_suppliersave
+            // btnSaveSupplier
             // 
-            this.button_suppliersave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.button_suppliersave.Location = new System.Drawing.Point(936, 658);
-            this.button_suppliersave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button_suppliersave.Name = "button_suppliersave";
-            this.button_suppliersave.Size = new System.Drawing.Size(115, 44);
-            this.button_suppliersave.TabIndex = 13;
-            this.button_suppliersave.Text = "Save";
-            this.button_suppliersave.UseVisualStyleBackColor = false;
+            this.btnSaveSupplier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnSaveSupplier.Location = new System.Drawing.Point(832, 526);
+            this.btnSaveSupplier.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSaveSupplier.Name = "btnSaveSupplier";
+            this.btnSaveSupplier.Size = new System.Drawing.Size(102, 35);
+            this.btnSaveSupplier.TabIndex = 13;
+            this.btnSaveSupplier.Text = "Save";
+            this.btnSaveSupplier.UseVisualStyleBackColor = false;
             // 
-            // button_supplierreset
+            // btnResetSupplier
             // 
-            this.button_supplierreset.BackColor = System.Drawing.Color.Red;
-            this.button_supplierreset.Location = new System.Drawing.Point(1075, 658);
-            this.button_supplierreset.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button_supplierreset.Name = "button_supplierreset";
-            this.button_supplierreset.Size = new System.Drawing.Size(115, 44);
-            this.button_supplierreset.TabIndex = 14;
-            this.button_supplierreset.Text = "Reset";
-            this.button_supplierreset.UseVisualStyleBackColor = false;
+            this.btnResetSupplier.BackColor = System.Drawing.Color.Red;
+            this.btnResetSupplier.Location = new System.Drawing.Point(956, 526);
+            this.btnResetSupplier.Margin = new System.Windows.Forms.Padding(2);
+            this.btnResetSupplier.Name = "btnResetSupplier";
+            this.btnResetSupplier.Size = new System.Drawing.Size(102, 35);
+            this.btnResetSupplier.TabIndex = 14;
+            this.btnResetSupplier.Text = "Reset";
+            this.btnResetSupplier.UseVisualStyleBackColor = false;
             // 
-            // label_supplierid
+            // lblSupplierID
             // 
-            this.label_supplierid.AutoSize = true;
-            this.label_supplierid.Location = new System.Drawing.Point(216, 468);
-            this.label_supplierid.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label_supplierid.Name = "label_supplierid";
-            this.label_supplierid.Size = new System.Drawing.Size(92, 20);
-            this.label_supplierid.TabIndex = 15;
-            this.label_supplierid.Text = "Supplier ID:";
+            this.lblSupplierID.AutoSize = true;
+            this.lblSupplierID.Location = new System.Drawing.Point(192, 374);
+            this.lblSupplierID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSupplierID.Name = "lblSupplierID";
+            this.lblSupplierID.Size = new System.Drawing.Size(76, 16);
+            this.lblSupplierID.TabIndex = 15;
+            this.lblSupplierID.Text = "Supplier ID:";
             // 
-            // label_suppliercode
+            // lblSupplierCode
             // 
-            this.label_suppliercode.AutoSize = true;
-            this.label_suppliercode.Location = new System.Drawing.Point(216, 511);
-            this.label_suppliercode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label_suppliercode.Name = "label_suppliercode";
-            this.label_suppliercode.Size = new System.Drawing.Size(113, 20);
-            this.label_suppliercode.TabIndex = 16;
-            this.label_suppliercode.Text = "Supplier Code:";
+            this.lblSupplierCode.AutoSize = true;
+            this.lblSupplierCode.Location = new System.Drawing.Point(192, 409);
+            this.lblSupplierCode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSupplierCode.Name = "lblSupplierCode";
+            this.lblSupplierCode.Size = new System.Drawing.Size(96, 16);
+            this.lblSupplierCode.TabIndex = 16;
+            this.lblSupplierCode.Text = "Supplier Code:";
             // 
-            // label_suppliername
+            // lblSupplierName
             // 
-            this.label_suppliername.AutoSize = true;
-            this.label_suppliername.Location = new System.Drawing.Point(216, 552);
-            this.label_suppliername.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label_suppliername.Name = "label_suppliername";
-            this.label_suppliername.Size = new System.Drawing.Size(117, 20);
-            this.label_suppliername.TabIndex = 17;
-            this.label_suppliername.Text = "Supplier Name:";
+            this.lblSupplierName.AutoSize = true;
+            this.lblSupplierName.Location = new System.Drawing.Point(192, 442);
+            this.lblSupplierName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSupplierName.Name = "lblSupplierName";
+            this.lblSupplierName.Size = new System.Drawing.Size(100, 16);
+            this.lblSupplierName.TabIndex = 17;
+            this.lblSupplierName.Text = "Supplier Name:";
             // 
-            // label_supplieritems
+            // lblSupplierItems
             // 
-            this.label_supplieritems.AutoSize = true;
-            this.label_supplieritems.Location = new System.Drawing.Point(216, 592);
-            this.label_supplieritems.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label_supplieritems.Name = "label_supplieritems";
-            this.label_supplieritems.Size = new System.Drawing.Size(109, 20);
-            this.label_supplieritems.TabIndex = 18;
-            this.label_supplieritems.Text = "Type of Items:";
+            this.lblSupplierItems.AutoSize = true;
+            this.lblSupplierItems.Location = new System.Drawing.Point(192, 474);
+            this.lblSupplierItems.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSupplierItems.Name = "lblSupplierItems";
+            this.lblSupplierItems.Size = new System.Drawing.Size(91, 16);
+            this.lblSupplierItems.TabIndex = 18;
+            this.lblSupplierItems.Text = "Type of Items:";
             // 
-            // label_supplierphone
+            // lblSupplierPhone
             // 
-            this.label_supplierphone.AutoSize = true;
-            this.label_supplierphone.Location = new System.Drawing.Point(216, 638);
-            this.label_supplierphone.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label_supplierphone.Name = "label_supplierphone";
-            this.label_supplierphone.Size = new System.Drawing.Size(83, 20);
-            this.label_supplierphone.TabIndex = 19;
-            this.label_supplierphone.Text = "Phone No:";
+            this.lblSupplierPhone.AutoSize = true;
+            this.lblSupplierPhone.Location = new System.Drawing.Point(192, 510);
+            this.lblSupplierPhone.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSupplierPhone.Name = "lblSupplierPhone";
+            this.lblSupplierPhone.Size = new System.Drawing.Size(70, 16);
+            this.lblSupplierPhone.TabIndex = 19;
+            this.lblSupplierPhone.Text = "Phone No:";
             // 
-            // textBox_supplierid
+            // txtSupplierID
             // 
-            this.textBox_supplierid.Location = new System.Drawing.Point(356, 467);
-            this.textBox_supplierid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox_supplierid.Name = "textBox_supplierid";
-            this.textBox_supplierid.Size = new System.Drawing.Size(281, 26);
-            this.textBox_supplierid.TabIndex = 20;
+            this.txtSupplierID.Location = new System.Drawing.Point(316, 374);
+            this.txtSupplierID.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSupplierID.Name = "txtSupplierID";
+            this.txtSupplierID.Size = new System.Drawing.Size(250, 22);
+            this.txtSupplierID.TabIndex = 20;
             // 
-            // textBox_suppliercode
+            // txtSupplierCode
             // 
-            this.textBox_suppliercode.Location = new System.Drawing.Point(356, 511);
-            this.textBox_suppliercode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox_suppliercode.Name = "textBox_suppliercode";
-            this.textBox_suppliercode.Size = new System.Drawing.Size(281, 26);
-            this.textBox_suppliercode.TabIndex = 21;
+            this.txtSupplierCode.Location = new System.Drawing.Point(316, 409);
+            this.txtSupplierCode.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSupplierCode.Name = "txtSupplierCode";
+            this.txtSupplierCode.Size = new System.Drawing.Size(250, 22);
+            this.txtSupplierCode.TabIndex = 21;
             // 
-            // textBox_suppliername
+            // txtSupplierName
             // 
-            this.textBox_suppliername.Location = new System.Drawing.Point(356, 552);
-            this.textBox_suppliername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox_suppliername.Name = "textBox_suppliername";
-            this.textBox_suppliername.Size = new System.Drawing.Size(281, 26);
-            this.textBox_suppliername.TabIndex = 22;
+            this.txtSupplierName.Location = new System.Drawing.Point(316, 442);
+            this.txtSupplierName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSupplierName.Name = "txtSupplierName";
+            this.txtSupplierName.Size = new System.Drawing.Size(250, 22);
+            this.txtSupplierName.TabIndex = 22;
             // 
-            // textBox_supplieritems
+            // txtSupplierItems
             // 
-            this.textBox_supplieritems.Location = new System.Drawing.Point(356, 592);
-            this.textBox_supplieritems.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox_supplieritems.Name = "textBox_supplieritems";
-            this.textBox_supplieritems.Size = new System.Drawing.Size(281, 26);
-            this.textBox_supplieritems.TabIndex = 23;
+            this.txtSupplierItems.Location = new System.Drawing.Point(316, 474);
+            this.txtSupplierItems.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSupplierItems.Name = "txtSupplierItems";
+            this.txtSupplierItems.Size = new System.Drawing.Size(250, 22);
+            this.txtSupplierItems.TabIndex = 23;
             // 
-            // textBox_supplierphone
+            // txtSupplierPhone
             // 
-            this.textBox_supplierphone.Location = new System.Drawing.Point(356, 638);
-            this.textBox_supplierphone.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox_supplierphone.Name = "textBox_supplierphone";
-            this.textBox_supplierphone.Size = new System.Drawing.Size(281, 26);
-            this.textBox_supplierphone.TabIndex = 24;
+            this.txtSupplierPhone.Location = new System.Drawing.Point(316, 510);
+            this.txtSupplierPhone.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSupplierPhone.Name = "txtSupplierPhone";
+            this.txtSupplierPhone.Size = new System.Drawing.Size(250, 22);
+            this.txtSupplierPhone.TabIndex = 24;
             // 
-            // radioButton_supplierisactive
+            // rdoSupplierIsActive
             // 
-            this.radioButton_supplierisactive.AutoSize = true;
-            this.radioButton_supplierisactive.Location = new System.Drawing.Point(691, 469);
-            this.radioButton_supplierisactive.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.radioButton_supplierisactive.Name = "radioButton_supplierisactive";
-            this.radioButton_supplierisactive.Size = new System.Drawing.Size(90, 24);
-            this.radioButton_supplierisactive.TabIndex = 25;
-            this.radioButton_supplierisactive.TabStop = true;
-            this.radioButton_supplierisactive.Text = "IsActive";
-            this.radioButton_supplierisactive.UseVisualStyleBackColor = true;
-            this.radioButton_supplierisactive.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.rdoSupplierIsActive.AutoSize = true;
+            this.rdoSupplierIsActive.Location = new System.Drawing.Point(614, 375);
+            this.rdoSupplierIsActive.Margin = new System.Windows.Forms.Padding(2);
+            this.rdoSupplierIsActive.Name = "rdoSupplierIsActive";
+            this.rdoSupplierIsActive.Size = new System.Drawing.Size(75, 20);
+            this.rdoSupplierIsActive.TabIndex = 25;
+            this.rdoSupplierIsActive.TabStop = true;
+            this.rdoSupplierIsActive.Text = "IsActive";
+            this.rdoSupplierIsActive.UseVisualStyleBackColor = true;
+            this.rdoSupplierIsActive.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // SupplierForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1199, 712);
-            this.Controls.Add(this.radioButton_supplierisactive);
-            this.Controls.Add(this.textBox_supplierphone);
-            this.Controls.Add(this.textBox_supplieritems);
-            this.Controls.Add(this.textBox_suppliername);
-            this.Controls.Add(this.textBox_suppliercode);
-            this.Controls.Add(this.textBox_supplierid);
-            this.Controls.Add(this.label_supplierphone);
-            this.Controls.Add(this.label_supplieritems);
-            this.Controls.Add(this.label_suppliername);
-            this.Controls.Add(this.label_suppliercode);
-            this.Controls.Add(this.label_supplierid);
-            this.Controls.Add(this.button_supplierreset);
-            this.Controls.Add(this.button_suppliersave);
-            this.Controls.Add(this.button_suppliercancel);
-            this.Controls.Add(this.button_supplieredit);
-            this.Controls.Add(this.button_supplieradd);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button_logout);
-            this.Controls.Add(this.button_changelog);
-            this.Controls.Add(this.button_Inventory);
-            this.Controls.Add(this.button_order);
-            this.Controls.Add(this.button_supplier);
+            this.ClientSize = new System.Drawing.Size(1066, 570);
+            this.Controls.Add(this.rdoSupplierIsActive);
+            this.Controls.Add(this.txtSupplierPhone);
+            this.Controls.Add(this.txtSupplierItems);
+            this.Controls.Add(this.txtSupplierName);
+            this.Controls.Add(this.txtSupplierCode);
+            this.Controls.Add(this.txtSupplierID);
+            this.Controls.Add(this.lblSupplierPhone);
+            this.Controls.Add(this.lblSupplierItems);
+            this.Controls.Add(this.lblSupplierName);
+            this.Controls.Add(this.lblSupplierCode);
+            this.Controls.Add(this.lblSupplierID);
+            this.Controls.Add(this.btnResetSupplier);
+            this.Controls.Add(this.btnSaveSupplier);
+            this.Controls.Add(this.btnCancelSupplier);
+            this.Controls.Add(this.btnEditSupplier);
+            this.Controls.Add(this.btnAddSupplier);
+            this.Controls.Add(this.dgvSupplier);
+            this.Controls.Add(this.btnLogout);
+            this.Controls.Add(this.btnChangelog);
+            this.Controls.Add(this.btnInventory);
+            this.Controls.Add(this.btnOrder);
+            this.Controls.Add(this.btnSupplier);
             this.Controls.Add(this.label_staff);
             this.Controls.Add(this.pictureBox1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SupplierForm";
             this.Text = "Manage Suppliers List";
             this.Load += new System.EventHandler(this.SupplierFormApp_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSupplier)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -346,27 +346,27 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label_staff;
-        private System.Windows.Forms.Button button_supplier;
-        private System.Windows.Forms.Button button_order;
-        private System.Windows.Forms.Button button_Inventory;
-        private System.Windows.Forms.Button button_changelog;
-        private System.Windows.Forms.Button button_logout;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button_supplieradd;
-        private System.Windows.Forms.Button button_supplieredit;
-        private System.Windows.Forms.Button button_suppliercancel;
-        private System.Windows.Forms.Button button_suppliersave;
-        private System.Windows.Forms.Button button_supplierreset;
-        private System.Windows.Forms.Label label_supplierid;
-        private System.Windows.Forms.Label label_suppliercode;
-        private System.Windows.Forms.Label label_suppliername;
-        private System.Windows.Forms.Label label_supplieritems;
-        private System.Windows.Forms.Label label_supplierphone;
-        private System.Windows.Forms.TextBox textBox_supplierid;
-        private System.Windows.Forms.TextBox textBox_suppliercode;
-        private System.Windows.Forms.TextBox textBox_suppliername;
-        private System.Windows.Forms.TextBox textBox_supplieritems;
-        private System.Windows.Forms.TextBox textBox_supplierphone;
-        private System.Windows.Forms.RadioButton radioButton_supplierisactive;
+        private System.Windows.Forms.Button btnSupplier;
+        private System.Windows.Forms.Button btnOrder;
+        private System.Windows.Forms.Button btnInventory;
+        private System.Windows.Forms.Button btnChangelog;
+        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.DataGridView dgvSupplier;
+        private System.Windows.Forms.Button btnAddSupplier;
+        private System.Windows.Forms.Button btnEditSupplier;
+        private System.Windows.Forms.Button btnCancelSupplier;
+        private System.Windows.Forms.Button btnSaveSupplier;
+        private System.Windows.Forms.Button btnResetSupplier;
+        private System.Windows.Forms.Label lblSupplierID;
+        private System.Windows.Forms.Label lblSupplierCode;
+        private System.Windows.Forms.Label lblSupplierName;
+        private System.Windows.Forms.Label lblSupplierItems;
+        private System.Windows.Forms.Label lblSupplierPhone;
+        private System.Windows.Forms.TextBox txtSupplierID;
+        private System.Windows.Forms.TextBox txtSupplierCode;
+        private System.Windows.Forms.TextBox txtSupplierName;
+        private System.Windows.Forms.TextBox txtSupplierItems;
+        private System.Windows.Forms.TextBox txtSupplierPhone;
+        private System.Windows.Forms.RadioButton rdoSupplierIsActive;
     }
 }
