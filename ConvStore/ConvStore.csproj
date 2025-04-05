@@ -123,7 +123,6 @@
     <EmbeddedResource Include="UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="App.config.CHANGEME" />
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
