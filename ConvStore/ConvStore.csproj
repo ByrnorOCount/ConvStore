@@ -53,6 +53,8 @@
     <Compile Include="ChangeLogForm.Designer.cs">
       <DependentUpon>ChangeLogForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormHelper.cs" />
+    <Compile Include="UserSession.cs" />
     <Compile Include="DBHelper.cs" />
     <Compile Include="InventoryForm.cs">
       <SubType>Form</SubType>

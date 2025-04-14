@@ -30,161 +30,154 @@ namespace ConvStore
         /// </summary>
         private void InitializeComponent()
         {
-            this.label_staff = new System.Windows.Forms.Label();
+            this.lblStaff = new System.Windows.Forms.Label();
             this.btnSupplier = new System.Windows.Forms.Button();
             this.btnOrder = new System.Windows.Forms.Button();
             this.btnInventory = new System.Windows.Forms.Button();
             this.btnChangelog = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picLarge = new System.Windows.Forms.PictureBox();
+            this.picIcon = new System.Windows.Forms.PictureBox();
             this.btnUser = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLarge)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picIcon)).BeginInit();
             this.SuspendLayout();
             // 
-            // label_staff
+            // lblStaff
             // 
-            this.label_staff.BackColor = System.Drawing.Color.Yellow;
-            this.label_staff.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_staff.Location = new System.Drawing.Point(135, 12);
-            this.label_staff.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label_staff.Name = "label_staff";
-            this.label_staff.Size = new System.Drawing.Size(1330, 77);
-            this.label_staff.TabIndex = 1;
-            this.label_staff.Text = "Staff";
-            this.label_staff.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblStaff.BackColor = System.Drawing.Color.Yellow;
+            this.lblStaff.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStaff.Location = new System.Drawing.Point(110, 10);
+            this.lblStaff.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblStaff.Name = "lblStaff";
+            this.lblStaff.Size = new System.Drawing.Size(1088, 64);
+            this.lblStaff.TabIndex = 1;
+            this.lblStaff.Text = "Staff";
+            this.lblStaff.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnSupplier
             // 
             this.btnSupplier.BackColor = System.Drawing.SystemColors.Info;
             this.btnSupplier.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSupplier.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.btnSupplier.Location = new System.Drawing.Point(13, 194);
+            this.btnSupplier.Location = new System.Drawing.Point(10, 162);
             this.btnSupplier.Margin = new System.Windows.Forms.Padding(2);
             this.btnSupplier.Name = "btnSupplier";
-            this.btnSupplier.Size = new System.Drawing.Size(218, 67);
+            this.btnSupplier.Size = new System.Drawing.Size(178, 56);
             this.btnSupplier.TabIndex = 3;
             this.btnSupplier.Text = "Supplier";
             this.btnSupplier.UseVisualStyleBackColor = false;
-            this.btnSupplier.Click += new System.EventHandler(this.btnSupplier_Click);
             // 
             // btnOrder
             // 
             this.btnOrder.BackColor = System.Drawing.SystemColors.Info;
             this.btnOrder.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnOrder.Location = new System.Drawing.Point(13, 277);
+            this.btnOrder.Location = new System.Drawing.Point(10, 231);
             this.btnOrder.Margin = new System.Windows.Forms.Padding(2);
             this.btnOrder.Name = "btnOrder";
-            this.btnOrder.Size = new System.Drawing.Size(218, 67);
+            this.btnOrder.Size = new System.Drawing.Size(178, 56);
             this.btnOrder.TabIndex = 4;
             this.btnOrder.Text = "Order";
             this.btnOrder.UseVisualStyleBackColor = false;
-            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
             // btnInventory
             // 
             this.btnInventory.BackColor = System.Drawing.SystemColors.Info;
             this.btnInventory.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnInventory.Location = new System.Drawing.Point(13, 364);
+            this.btnInventory.Location = new System.Drawing.Point(10, 303);
             this.btnInventory.Margin = new System.Windows.Forms.Padding(2);
             this.btnInventory.Name = "btnInventory";
-            this.btnInventory.Size = new System.Drawing.Size(218, 67);
+            this.btnInventory.Size = new System.Drawing.Size(178, 56);
             this.btnInventory.TabIndex = 5;
             this.btnInventory.Text = "Inventory";
             this.btnInventory.UseVisualStyleBackColor = false;
-            this.btnInventory.Click += new System.EventHandler(this.btnInventory_Click);
             // 
             // btnChangelog
             // 
             this.btnChangelog.BackColor = System.Drawing.SystemColors.Info;
             this.btnChangelog.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnChangelog.Location = new System.Drawing.Point(13, 451);
+            this.btnChangelog.Location = new System.Drawing.Point(10, 376);
             this.btnChangelog.Margin = new System.Windows.Forms.Padding(2);
             this.btnChangelog.Name = "btnChangelog";
-            this.btnChangelog.Size = new System.Drawing.Size(218, 67);
+            this.btnChangelog.Size = new System.Drawing.Size(178, 56);
             this.btnChangelog.TabIndex = 6;
             this.btnChangelog.Text = "Changelog";
             this.btnChangelog.UseVisualStyleBackColor = false;
-            this.btnChangelog.Click += new System.EventHandler(this.btnChangelog_Click);
             // 
             // btnLogout
             // 
             this.btnLogout.BackColor = System.Drawing.SystemColors.Info;
             this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnLogout.Location = new System.Drawing.Point(13, 541);
+            this.btnLogout.Location = new System.Drawing.Point(10, 451);
             this.btnLogout.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(218, 67);
+            this.btnLogout.Size = new System.Drawing.Size(178, 56);
             this.btnLogout.TabIndex = 7;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = false;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
-            // pictureBox2
+            // picLarge
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(249, 92);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(1216, 750);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
+            this.picLarge.Location = new System.Drawing.Point(204, 77);
+            this.picLarge.Margin = new System.Windows.Forms.Padding(2);
+            this.picLarge.Name = "picLarge";
+            this.picLarge.Size = new System.Drawing.Size(995, 644);
+            this.picLarge.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picLarge.TabIndex = 2;
+            this.picLarge.TabStop = false;
             // 
-            // pictureBox1
+            // picIcon
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(117, 77);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.picIcon.Location = new System.Drawing.Point(10, 10);
+            this.picIcon.Margin = new System.Windows.Forms.Padding(2);
+            this.picIcon.Name = "picIcon";
+            this.picIcon.Size = new System.Drawing.Size(96, 64);
+            this.picIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picIcon.TabIndex = 0;
+            this.picIcon.TabStop = false;
             // 
             // btnUser
             // 
             this.btnUser.BackColor = System.Drawing.SystemColors.Info;
             this.btnUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUser.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.btnUser.Location = new System.Drawing.Point(13, 110);
+            this.btnUser.Location = new System.Drawing.Point(10, 92);
             this.btnUser.Margin = new System.Windows.Forms.Padding(2);
             this.btnUser.Name = "btnUser";
-            this.btnUser.Size = new System.Drawing.Size(218, 67);
+            this.btnUser.Size = new System.Drawing.Size(178, 56);
             this.btnUser.TabIndex = 8;
             this.btnUser.Text = "User";
             this.btnUser.UseVisualStyleBackColor = false;
-            this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1465, 854);
+            this.ClientSize = new System.Drawing.Size(1200, 720);
             this.Controls.Add(this.btnUser);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnChangelog);
             this.Controls.Add(this.btnInventory);
             this.Controls.Add(this.btnOrder);
             this.Controls.Add(this.btnSupplier);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.label_staff);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.picLarge);
+            this.Controls.Add(this.lblStaff);
+            this.Controls.Add(this.picIcon);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "MainForm";
-            this.Load += new System.EventHandler(this.MainForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLarge)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label_staff;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox picIcon;
+        private System.Windows.Forms.Label lblStaff;
+        private System.Windows.Forms.PictureBox picLarge;
         private System.Windows.Forms.Button btnSupplier;
         private System.Windows.Forms.Button btnOrder;
         private System.Windows.Forms.Button btnInventory;

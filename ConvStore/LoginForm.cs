@@ -12,14 +12,15 @@ namespace ConvStore
         public LoginForm()
         {
             InitializeComponent();
-            picLoginForm.Image = Image.FromFile("../../images/user_icon.png");
-
+            this.Load += LoginForm_Load;
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void LoginForm_Load(object sender, EventArgs e)
         {
-            Close();
+            picLoginForm.Image = Image.FromFile("../../images/user_icon.png");
         }
+
+        private void btnCancel_Click(object sender, EventArgs e) => Close();
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
@@ -38,20 +39,29 @@ namespace ConvStore
                 {
                     db.OpenConnection();
 
-                    string query = "SELECT 1 FROM dbo.[User] WHERE Username=@Username AND Password=@Password";
+                    string query = "SELECT UserID, Username, Role, StoreBranch, Permission FROM dbo.[User] WHERE Username=@Username AND Password=@Password";
                     using (SqlCommand cmd = new SqlCommand(query, db.Connection))
                     {
                         cmd.Parameters.AddWithValue("@Username", username);
                         cmd.Parameters.AddWithValue("@Password", password);
-                        if (cmd.ExecuteScalar() != null)
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            this.Hide();
-                            MainForm mainForm = new MainForm();
-                            mainForm.Show();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Invalid username or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            if (reader.Read())
+                            {
+                                UserSession.UserID = reader.GetInt32(0);
+                                UserSession.Username = reader.GetString(1);
+                                UserSession.Role = reader.GetString(2);
+                                UserSession.StoreBranch = reader.GetString(3);
+                                UserSession.Permission = reader.GetString(4);
+
+                                this.Hide();
+                                MainForm mainForm = new MainForm();
+                                mainForm.Show();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Invalid username or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
@@ -72,8 +82,8 @@ namespace ConvStore
 
             if (string.IsNullOrWhiteSpace(password))
                 errors.Add("Password cannot be empty.");
-            else if (password.Length < 6)
-                errors.Add("Password must be at least 6 characters long.");
+            else if (password.Length < 8)
+                errors.Add("Password must be at least 8 characters long.");
             else if (!password.Any(char.IsLetter) || !password.Any(char.IsDigit))
                 errors.Add("Password must contain at least one letter and one number.");
 

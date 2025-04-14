@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 
 namespace ConvStore
 {
-    class DBHelper : IDisposable
+    public class DBHelper : IDisposable
     {
         private readonly SqlConnection connection;
         private bool disposed = false;
