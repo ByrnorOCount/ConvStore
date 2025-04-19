@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace ConvStore
 {
-    public partial class InventoryForm : Form
+    public partial class InventoryForm : MyForm
     {
         private readonly DBHelper db = new DBHelper();
 
@@ -15,13 +15,6 @@ namespace ConvStore
             InitializeComponent();
             this.Load += InventoryForm_Load;
             dgvInventory.SelectionChanged += dgvInventory_SelectionChanged;
-
-            FormHelper.AssignNavigationHandler(btnUser, FormHelper.OpenUserForm, this);
-            FormHelper.AssignNavigationHandler(btnSupplier, FormHelper.OpenSupplierForm, this);
-            FormHelper.AssignNavigationHandler(btnOrder, FormHelper.OpenOrderForm, this);
-            FormHelper.AssignNavigationHandler(btnInventory, FormHelper.OpenInventoryForm, this);
-            FormHelper.AssignNavigationHandler(btnChangelog, FormHelper.OpenChangeLogForm, this);
-            FormHelper.AssignLogoutHandler(btnLogout, this);
         }
 
         private void InventoryForm_Load(object sender, EventArgs e)
@@ -29,7 +22,8 @@ namespace ConvStore
             LoadInventory();
             FormHelper.FormatDataGridView(dgvInventory);
             FormHelper.FormatDataGridView(dgvProduct);
-            picIcon.Image = Image.FromFile("../../images/warehouse.jpg");
+            picIcon.Image = Image.FromFile(Const.IMAGE_DIRECTORY + "warehouse.jpg");
+            lblTitle.Text = $"Inventory";
         }
 
         private void dgvInventory_SelectionChanged(object sender, EventArgs e)

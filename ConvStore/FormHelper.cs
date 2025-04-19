@@ -16,59 +16,13 @@ namespace ConvStore
             button.Click += (sender, e) => Logout(currentForm);
         }
 
-        public static void OpenUserForm(Form currentForm)
+        public static void OpenForm<T>(Form currentForm) where T : Form, new()
         {
-            UserForm userForm = new UserForm();
+            T userForm = new T();
             userForm.Show();
 
             if (!(currentForm is MainForm))
-            {
                 currentForm.Close();
-            }
-        }
-
-        public static void OpenSupplierForm(Form currentForm)
-        {
-            SupplierForm supplierForm = new SupplierForm();
-            supplierForm.Show();
-
-            if (!(currentForm is MainForm))
-            {
-                currentForm.Close();
-            }
-        }
-
-        public static void OpenOrderForm(Form currentForm)
-        {
-            OrderForm orderForm = new OrderForm();
-            orderForm.Show();
-
-            if (!(currentForm is MainForm))
-            {
-                currentForm.Close();
-            }
-        }
-
-        public static void OpenInventoryForm(Form currentForm)
-        {
-            InventoryForm inventoryForm = new InventoryForm();
-            inventoryForm.Show();
-
-            if (!(currentForm is MainForm))
-            {
-                currentForm.Close();
-            }
-        }
-
-        public static void OpenChangeLogForm(Form currentForm)
-        {
-            ChangeLogForm changeLogForm = new ChangeLogForm();
-            changeLogForm.Show();
-
-            if (!(currentForm is MainForm))
-            {
-                currentForm.Close();
-            }
         }
 
         public static void Logout(Form currentForm)

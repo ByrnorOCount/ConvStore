@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace ConvStore
 {
-    public partial class OrderForm : Form
+    public partial class OrderForm : MyForm
     {
         private readonly DBHelper db = new DBHelper();
 
@@ -15,13 +15,6 @@ namespace ConvStore
             InitializeComponent();
             this.Load += OrderForm_Load;
             dgvOrder.SelectionChanged += dgvOrder_SelectionChanged;
-
-            FormHelper.AssignNavigationHandler(btnUser, FormHelper.OpenUserForm, this);
-            FormHelper.AssignNavigationHandler(btnSupplier, FormHelper.OpenSupplierForm, this);
-            FormHelper.AssignNavigationHandler(btnOrder, FormHelper.OpenOrderForm, this);
-            FormHelper.AssignNavigationHandler(btnInventory, FormHelper.OpenInventoryForm, this);
-            FormHelper.AssignNavigationHandler(btnChangelog, FormHelper.OpenChangeLogForm, this);
-            FormHelper.AssignLogoutHandler(btnLogout, this);
         }
 
         private void OrderForm_Load(object sender, EventArgs e)
@@ -29,7 +22,8 @@ namespace ConvStore
             LoadOrders();
             FormHelper.FormatDataGridView(dgvOrder);
             FormHelper.FormatDataGridView(dgvOrderProducts);
-            picIcon.Image = Image.FromFile("../../images/warehouse.jpg");
+            picIcon.Image = Image.FromFile(Const.IMAGE_DIRECTORY + "warehouse.jpg");
+            lblTitle.Text = $"Order Management";
         }
 
         private void dgvOrder_SelectionChanged(object sender, EventArgs e)
@@ -121,12 +115,5 @@ namespace ConvStore
                 MessageBox.Show("Error loading order products: " + ex.Message);
             }
         }
-
-        private void btnUser_Click(object sender, EventArgs e) => FormHelper.OpenUserForm(this);
-        private void btnSupplier_Click(object sender, EventArgs e) => FormHelper.OpenSupplierForm(this);
-        private void btnOrder_Click(object sender, EventArgs e) => FormHelper.OpenOrderForm(this);
-        private void btnInventory_Click(object sender, EventArgs e) => FormHelper.OpenInventoryForm(this);
-        private void btnChangelog_Click(object sender, EventArgs e) => FormHelper.OpenChangeLogForm(this);
-        private void btnLogout_Click(object sender, EventArgs e) => FormHelper.Logout(this);
     }
 }
