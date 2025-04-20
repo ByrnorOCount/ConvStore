@@ -20,7 +20,7 @@ namespace ConvStore
         private void ChangeLogForm_Load(object sender, EventArgs e)
         {
             LoadChangelogs();
-            FormHelper.FormatDataGridView(dgvChangeLog);
+            FormatDataGridView(dgvChangeLog);
             picIcon.Image = Image.FromFile(Const.IMAGE_DIRECTORY + "warehouse.jpg");
             lblTitle.Text = $"Changelog";
         }
@@ -50,7 +50,7 @@ namespace ConvStore
                     adapter.Fill(dt);
                     db.CloseConnection();
                     dgvChangeLog.DataSource = dt;
-                    FormHelper.AdjustColumnWidths(dgvChangeLog);
+                    AdjustColumnWidths(dgvChangeLog);
                     dgvChangeLog.Columns["LogID"].HeaderText = "Log ID";
                     dgvChangeLog.Columns["UserName"].HeaderText = "User Name";
                     dgvChangeLog.Columns["ProductName"].HeaderText = "Product Name";

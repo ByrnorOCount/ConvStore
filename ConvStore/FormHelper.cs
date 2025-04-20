@@ -6,57 +6,5 @@ namespace ConvStore
 {
     public static class FormHelper
     {
-        public static void AssignNavigationHandler(Button button, Action<Form> navigationAction, Form currentForm)
-        {
-            button.Click += (sender, e) => navigationAction(currentForm);
-        }
-
-        public static void AssignLogoutHandler(Button button, Form currentForm)
-        {
-            button.Click += (sender, e) => Logout(currentForm);
-        }
-
-        public static void OpenForm<T>(Form currentForm) where T : Form, new()
-        {
-            T userForm = new T();
-            userForm.Show();
-
-            if (!(currentForm is MainForm))
-                currentForm.Close();
-        }
-
-        public static void Logout(Form currentForm)
-        {
-            UserSession.Clear();
-            LoginForm loginForm = new LoginForm();
-            loginForm.Show();
-            currentForm.Close();
-        }
-
-        public static void FormatDataGridView(DataGridView dgv)
-        {
-            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgv.MultiSelect = false;
-            dgv.ReadOnly = true;
-            dgv.RowHeadersWidth = 20;
-            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Comic Sans MS", 9, FontStyle.Bold);
-            dgv.DefaultCellStyle.Font = new Font("Comic Sans MS", 9, FontStyle.Regular);
-        }
-
-        public static void AdjustColumnWidths(DataGridView dgv)
-        {
-            foreach (DataGridViewColumn column in dgv.Columns)
-            {
-                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            }
-
-            foreach (DataGridViewColumn column in dgv.Columns)
-            {
-                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                column.FillWeight = 1;
-            }
-        }
     }
 }

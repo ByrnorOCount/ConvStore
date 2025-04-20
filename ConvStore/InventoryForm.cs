@@ -20,8 +20,8 @@ namespace ConvStore
         private void InventoryForm_Load(object sender, EventArgs e)
         {
             LoadInventory();
-            FormHelper.FormatDataGridView(dgvInventory);
-            FormHelper.FormatDataGridView(dgvProduct);
+            FormatDataGridView(dgvInventory);
+            FormatDataGridView(dgvProduct);
             picIcon.Image = Image.FromFile(Const.IMAGE_DIRECTORY + "warehouse.jpg");
             lblTitle.Text = $"Inventory";
         }
@@ -68,7 +68,7 @@ namespace ConvStore
                     adapter.Fill(dt);
                     db.CloseConnection();
                     dgvInventory.DataSource = dt;
-                    FormHelper.AdjustColumnWidths(dgvInventory);
+                    AdjustColumnWidths(dgvInventory);
                     dgvInventory.Columns["InventoryID"].HeaderText = "Inventory ID";
                     dgvInventory.Columns["ProductName"].HeaderText = "Product Name";
                     dgvInventory.Columns["StorageLocation"].HeaderText = "Storage Location";
@@ -116,7 +116,7 @@ namespace ConvStore
                     adapter.Fill(dt);
                     db.CloseConnection();
                     dgvProduct.DataSource = dt;
-                    FormHelper.AdjustColumnWidths(dgvProduct);
+                    AdjustColumnWidths(dgvProduct);
                     dgvProduct.Columns["ProductID"].HeaderText = "Product ID";
                     dgvProduct.Columns["ProductName"].HeaderText = "Product Name";
                     dgvProduct.Columns["ExpiryDate"].HeaderText = "Expiry Date";

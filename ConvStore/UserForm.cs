@@ -18,7 +18,7 @@ namespace ConvStore
         private void UserForm_Load(object sender, EventArgs e)
         {
             LoadNotifications();
-            FormHelper.FormatDataGridView(dgvNotification);
+            FormatDataGridView(dgvNotification);
             picIcon.Image = Image.FromFile(Const.IMAGE_DIRECTORY + "warehouse.jpg");
             lblUserID.Text = UserSession.UserID.ToString();
             lblUsername.Text = UserSession.Username;
@@ -53,7 +53,7 @@ namespace ConvStore
                     adapter.Fill(dt);
                     db.CloseConnection();
                     dgvNotification.DataSource = dt;
-                    FormHelper.AdjustColumnWidths(dgvNotification);
+                    AdjustColumnWidths(dgvNotification);
                     dgvNotification.Columns["NotificationID"].HeaderText = "Notification ID";
                     dgvNotification.Columns["OrderID"].HeaderText = "Order ID";
                     dgvNotification.Columns["SupplierName"].HeaderText = "Supplier Name";

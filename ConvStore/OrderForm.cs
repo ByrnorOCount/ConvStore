@@ -20,8 +20,8 @@ namespace ConvStore
         private void OrderForm_Load(object sender, EventArgs e)
         {
             LoadOrders();
-            FormHelper.FormatDataGridView(dgvOrder);
-            FormHelper.FormatDataGridView(dgvOrderProducts);
+            FormatDataGridView(dgvOrder);
+            FormatDataGridView(dgvOrderProducts);
             picIcon.Image = Image.FromFile(Const.IMAGE_DIRECTORY + "warehouse.jpg");
             lblTitle.Text = $"Order Management";
         }
@@ -60,7 +60,7 @@ namespace ConvStore
                     adapter.Fill(dt);
                     db.CloseConnection();
                     dgvOrder.DataSource = dt;
-                    FormHelper.AdjustColumnWidths(dgvOrder);
+                    AdjustColumnWidths(dgvOrder);
                     dgvOrder.Columns["OrderID"].HeaderText = "ID";
                     dgvOrder.Columns["OrdererName"].HeaderText = "Orderer";
                     dgvOrder.Columns["SupplierName"].HeaderText = "Supplier";
@@ -102,7 +102,7 @@ namespace ConvStore
                     adapter.Fill(dt);
                     db.CloseConnection();
                     dgvOrderProducts.DataSource = dt;
-                    FormHelper.FormatDataGridView(dgvOrderProducts);
+                    FormatDataGridView(dgvOrderProducts);
                     dgvOrderProducts.Columns["ProductID"].HeaderText = "Product ID";
                     dgvOrderProducts.Columns["ProductName"].HeaderText = "Product Name";
                     dgvOrderProducts.Columns["Price"].HeaderText = "Price";

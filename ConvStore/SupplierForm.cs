@@ -19,7 +19,7 @@ namespace ConvStore
         private void SupplierForm_Load(object sender, EventArgs e)
         {
             LoadSuppliers();
-            FormHelper.FormatDataGridView(dgvSupplier);
+            FormatDataGridView(dgvSupplier);
             picIcon.Image = Image.FromFile(Const.IMAGE_DIRECTORY + "warehouse.jpg");
             lblTitle.Text = $"Supplier Management";
         }
@@ -37,7 +37,7 @@ namespace ConvStore
                     adapter.Fill(dt);
                     db.CloseConnection();
                     dgvSupplier.DataSource = dt;
-                    FormHelper.AdjustColumnWidths(dgvSupplier);
+                    AdjustColumnWidths(dgvSupplier);
                     dgvSupplier.Columns["SupplierID"].HeaderText = "Supplier ID";
                     dgvSupplier.Columns["Name"].HeaderText = "Supplier Name";
                     dgvSupplier.Columns["Email"].HeaderText = "Email";
