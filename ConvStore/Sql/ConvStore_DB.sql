@@ -14,6 +14,73 @@ USE ConvStore_DB;
 GO
 
 --Note: User and Order need to be in square brackets ([User] and [Order]) because they're hardcoded keywords in SQL Server
+
+-- Drop foreign key constraints
+IF OBJECT_ID('FK_OrderProducts_Order', 'F') IS NOT NULL
+    ALTER TABLE OrderProducts DROP CONSTRAINT FK_OrderProducts_Order;
+GO
+
+IF OBJECT_ID('FK_OrderProducts_Product', 'F') IS NOT NULL
+    ALTER TABLE OrderProducts DROP CONSTRAINT FK_OrderProducts_Product;
+GO
+
+IF OBJECT_ID('FK_Notification_User', 'F') IS NOT NULL
+    ALTER TABLE Notification DROP CONSTRAINT FK_Notification_User;
+GO
+
+IF OBJECT_ID('FK_Notification_Order', 'F') IS NOT NULL
+    ALTER TABLE Notification DROP CONSTRAINT FK_Notification_Order;
+GO
+
+IF OBJECT_ID('FK_Notification_Supplier', 'F') IS NOT NULL
+    ALTER TABLE Notification DROP CONSTRAINT FK_Notification_Supplier;
+GO
+
+IF OBJECT_ID('FK_Changelog_User', 'F') IS NOT NULL
+    ALTER TABLE Changelog DROP CONSTRAINT FK_Changelog_User;
+GO
+
+IF OBJECT_ID('FK_Changelog_Product', 'F') IS NOT NULL
+    ALTER TABLE Changelog DROP CONSTRAINT FK_Changelog_Product;
+GO
+
+IF OBJECT_ID('FK_Inventory_Product', 'F') IS NOT NULL
+    ALTER TABLE Inventory DROP CONSTRAINT FK_Inventory_Product;
+GO
+
+-- Drop tables
+IF OBJECT_ID('dbo.OrderProducts', 'U') IS NOT NULL
+    DROP TABLE dbo.OrderProducts;
+GO
+
+IF OBJECT_ID('dbo.Notification', 'U') IS NOT NULL
+    DROP TABLE dbo.Notification;
+GO
+
+IF OBJECT_ID('dbo.Changelog', 'U') IS NOT NULL
+    DROP TABLE dbo.Changelog;
+GO
+
+IF OBJECT_ID('dbo.Inventory', 'U') IS NOT NULL
+    DROP TABLE dbo.Inventory;
+GO
+
+IF OBJECT_ID('dbo.Product', 'U') IS NOT NULL
+    DROP TABLE dbo.Product;
+GO
+
+IF OBJECT_ID('dbo.[Order]', 'U') IS NOT NULL
+    DROP TABLE dbo.[Order];
+GO
+
+IF OBJECT_ID('dbo.Supplier', 'U') IS NOT NULL
+    DROP TABLE dbo.Supplier;
+GO
+
+IF OBJECT_ID('dbo.[User]', 'U') IS NOT NULL
+    DROP TABLE dbo.[User];
+GO
+
 CREATE TABLE [User] (
     UserID INT IDENTITY(1,1) PRIMARY KEY,
     Username VARCHAR(50) UNIQUE NOT NULL,
@@ -63,6 +130,7 @@ CREATE TABLE Product (
 CREATE TABLE OrderProducts (
     OrderID INT NOT NULL,
     ProductID INT NOT NULL,
+    Quantity INT NOT NULL CHECK (Quantity > 0),
     PRIMARY KEY (OrderID, ProductID),
     FOREIGN KEY (OrderID) REFERENCES [Order](OrderID) ON DELETE CASCADE,
     FOREIGN KEY (ProductID) REFERENCES Product(ProductID) ON DELETE CASCADE

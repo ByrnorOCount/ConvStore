@@ -7,17 +7,22 @@ namespace SqlFileMerger
     {
         public SqlFileMerger()
         {
+            // Define the base directory relative to the project
+            string baseDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\ConvStore\sql");
+
+            // Define the SQL file paths relative to the base directory
             string[] sqlFilePaths = new string[]
             {
-                @"D:\HCMUTE\Database_Management_System\ConvStore\ConvStore\Sql\Database.sql",
-                @"D:\HCMUTE\Database_Management_System\ConvStore\ConvStore\Sql\Table.sql",
-                @"D:\HCMUTE\Database_Management_System\ConvStore\ConvStore\Sql\Trigger.sql",
-                @"D:\HCMUTE\Database_Management_System\ConvStore\ConvStore\Sql\View.sql",
-                @"D:\HCMUTE\Database_Management_System\ConvStore\ConvStore\Sql\Procedure.sql",
-                @"D:\HCMUTE\Database_Management_System\ConvStore\ConvStore\Sql\Function.sql"
+                Path.Combine(baseDirectory, "Database.sql"),
+                Path.Combine(baseDirectory, "Table.sql"),
+                Path.Combine(baseDirectory, "Trigger.sql"),
+                Path.Combine(baseDirectory, "View.sql"),
+                Path.Combine(baseDirectory, "Procedure.sql"),
+                Path.Combine(baseDirectory, "Function.sql")
             };
 
-            string outputFilePath = @"D:\HCMUTE\Database_Management_System\ConvStore\ConvStore\Sql\ConvStore_DB.sql";
+            // Define the output file path
+            string outputFilePath = Path.Combine(baseDirectory, "ConvStore_DB.sql");
 
             try
             {
@@ -44,7 +49,7 @@ namespace SqlFileMerger
                     }
                 }
 
-                Console.WriteLine($"Big SQL file generated successfully: {outputFilePath}");
+                Console.WriteLine($"Complete SQL file generated successfully: {outputFilePath}");
             }
             catch (Exception ex)
             {

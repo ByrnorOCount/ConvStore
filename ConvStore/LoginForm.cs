@@ -18,7 +18,7 @@ namespace ConvStore
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            picLoginForm.Image = Image.FromFile(Const.IMAGE_DIRECTORY + "user_icon.png");
+            picLoginForm.Image = Image.FromFile(Util.imgDir + "user_icon.png");
         }
 
         private void btnCancel_Click(object sender, EventArgs e) => Close();

@@ -13,8 +13,8 @@ namespace ConvStore
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            picLarge.Image = Image.FromFile(Const.IMAGE_DIRECTORY + "box_and_clipboard.png");
-            picIcon.Image = Image.FromFile(Const.IMAGE_DIRECTORY + "warehouse.jpg");
+            picLarge.Image = Image.FromFile(Util.imgDir + "box_and_clipboard.png");
+            picIcon.Image = Image.FromFile(Util.imgDir + "warehouse.jpg");
             lblTitle.Text = $"Welcome, {UserSession.Username}!";
         }
     }

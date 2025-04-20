@@ -22,7 +22,7 @@ namespace ConvStore
             LoadOrders();
             FormatDataGridView(dgvOrder);
             FormatDataGridView(dgvOrderProducts);
-            picIcon.Image = Image.FromFile(Const.IMAGE_DIRECTORY + "warehouse.jpg");
+            picIcon.Image = Image.FromFile(Util.imgDir + "warehouse.jpg");
             lblTitle.Text = $"Order Management";
         }
 

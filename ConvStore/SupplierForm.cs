@@ -20,7 +20,7 @@ namespace ConvStore
         {
             LoadSuppliers();
             FormatDataGridView(dgvSupplier);
-            picIcon.Image = Image.FromFile(Const.IMAGE_DIRECTORY + "warehouse.jpg");
+            picIcon.Image = Image.FromFile(Util.imgDir + "warehouse.jpg");
             lblTitle.Text = $"Supplier Management";
         }
 

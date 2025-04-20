@@ -19,7 +19,7 @@ namespace ConvStore
         {
             LoadNotifications();
             FormatDataGridView(dgvNotification);
-            picIcon.Image = Image.FromFile(Const.IMAGE_DIRECTORY + "warehouse.jpg");
+            picIcon.Image = Image.FromFile(Util.imgDir + "warehouse.jpg");
             lblUserID.Text = UserSession.UserID.ToString();
             lblUsername.Text = UserSession.Username;
             lblRole.Text = UserSession.Role;
