@@ -29,22 +29,13 @@ namespace ConvStore
 
         private void LoadNotifications()
         {
-            string query = @"
-                SELECT 
-                    n.NotificationID,
-                    o.OrderID,
-                    s.Name AS SupplierName,
-                    n.Time AS NotificationTime,
-                    n.Message
-                FROM Notification n
-                LEFT JOIN [Order] o ON n.OrderID = o.OrderID
-                LEFT JOIN Supplier s ON n.SupplierID = s.SupplierID
-                WHERE n.UserID = @UserID";
+            string query = "usp_LoadNotifications";
 
             try
             {
                 using (SqlCommand cmd = new SqlCommand(query, db.Connection))
                 {
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@UserID", UserSession.UserID);
 
                     db.OpenConnection();

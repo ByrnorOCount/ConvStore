@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -39,9 +40,10 @@ namespace ConvStore
                 {
                     db.OpenConnection();
 
-                    string query = "SELECT UserID, Username, Role, StoreBranch, Permission FROM dbo.[User] WHERE Username=@Username AND Password=@Password";
+                    string query = "usp_GetUser";
                     using (SqlCommand cmd = new SqlCommand(query, db.Connection))
                     {
+                        cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Username", username);
                         cmd.Parameters.AddWithValue("@Password", password);
                         using (SqlDataReader reader = cmd.ExecuteReader())
@@ -54,7 +56,6 @@ namespace ConvStore
                                 UserSession.StoreBranch = reader.GetString(3);
                                 UserSession.Permission = reader.GetString(4);
 
-                                this.Hide();
                                 MainForm mainForm = new MainForm();
                                 mainForm.Show();
                             }

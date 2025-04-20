@@ -1,17 +1,19 @@
-IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = 'ConvStore_DB')
-BEGIN
-    CREATE DATABASE ConvStore_DB;
-END;
-GO
+-- Begin File: Database.sql
+	IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = 'ConvStore_DB')
+	BEGIN
+		CREATE DATABASE ConvStore_DB;
+	END;
+	GO
 
+	USE ConvStore_DB;
+	GO
+-- End File: Database.sql
+
+-- Begin File: Table.sql
 USE ConvStore_DB;
 GO
 
 --Note: User and Order need to be in square brackets ([User] and [Order]) because they're hardcoded keywords in SQL Server
-
---=======================================
---Tables
---=======================================
 CREATE TABLE [User] (
     UserID INT IDENTITY(1,1) PRIMARY KEY,
     Username VARCHAR(50) UNIQUE NOT NULL,
@@ -100,11 +102,24 @@ CREATE TABLE Changelog (
     FOREIGN KEY (ProductID) REFERENCES Product(ProductID) ON DELETE SET NULL
 );
 GO
+-- End File: Table.sql
 
+-- Begin File: Trigger.sql
+USE ConvStore_DB;
+GO
 
---=======================================
---Triggers (trg_ prefix)
---=======================================
+IF OBJECT_ID('trg_PreventOverOrder', 'TR') IS NOT NULL
+    DROP TRIGGER trg_PreventOverOrder;
+GO
+
+IF OBJECT_ID('trg_AutoCreateOrderNotification', 'TR') IS NOT NULL
+    DROP TRIGGER trg_AutoCreateOrderNotification;
+GO
+
+IF OBJECT_ID('trg_PreventOrderCancellation', 'TR') IS NOT NULL
+    DROP TRIGGER trg_PreventOrderCancellation;
+GO
+
 CREATE TRIGGER trg_PreventOverOrder
 ON OrderProducts
 AFTER INSERT, UPDATE
@@ -153,10 +168,28 @@ BEGIN
     END
 END;
 GO
+-- End File: Trigger.sql
 
---=======================================
---Views (vw_ prefix)
---=======================================
+-- Begin File: View.sql
+USE ConvStore_DB;
+GO
+
+IF OBJECT_ID('vw_AllOrders', 'V') IS NOT NULL
+    DROP VIEW vw_AllOrders;
+GO
+
+IF OBJECT_ID('vw_Inventory', 'V') IS NOT NULL
+    DROP VIEW vw_Inventory;
+GO
+
+IF OBJECT_ID('vw_UserRolesAndPermissions', 'V') IS NOT NULL
+    DROP VIEW vw_UserRolesAndPermissions;
+GO
+
+IF OBJECT_ID('vw_Notifications', 'V') IS NOT NULL
+    DROP VIEW vw_Notifications;
+GO
+
 CREATE VIEW vw_AllOrders AS
 SELECT 
     o.OrderID, 
@@ -207,10 +240,59 @@ LEFT JOIN [User] u ON n.UserID = u.UserID
 LEFT JOIN [Order] o ON n.OrderID = o.OrderID
 LEFT JOIN Supplier s ON n.SupplierID = s.SupplierID;
 GO
+-- End File: View.sql
 
---=======================================
---Stored Procedures (usp_ prefix)
---=======================================
+-- Begin File: Procedure.sql
+USE ConvStore_DB;
+GO
+
+IF OBJECT_ID('usp_GetAllUsers', 'P') IS NOT NULL
+    DROP PROCEDURE usp_GetAllUsers;
+GO
+
+IF OBJECT_ID('usp_GetAllOrders', 'P') IS NOT NULL
+    DROP PROCEDURE usp_GetAllOrders;
+GO
+
+IF OBJECT_ID('usp_GetUser', 'P') IS NOT NULL
+    DROP PROCEDURE usp_GetUser;
+GO
+
+IF OBJECT_ID('usp_LoadNotifications', 'P') IS NOT NULL
+    DROP PROCEDURE usp_LoadNotifications;
+GO
+
+IF OBJECT_ID('usp_LoadSupplier', 'P') IS NOT NULL
+    DROP PROCEDURE usp_LoadSupplier;
+GO
+
+IF OBJECT_ID('usp_LoadOrder', 'P') IS NOT NULL
+    DROP PROCEDURE usp_LoadOrder;
+GO
+
+IF OBJECT_ID('usp_LoadOrderProducts', 'P') IS NOT NULL
+    DROP PROCEDURE usp_LoadOrderProducts;
+GO
+
+IF OBJECT_ID('usp_LoadInventory', 'P') IS NOT NULL
+    DROP PROCEDURE usp_LoadInventory;
+GO
+
+IF OBJECT_ID('usp_LoadProducts', 'P') IS NOT NULL
+    DROP PROCEDURE usp_LoadProducts;
+GO
+
+IF OBJECT_ID('usp_LoadChangeLogs', 'P') IS NOT NULL
+    DROP PROCEDURE usp_LoadChangeLogs;
+GO
+
+IF OBJECT_ID('usp_AddNewOrder', 'P') IS NOT NULL
+    DROP PROCEDURE usp_AddNewOrder;
+GO
+
+IF OBJECT_ID('usp_UpdateInventoryQuantity', 'P') IS NOT NULL
+    DROP PROCEDURE usp_UpdateInventoryQuantity;
+GO
 
 --No parameters
 CREATE PROCEDURE usp_GetAllUsers
@@ -220,18 +302,143 @@ BEGIN
 END;
 GO
 
-CREATE PROCEDURE usp_GetAllOrders
+CREATE PROCEDURE usp_LoadSupplier
 AS
 BEGIN
-    SELECT o.OrderID, u.Username AS OrderedBy, s.Name AS Supplier, 
-           o.DeliveryTime, o.Status, o.Quantity, o.Price, o.TypeOfGoods
+    SELECT SupplierID, Name, Email, Code, PhoneNumber
+    FROM Supplier
+END;
+GO
+
+CREATE PROCEDURE usp_LoadOrder
+AS
+BEGIN
+    SELECT 
+        o.OrderID,
+        u.Username AS OrdererName,
+        s.Name AS SupplierName,
+        o.DeliveryTime,
+        o.Status,
+        o.Quantity,
+        o.Price,
+        o.TypeOfGoods
     FROM [Order] o
-    JOIN [User] u ON o.UserID = u.UserID
-    JOIN Supplier s ON o.SupplierID = s.SupplierID;
+    LEFT JOIN [User] u ON o.UserID = u.UserID
+    LEFT JOIN Supplier s ON o.SupplierID = s.SupplierID
+END;
+GO
+
+CREATE PROCEDURE usp_LoadInventory
+AS
+BEGIN
+    SELECT
+        i.InventoryID,
+        p.Name AS ProductName,
+        i.StorageLocation,
+        i.Quantity,
+        i.Category,
+        i.Status,
+        AVG(p.Price) AS AveragePrice,
+        (SELECT COUNT(*) FROM OrderProducts op WHERE op.ProductID = i.ProductID) AS TotalOrders
+    FROM Inventory i
+    LEFT JOIN Product p ON i.ProductID = p.ProductID
+    GROUP BY 
+        i.InventoryID,
+        p.Name,
+        i.StorageLocation,
+        i.Quantity,
+        i.Category,
+        i.Status,
+        i.ProductID
+END;
+GO
+
+CREATE PROCEDURE usp_LoadChangeLogs
+AS
+BEGIN
+    SELECT 
+        c.LogID,
+        u.Username AS UserName,
+        p.Name AS ProductName,
+        c.ChangedData,
+        c.Timestamp,
+        c.PaymentAmount,
+        c.Invoice
+    FROM Changelog c
+    LEFT JOIN [User] u ON c.UserID = u.UserID
+    LEFT JOIN Product p ON c.ProductID = p.ProductID
 END;
 GO
 
 --With parameters
+CREATE PROCEDURE usp_GetUser
+    @Username VARCHAR(50),
+    @Password VARCHAR(200)
+AS
+BEGIN
+    SELECT UserID, Username, Role, StoreBranch, Permission
+    FROM [User]
+    WHERE Username = @Username AND Password = @Password;
+END;
+GO
+
+CREATE PROCEDURE usp_LoadNotifications
+    @UserID INT
+AS
+BEGIN
+    SELECT 
+        n.NotificationID,
+        o.OrderID,
+        s.Name AS SupplierName,
+        n.Time AS NotificationTime,
+        n.Message
+    FROM Notification n
+    LEFT JOIN [Order] o ON n.OrderID = o.OrderID
+    LEFT JOIN Supplier s ON n.SupplierID = s.SupplierID
+    WHERE n.UserID = @UserID
+END;
+GO
+
+CREATE PROCEDURE usp_LoadOrderProducts
+    @OrderID INT
+AS
+BEGIN
+    SELECT 
+        op.ProductID,
+        p.Name AS ProductName,
+        p.Price,
+        p.Origin,
+        p.Status
+    FROM OrderProducts op
+    LEFT JOIN Product p ON op.ProductID = p.ProductID
+    WHERE op.OrderID = @OrderID
+END;
+GO
+
+CREATE PROCEDURE usp_LoadProducts
+    @InventoryID INT
+AS
+BEGIN
+    SELECT 
+        p.ProductID,
+        p.Name AS ProductName,
+        p.ExpiryDate,
+        p.ProductionDate,
+        p.Origin,
+        p.Status,
+        p.Ingredients,
+        p.ImportTime,
+        p.ImportLocation,
+        p.Code,
+        p.Price,
+        p.Certification,
+        p.Preservation
+    FROM Product p
+    INNER JOIN Inventory i ON i.ProductID = p.ProductID
+    WHERE i.InventoryID = @InventoryID
+END;
+GO
+
 CREATE PROCEDURE usp_AddNewOrder
     @UserID INT, @SupplierID INT, @DeliveryTime DATETIME2, @Status VARCHAR(50), @Quantity INT, @Price DECIMAL(10,2), @TypeOfGoods VARCHAR(100)
 AS
@@ -255,10 +462,27 @@ BEGIN
     WHERE ProductID = @ProductID;
 END;
 GO
+-- End File: Procedure.sql
 
---=======================================
---Functions
---=======================================
+-- Begin File: Function.sql
+USE ConvStore_DB;
+GO
+
+IF OBJECT_ID('ufn_GetOrderTotalPrice', 'FN') IS NOT NULL
+    DROP FUNCTION ufn_GetOrderTotalPrice;
+GO
+
+IF OBJECT_ID('ufn_GetUserRole', 'FN') IS NOT NULL
+    DROP FUNCTION ufn_GetUserRole;
+GO
+
+IF OBJECT_ID('tvf_GetOrdersByStatus', 'FN') IS NOT NULL
+    DROP FUNCTION tvf_GetOrdersByStatus;
+GO
+
+IF OBJECT_ID('tvf_GetLowStockProducts', 'FN') IS NOT NULL
+    DROP FUNCTION tvf_GetLowStockProducts;
+GO
 
 --Scalar value (ufn_ prefix)
 CREATE FUNCTION ufn_GetOrderTotalPrice(@OrderID INT)
@@ -315,39 +539,5 @@ BEGIN
     RETURN;
 END;
 GO
+-- End File: Function.sql
 
---=======================================
---Sample execution commands
---=======================================
-EXEC usp_GetAllUsers;
-GO
-
-EXEC usp_GetAllOrders;
-GO
-
-EXEC usp_AddNewOrder 
-    @UserID = 1, 
-    @SupplierID = 2, 
-    @DeliveryTime = '2025-04-01 10:00:00', 
-    @Status = 'Pending', 
-    @Quantity = 50, 
-    @Price = 200.00, 
-    @TypeOfGoods = 'Electronics';
-GO
-
-EXEC usp_UpdateInventoryQuantity 
-    @ProductID = 3, 
-    @NewQuantity = 5;
-GO
-
-SELECT dbo.ufn_GetOrderTotalPrice(1) AS TotalPrice;
-GO
-
-SELECT dbo.ufn_GetUserRole(2) AS UserRole;
-GO
-
-SELECT * FROM tvf_GetOrdersByStatus('Pending');
-GO
-
-SELECT * FROM tvf_GetLowStockProducts(10);
-GO

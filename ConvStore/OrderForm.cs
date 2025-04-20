@@ -37,23 +37,12 @@ namespace ConvStore
 
         private void LoadOrders()
         {
-            string query = @"
-                SELECT 
-                    o.OrderID,
-                    u.Username AS OrdererName,
-                    s.Name AS SupplierName,
-                    o.DeliveryTime,
-                    o.Status,
-                    o.Quantity,
-                    o.Price,
-                    o.TypeOfGoods
-                FROM [Order] o
-                LEFT JOIN [User] u ON o.UserID = u.UserID
-                LEFT JOIN Supplier s ON o.SupplierID = s.SupplierID";
+            string query = "usp_LoadOrder";
             try
             {
                 using (SqlCommand cmd = new SqlCommand(query, db.Connection))
                 {
+                    cmd.CommandType = CommandType.StoredProcedure;
                     db.OpenConnection();
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
@@ -79,21 +68,13 @@ namespace ConvStore
 
         private void LoadOrderProducts(int orderId)
         {
-            string query = @"
-                SELECT 
-                    op.ProductID,
-                    p.Name AS ProductName,
-                    p.Price,
-                    p.Origin,
-                    p.Status
-                FROM OrderProducts op
-                LEFT JOIN Product p ON op.ProductID = p.ProductID
-                WHERE op.OrderID = @OrderID";
+            string query = @"usp_LoadOrderProducts";
 
             try
             {
                 using (SqlCommand cmd = new SqlCommand(query, db.Connection))
                 {
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@OrderID", orderId);
 
                     db.OpenConnection();

@@ -37,26 +37,7 @@ namespace ConvStore
 
         private void LoadInventory()
         {
-            string query = @"
-                SELECT
-                    i.InventoryID,
-                    p.Name AS ProductName,
-                    i.StorageLocation,
-                    i.Quantity,
-                    i.Category,
-                    i.Status,
-                    AVG(p.Price) AS AveragePrice,
-                    (SELECT COUNT(*) FROM OrderProducts op WHERE op.ProductID = i.ProductID) AS TotalOrders
-                FROM Inventory i
-                LEFT JOIN Product p ON i.ProductID = p.ProductID
-                GROUP BY 
-                    i.InventoryID,
-                    p.Name,
-                    i.StorageLocation,
-                    i.Quantity,
-                    i.Category,
-                    i.Status,
-                    i.ProductID";
+            string query = "usp_LoadInventory";
 
             try
             {
@@ -87,28 +68,12 @@ namespace ConvStore
 
         private void LoadProducts(int inventoryId)
         {
-            string query = @"
-                SELECT 
-                    p.ProductID,
-                    p.Name AS ProductName,
-                    p.ExpiryDate,
-                    p.ProductionDate,
-                    p.Origin,
-                    p.Status,
-                    p.Ingredients,
-                    p.ImportTime,
-                    p.ImportLocation,
-                    p.Code,
-                    p.Price,
-                    p.Certification,
-                    p.Preservation
-                FROM Product p
-                INNER JOIN Inventory i ON i.ProductID = p.ProductID
-                WHERE i.InventoryID = @InventoryID";
+            string query = "usp_LoadProducts";
             try
             {
                 using (SqlCommand cmd = new SqlCommand(query, db.Connection))
                 {
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@InventoryID", inventoryId);
                     db.OpenConnection();
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);

@@ -27,23 +27,13 @@ namespace ConvStore
 
         private void LoadChangelogs()
         {
-            string query = @"
-                SELECT 
-                    c.LogID,
-                    u.Username AS UserName,
-                    p.Name AS ProductName,
-                    c.ChangedData,
-                    c.Timestamp,
-                    c.PaymentAmount,
-                    c.Invoice
-                FROM Changelog c
-                LEFT JOIN [User] u ON c.UserID = u.UserID
-                LEFT JOIN Product p ON c.ProductID = p.ProductID";
+            string query = "usp_LoadChangeLogs";
 
             try
             {
                 using (SqlCommand cmd = new SqlCommand(query, db.Connection))
                 {
+                    cmd.CommandType = CommandType.StoredProcedure;
                     db.OpenConnection();
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();

@@ -26,11 +26,12 @@ namespace ConvStore
 
         private void LoadSuppliers()
         {
-            string query = "SELECT SupplierID, Name, Email, Code, PhoneNumber FROM Supplier";
+            string query = "usp_LoadSupplier";
             try
             {
                 using (SqlCommand cmd = new SqlCommand(query, db.Connection))
                 {
+                    cmd.CommandType = CommandType.StoredProcedure;
                     db.OpenConnection();
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();

@@ -148,12 +148,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ConvStore_DB.sql" />
+    <Content Include="Sql\Database.sql" />
+    <Content Include="Sql\Table.sql" />
+    <Content Include="Sql\Function.sql" />
+    <Content Include="Sql\Trigger.sql" />
+    <Content Include="Sql\View.sql" />
+    <Content Include="Sql\Procedure.sql" />
+    <Content Include="Sql\ConvStore_DB.sql" />
     <Content Include="images\box_and_clipboard.png" />
     <Content Include="images\convenience_store.jpg" />
     <Content Include="images\user_icon.png" />
     <Content Include="images\warehouse.jpg" />
-    <Content Include="InsertData.sql" />
+    <Content Include="Sql\InsertData.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
