@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace ConvStore
 {
-    public partial class MainForm : MyForm
+    public partial class MainForm : BaseForm
     {
         public MainForm()
         {

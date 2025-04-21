@@ -95,7 +95,8 @@ CREATE TABLE Supplier (
     Name VARCHAR(100) NOT NULL,
     Email VARCHAR(100) UNIQUE NOT NULL,
     Code VARCHAR(50) UNIQUE NOT NULL,
-    PhoneNumber VARCHAR(20) NOT NULL
+    PhoneNumber VARCHAR(20) NOT NULL,
+    IsActive BIT NOT NULL DEFAULT 1
 );
 
 CREATE TABLE [Order] (
@@ -188,6 +189,10 @@ IF OBJECT_ID('trg_PreventOrderCancellation', 'TR') IS NOT NULL
     DROP TRIGGER trg_PreventOrderCancellation;
 GO
 
+IF OBJECT_ID('trg_CreateSQLAccount', 'TR') IS NOT NULL
+    DROP TRIGGER trg_CreateSQLAccount;
+GO
+
 CREATE TRIGGER trg_PreventOverOrder
 ON OrderProducts
 AFTER INSERT, UPDATE
@@ -234,6 +239,28 @@ BEGIN
         ROLLBACK TRANSACTION;
         RETURN;
     END
+END;
+GO
+
+CREATE TRIGGER trg_CreateSQLAccount
+ON [User]
+AFTER INSERT
+AS
+BEGIN
+    DECLARE @username VARCHAR(50), @password VARCHAR(255);
+    SELECT @username = i.Username, @password = i.Password
+    FROM inserted i;
+
+    DECLARE @sqlString NVARCHAR(2000);
+
+    -- Create SQL Server login
+    SET @sqlString = 'CREATE LOGIN [' + @username + '] WITH PASSWORD = ''' + @password + ''', ' +
+                     'DEFAULT_DATABASE = [ConvStore_DB], CHECK_EXPIRATION = OFF, CHECK_POLICY = OFF';
+    EXEC (@sqlString);
+
+    -- Create SQL Server user
+    SET @sqlString = 'CREATE USER [' + @username + '] FOR LOGIN [' + @username + ']';
+    EXEC (@sqlString);
 END;
 GO
 -- End File: Trigger.sql
@@ -362,6 +389,22 @@ IF OBJECT_ID('usp_UpdateInventoryQuantity', 'P') IS NOT NULL
     DROP PROCEDURE usp_UpdateInventoryQuantity;
 GO
 
+IF OBJECT_ID('usp_AssignUserRole', 'P') IS NOT NULL
+    DROP PROCEDURE usp_AssignUserRole;
+GO
+
+IF OBJECT_ID('usp_AddUser', 'P') IS NOT NULL
+    DROP PROCEDURE usp_AddUser;
+GO
+
+IF OBJECT_ID('usp_UpdateUser', 'P') IS NOT NULL
+    DROP PROCEDURE usp_UpdateUser;
+GO
+
+IF OBJECT_ID('usp_DeleteUser', 'P') IS NOT NULL
+    DROP PROCEDURE usp_DeleteUser;
+GO
+
 --No parameters
 CREATE PROCEDURE usp_GetAllUsers
 AS
@@ -373,7 +416,7 @@ GO
 CREATE PROCEDURE usp_LoadSupplier
 AS
 BEGIN
-    SELECT SupplierID, Name, Email, Code, PhoneNumber
+    SELECT SupplierID, Name, Email, Code, PhoneNumber, IsActive
     FROM Supplier
 END;
 GO
@@ -473,6 +516,7 @@ AS
 BEGIN
     SELECT 
         op.ProductID,
+        op.Quantity,
         p.Name AS ProductName,
         p.Price,
         p.Origin,
@@ -530,6 +574,370 @@ BEGIN
     WHERE ProductID = @ProductID;
 END;
 GO
+
+CREATE PROCEDURE usp_AssignUserRole
+    @userID INT,
+    @errorMessage NVARCHAR(MAX) OUTPUT
+AS
+BEGIN
+    SET XACT_ABORT ON;
+    BEGIN TRAN;
+    BEGIN TRY
+        DECLARE @roleName VARCHAR(50), @username VARCHAR(50);
+        DECLARE @sqlString NVARCHAR(1000);
+
+        -- Get role and username from User table
+        SELECT @roleName = Role, @username = Username
+        FROM [User]
+        WHERE UserID = @userID;
+
+        -- Validate user and role
+        IF @username IS NULL
+        BEGIN
+            SET @errorMessage = 'User not found.';
+            ROLLBACK;
+            RETURN;
+        END;
+
+        IF @roleName IS NULL OR @roleName NOT IN ('Staff', 'Manager')
+        BEGIN
+            SET @errorMessage = 'Invalid or missing role. Role must be Staff or Manager.';
+            ROLLBACK;
+            RETURN;
+        END;
+
+        -- Assign user to SQL Server role
+        IF @roleName = 'Manager'
+            SET @sqlString = 'ALTER SERVER ROLE sysadmin ADD MEMBER [' + @username + ']';
+        ELSE
+            SET @sqlString = 'ALTER ROLE Staff ADD MEMBER [' + @username + ']';
+        EXEC (@sqlString);
+
+        SET @errorMessage = 'Role assigned successfully.';
+        COMMIT TRAN;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK;
+        SET @errorMessage = 'Error: ' + ERROR_MESSAGE();
+    END CATCH;
+END;
+GO
+
+--DECLARE @error NVARCHAR(MAX);
+--EXEC AssignUserRole @userID = 1, @errorMessage = @error OUTPUT;
+--SELECT @error AS ErrorMessage;
+
+CREATE PROCEDURE usp_AddUser
+    @username VARCHAR(50),
+    @password VARCHAR(255),
+    @role VARCHAR(50),
+    @storeBranch VARCHAR(50),
+    @permission VARCHAR(50),
+    @executedByUserID INT, -- ID of the user executing the procedure (for permission check)
+    @errorMessage NVARCHAR(MAX) OUTPUT
+AS
+BEGIN
+    SET XACT_ABORT ON;
+    BEGIN TRAN;
+    BEGIN TRY
+        -- Check if executedByUserID has Manager role and FullAccess permission
+        IF NOT EXISTS (
+            SELECT 1 FROM [User]
+            WHERE UserID = @executedByUserID AND Role = 'Manager' AND Permission = 'FullAccess'
+        )
+        BEGIN
+            SET @errorMessage = 'Only Managers with FullAccess can add users.';
+            ROLLBACK;
+            RETURN;
+        END;
+
+        -- Validate inputs
+        IF LEN(@password) < 8
+        BEGIN
+            SET @errorMessage = 'Password must be at least 8 characters.';
+            ROLLBACK;
+            RETURN;
+        END;
+
+        IF @role NOT IN ('Staff', 'Manager')
+        BEGIN
+            SET @errorMessage = 'Role must be Staff or Manager.';
+            ROLLBACK;
+            RETURN;
+        END;
+
+        IF @permission NOT IN ('ReadOnly', 'FullAccess')
+        BEGIN
+            SET @errorMessage = 'Permission must be ReadOnly or FullAccess.';
+            ROLLBACK;
+            RETURN;
+        END;
+
+        -- Check if username is unique
+        IF EXISTS (SELECT 1 FROM [User] WHERE Username = @username)
+        BEGIN
+            SET @errorMessage = 'Username already exists.';
+            ROLLBACK;
+            RETURN;
+        END;
+
+        -- Insert user (triggers CreateSQLAccount)
+        INSERT INTO [User] (Username, Password, Role, StoreBranch, Permission)
+        VALUES (@username, @password, @role, @storeBranch, @permission);
+
+        DECLARE @newUserID INT = SCOPE_IDENTITY();
+
+        -- Assign SQL Server role
+        EXEC usp_AssignUserRole @userID = @newUserID, @errorMessage = @errorMessage OUTPUT;
+        IF @errorMessage NOT LIKE 'Role assigned successfully.'
+        BEGIN
+            ROLLBACK;
+            RETURN;
+        END;
+
+        -- Log action in Changelog
+        INSERT INTO Changelog (UserID, ChangedData, Timestamp, PaymentAmount, Invoice)
+        VALUES (
+            @executedByUserID,
+            'Added user: ' + @username + ' (Role: ' + @role + ', Permission: ' + @permission + ')',
+            GETDATE(),
+            0,
+            NULL
+        );
+
+        SET @errorMessage = 'User added successfully.';
+        COMMIT TRAN;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK;
+        SET @errorMessage = 'Error: ' + ERROR_MESSAGE();
+    END CATCH;
+END;
+GO
+
+--DECLARE @error NVARCHAR(MAX);
+--EXEC usp_AddUser
+--    @username = 'staff2',
+--    @password = 'password456',
+--    @role = 'Staff',
+--    @storeBranch = 'BranchB',
+--    @permission = 'ReadOnly',
+--    @executedByUserID = 1, -- Manager's UserID
+--    @errorMessage = @error OUTPUT;
+--SELECT @error;
+
+CREATE PROCEDURE [dbo].[UpdateUser]
+    @userID INT,
+    @username VARCHAR(50),
+    @password VARCHAR(255) = NULL, -- Optional
+    @role VARCHAR(50),
+    @storeBranch VARCHAR(50),
+    @permission VARCHAR(50),
+    @executedByUserID INT,
+    @errorMessage NVARCHAR(MAX) OUTPUT
+AS
+BEGIN
+    SET XACT_ABORT ON;
+    BEGIN TRAN;
+    BEGIN TRY
+        -- Check if executedByUserID has Manager role and FullAccess permission
+        IF NOT EXISTS (
+            SELECT 1 FROM [User]
+            WHERE UserID = @executedByUserID AND Role = 'Manager' AND Permission = 'FullAccess'
+        )
+        BEGIN
+            SET @errorMessage = 'Only Managers with FullAccess can update users.';
+            ROLLBACK;
+            RETURN;
+        END;
+
+        -- Check if user exists
+        IF NOT EXISTS (SELECT 1 FROM [User] WHERE UserID = @userID)
+        BEGIN
+            SET @errorMessage = 'User not found.';
+            ROLLBACK;
+            RETURN;
+        END;
+
+        -- Validate inputs
+        IF @password IS NOT NULL AND LEN(@password) < 8
+        BEGIN
+            SET @errorMessage = 'Password must be at least 8 characters.';
+            ROLLBACK;
+            RETURN;
+        END;
+
+        IF @role NOT IN ('Staff', 'Manager')
+        BEGIN
+            SET @errorMessage = 'Role must be Staff or Manager.';
+            ROLLBACK;
+            RETURN;
+        END;
+
+        IF @permission NOT IN ('ReadOnly', 'FullAccess')
+        BEGIN
+            SET @errorMessage = 'Permission must be ReadOnly or FullAccess.';
+            ROLLBACK;
+            RETURN;
+        END;
+
+        -- Check if username is unique (if changed)
+        IF EXISTS (
+            SELECT 1 FROM [User]
+            WHERE Username = @username AND UserID != @userID
+        )
+        BEGIN
+            SET @errorMessage = 'Username already exists.';
+            ROLLBACK;
+            RETURN;
+        END;
+
+        -- Get current role for comparison
+        DECLARE @currentRole VARCHAR(50);
+        SELECT @currentRole = Role FROM [User] WHERE UserID = @userID;
+
+        -- Update user
+        UPDATE [User]
+        SET
+            Username = @username,
+            Password = ISNULL(@password, Password), -- Only update if provided
+            Role = @role,
+            StoreBranch = @storeBranch,
+            Permission = @permission
+        WHERE UserID = @userID;
+
+        -- Update SQL Server role if role changed
+        IF @currentRole != @role
+        BEGIN
+            -- Remove from old role
+            DECLARE @sqlString NVARCHAR(1000);
+            DECLARE @currentUsername VARCHAR(50) = (SELECT Username FROM [User] WHERE UserID = @userID);
+            IF @currentRole = 'Manager'
+                SET @sqlString = 'ALTER SERVER ROLE sysadmin DROP MEMBER [' + @currentUsername + ']';
+            ELSE
+                SET @sqlString = 'ALTER ROLE Staff DROP MEMBER [' + @currentUsername + ']';
+            EXEC (@sqlString);
+
+            -- Assign new role
+            EXEC usp_AssignUserRole @userID = @userID, @errorMessage = @errorMessage OUTPUT;
+            IF @errorMessage NOT LIKE 'Role assigned successfully.'
+            BEGIN
+                ROLLBACK;
+                RETURN;
+            END;
+        END;
+
+        -- Log action in Changelog
+        INSERT INTO Changelog (UserID, ChangedData, Timestamp, PaymentAmount, Invoice)
+        VALUES (
+            @executedByUserID,
+            'Updated user: ' + @username + ' (Role: ' + @role + ', Permission: ' + @permission + ')',
+            GETDATE(),
+            0,
+            NULL
+        );
+
+        SET @errorMessage = 'User updated successfully.';
+        COMMIT TRAN;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK;
+        SET @errorMessage = 'Error: ' + ERROR_MESSAGE();
+    END CATCH;
+END;
+GO
+
+--DECLARE @error NVARCHAR(MAX);
+--EXEC UpdateUser
+--    @userID = 2,
+--    @username = 'staff2_updated',
+--    @password = NULL, -- Keep existing password
+--    @role = 'Manager',
+--    @storeBranch = 'BranchC',
+--    @permission = 'FullAccess',
+--    @executedByUserID = 1,
+--    @errorMessage = @error OUTPUT;
+--SELECT @error;
+
+CREATE PROCEDURE usp_DeleteUser
+    @userID INT,
+    @executedByUserID INT,
+    @errorMessage NVARCHAR(MAX) OUTPUT
+AS
+BEGIN
+    SET XACT_ABORT ON;
+    BEGIN TRAN;
+    BEGIN TRY
+        -- Check if executedByUserID has Manager role and FullAccess permission
+        IF NOT EXISTS (
+            SELECT 1 FROM [User]
+            WHERE UserID = @executedByUserID AND Role = 'Manager' AND Permission = 'FullAccess'
+        )
+        BEGIN
+            SET @errorMessage = 'Only Managers with FullAccess can delete users.';
+            ROLLBACK;
+            RETURN;
+        END;
+
+        -- Check if user exists
+        IF NOT EXISTS (SELECT 1 FROM [User] WHERE UserID = @userID)
+        BEGIN
+            SET @errorMessage = 'User not found.';
+            ROLLBACK;
+            RETURN;
+        END;
+
+        -- Get username and role for cleanup
+        DECLARE @username VARCHAR(50), @role VARCHAR(50);
+        SELECT @username = Username, @role = Role
+        FROM [User]
+        WHERE UserID = @userID;
+
+        -- Remove from SQL Server role
+        DECLARE @sqlString NVARCHAR(1000);
+        IF @role = 'Manager'
+            SET @sqlString = 'ALTER SERVER ROLE sysadmin DROP MEMBER [' + @username + ']';
+        ELSE
+            SET @sqlString = 'ALTER ROLE Staff DROP MEMBER [' + @username + ']';
+        EXEC (@sqlString);
+
+        -- Drop SQL Server user
+        SET @sqlString = 'DROP USER [' + @username + ']';
+        EXEC (@sqlString);
+
+        -- Drop SQL Server login
+        SET @sqlString = 'DROP LOGIN [' + @username + ']';
+        EXEC (@sqlString);
+
+        -- Delete user (foreign keys in Notification, Order, Changelog handle ON DELETE SET NULL)
+        DELETE FROM [User] WHERE UserID = @userID;
+
+        -- Log action in Changelog
+        INSERT INTO Changelog (UserID, ChangedData, Timestamp, PaymentAmount, Invoice)
+        VALUES (
+            @executedByUserID,
+            'Deleted user: ' + @username,
+            GETDATE(),
+            0,
+            NULL
+        );
+
+        SET @errorMessage = 'User deleted successfully.';
+        COMMIT TRAN;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK;
+        SET @errorMessage = 'Error: ' + ERROR_MESSAGE();
+    END CATCH;
+END;
+GO
+
+--DECLARE @error NVARCHAR(MAX);
+--EXEC DeleteUser
+--    @userID = 2,
+--    @executedByUserID = 1,
+--    @errorMessage = @error OUTPUT;
+--SELECT @error;
 -- End File: Procedure.sql
 
 -- Begin File: Function.sql

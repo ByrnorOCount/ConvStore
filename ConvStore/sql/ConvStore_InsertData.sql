@@ -4,15 +4,15 @@ GO
 -- Insert Users
 INSERT INTO [User] (Username, Password, Role, StoreBranch, Permission)
 VALUES 
-('admin', 'Admin@1234', 'Admin', 'Main Branch', 'Full Access'),
-('john_doe', 'JohnDoe@1234', 'Manager', 'East Branch', 'Manage Orders'),
-('jane_smith', 'JaneSmith@1234', 'Staff', 'West Branch', 'View Only');
+('admin', 'Admin@1234', 'Manager', 'Main Branch', 'FullAccess'),
+('john_doe', 'JohnDoe@1234', 'Manager', 'East Branch', 'FullAccess'),
+('jane_smith', 'JaneSmith@1234', 'Staff', 'West Branch', 'ReadOnly');
 
 -- Insert Suppliers
-INSERT INTO Supplier (Name, Email, Code, PhoneNumber)
+INSERT INTO Supplier (Name, Email, Code, PhoneNumber, IsActive)
 VALUES 
-('FreshFarm Ltd.', 'contact@freshfarm.com', 'SUP001', '123-456-7890'),
-('OrganicFoods Inc.', 'info@organicfoods.com', 'SUP002', '987-654-3210');
+('FreshFarm Ltd.', 'contact@freshfarm.com', 'SUP001', '123-456-7890', 1),
+('OrganicFoods Inc.', 'info@organicfoods.com', 'SUP002', '987-654-3210', 1);
 
 -- Insert Orders
 INSERT INTO [Order] (UserID, SupplierID, DeliveryTime, Status, Quantity, Price, TypeOfGoods)
@@ -27,10 +27,10 @@ VALUES
 ('Whole Milk', '2025-04-15', '2025-02-28', 'Canada', 'Available', 'Milk', '2025-03-06 09:30:00', 'East Warehouse', 'P002', 40.00, 'Dairy Certified', 'Refrigerated');
 
 -- Insert OrderProducts
-INSERT INTO OrderProducts (OrderID, ProductID)
+INSERT INTO OrderProducts (OrderID, ProductID, Quantity)
 VALUES 
-(1, 1), 
-(2, 2);
+(1, 1, 200), 
+(2, 2, 200);
 
 -- Insert Inventory
 INSERT INTO Inventory (ProductID, StorageLocation, Quantity, Category, Status)
@@ -47,5 +47,5 @@ VALUES
 -- Insert Changelog
 INSERT INTO Changelog (UserID, ProductID, ChangedData, Timestamp, PaymentAmount, Invoice)
 VALUES 
-(1, 1, 'Price updated from 45.00 to 50.00', GETDATE(), 50.00, 'INV001'),
+(1, 1, 'Price updated from 45.00 to 50.00', GETDATE(), 50.00, NULL),
 (2, 2, 'Stock updated from 250 to 200', GETDATE(), 0.00, NULL);

@@ -13,6 +13,10 @@ IF OBJECT_ID('trg_PreventOrderCancellation', 'TR') IS NOT NULL
     DROP TRIGGER trg_PreventOrderCancellation;
 GO
 
+IF OBJECT_ID('trg_CreateSQLAccount', 'TR') IS NOT NULL
+    DROP TRIGGER trg_CreateSQLAccount;
+GO
+
 CREATE TRIGGER trg_PreventOverOrder
 ON OrderProducts
 AFTER INSERT, UPDATE
@@ -59,5 +63,27 @@ BEGIN
         ROLLBACK TRANSACTION;
         RETURN;
     END
+END;
+GO
+
+CREATE TRIGGER trg_CreateSQLAccount
+ON [User]
+AFTER INSERT
+AS
+BEGIN
+    DECLARE @username VARCHAR(50), @password VARCHAR(255);
+    SELECT @username = i.Username, @password = i.Password
+    FROM inserted i;
+
+    DECLARE @sqlString NVARCHAR(2000);
+
+    -- Create SQL Server login
+    SET @sqlString = 'CREATE LOGIN [' + @username + '] WITH PASSWORD = ''' + @password + ''', ' +
+                     'DEFAULT_DATABASE = [YourDatabaseName], CHECK_EXPIRATION = OFF, CHECK_POLICY = OFF';
+    EXEC (@sqlString);
+
+    -- Create SQL Server user
+    SET @sqlString = 'CREATE USER [' + @username + '] FOR LOGIN [' + @username + ']';
+    EXEC (@sqlString);
 END;
 GO

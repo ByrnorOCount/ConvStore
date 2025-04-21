@@ -1,7 +1,7 @@
 ﻿
 namespace ConvStore
 {
-    partial class MyForm
+    partial class BaseForm
     {
         /// <summary>
         /// Required designer variable.

@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace ConvStore
 {
-    public partial class MyForm : Form
+    public partial class BaseForm : Form
     {
-        public MyForm()
+        public BaseForm()
         {
             InitializeComponent();
             AssignNavigationHandler(btnUser, OpenForm<UserForm>);

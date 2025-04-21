@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace ConvStore
 {
-    public partial class UserForm : MyForm
+    public partial class UserForm : BaseForm
     {
         private readonly DBHelper db = new DBHelper();
 

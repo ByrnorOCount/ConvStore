@@ -54,11 +54,11 @@
     <Compile Include="ChangeLogForm.Designer.cs">
       <DependentUpon>ChangeLogForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MyForm.cs">
+    <Compile Include="BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MyForm.Designer.cs">
-      <DependentUpon>MyForm.cs</DependentUpon>
+    <Compile Include="BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UserSession.cs" />
     <Compile Include="DBHelper.cs" />
@@ -118,8 +118,8 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyForm.resx">
-      <DependentUpon>MyForm.cs</DependentUpon>
+    <EmbeddedResource Include="BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrderForm.resx">
       <DependentUpon>OrderForm.cs</DependentUpon>
@@ -147,6 +147,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="sql\Authorization.sql" />
     <Content Include="sql\Database.sql" />
     <Content Include="sql\Table.sql" />
     <Content Include="sql\Function.sql" />
