@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ConvStore
@@ -11,7 +8,7 @@ namespace ConvStore
         [STAThread]
         static void Main()
         {
-            DBHelper.TestConnection(); //remove once connection is confirmed
+            //DBHelper.TestConnection(); //remove once connection is confirmed
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());

@@ -1,7 +1,8 @@
 ### Initiating database
 1. Change project to SqlFileMerger and Start, then change it back to ConvStore
 2. Execute `ConvStore_DB.sql` to create the database
-3. Execute `InsertData.sql` to populate it with data.
+3. Execute `InsertData.sql` to populate it with data
+Note: You can repeat step 2 and THEN 3 if you want to reset the database.
 
 ### Consistency
 1. Default font is `Segoe UI, 12pt, style=Bold`

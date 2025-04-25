@@ -168,7 +168,7 @@
             this.dgvInventory.Name = "dgvInventory";
             this.dgvInventory.RowHeadersWidth = 51;
             this.dgvInventory.RowTemplate.Height = 24;
-            this.dgvInventory.Size = new System.Drawing.Size(951, 258);
+            this.dgvInventory.Size = new System.Drawing.Size(951, 244);
             this.dgvInventory.TabIndex = 16;
             // 
             // btnAddProduct
@@ -177,7 +177,7 @@
             this.btnAddProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnAddProduct.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnAddProduct.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAddProduct.Location = new System.Drawing.Point(222, 668);
+            this.btnAddProduct.Location = new System.Drawing.Point(222, 650);
             this.btnAddProduct.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(97, 41);
@@ -191,7 +191,7 @@
             this.btnModifyProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnModifyProduct.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnModifyProduct.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnModifyProduct.Location = new System.Drawing.Point(670, 668);
+            this.btnModifyProduct.Location = new System.Drawing.Point(670, 650);
             this.btnModifyProduct.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnModifyProduct.Name = "btnModifyProduct";
             this.btnModifyProduct.Size = new System.Drawing.Size(102, 41);
@@ -205,7 +205,7 @@
             this.btnRemoveProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnRemoveProduct.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnRemoveProduct.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnRemoveProduct.Location = new System.Drawing.Point(435, 668);
+            this.btnRemoveProduct.Location = new System.Drawing.Point(435, 650);
             this.btnRemoveProduct.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRemoveProduct.Name = "btnRemoveProduct";
             this.btnRemoveProduct.Size = new System.Drawing.Size(116, 41);
@@ -219,7 +219,7 @@
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnCancel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancel.Location = new System.Drawing.Point(1072, 668);
+            this.btnCancel.Location = new System.Drawing.Point(1072, 650);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(101, 41);
@@ -233,7 +233,7 @@
             this.btnStatisticProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnStatisticProduct.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnStatisticProduct.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnStatisticProduct.Location = new System.Drawing.Point(880, 668);
+            this.btnStatisticProduct.Location = new System.Drawing.Point(880, 650);
             this.btnStatisticProduct.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStatisticProduct.Name = "btnStatisticProduct";
             this.btnStatisticProduct.Size = new System.Drawing.Size(122, 41);
@@ -300,7 +300,7 @@
             // dgvProduct
             // 
             this.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProduct.Location = new System.Drawing.Point(222, 504);
+            this.dgvProduct.Location = new System.Drawing.Point(222, 488);
             this.dgvProduct.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvProduct.Name = "dgvProduct";
             this.dgvProduct.RowHeadersWidth = 51;

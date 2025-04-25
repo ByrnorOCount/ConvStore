@@ -726,7 +726,7 @@ GO
 --    @errorMessage = @error OUTPUT;
 --SELECT @error;
 
-CREATE PROCEDURE [dbo].[UpdateUser]
+CREATE PROCEDURE usp_UpdateUser
     @userID INT,
     @username VARCHAR(50),
     @password VARCHAR(255) = NULL, -- Optional
