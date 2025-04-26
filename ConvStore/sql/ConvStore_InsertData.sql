@@ -158,3 +158,31 @@ VALUES
 (8, NULL, 'Added new order #9 for Spinach', GETDATE(), 15000.00, 'INV009'),
 (9, 10, 'Updated product certification for Cheddar Cheese to Dairy Certified', GETDATE(), 0.00, NULL),
 (10, 11, 'Added inventory for Bananas: 900 units', GETDATE(), 0.00, NULL);
+
+-- Test user creation and role assignment
+DECLARE @error NVARCHAR(MAX);
+EXEC usp_AddUser
+    @username = 'test_user',
+    @password = 'Test@1234',
+    @role = 'Staff',
+    @storeBranch = 'Test Branch',
+    @permission = 'ReadOnly',
+    @executedByUserID = 1, -- Manager
+    @errorMessage = @error OUTPUT;
+SELECT @error AS Result;
+
+-- Test granting specific permission
+EXEC usp_GrantSpecificPermission
+    @userID = (SELECT UserID FROM [User] WHERE Username = 'test_user'),
+    @tableName = 'Inventory',
+    @permission = 'SELECT',
+    @executedByUserID = 1,
+    @errorMessage = @error OUTPUT;
+SELECT @error AS Result;
+
+-- Test revoking role
+EXEC usp_RevokeUserRole
+    @userID = (SELECT UserID FROM [User] WHERE Username = 'test_user'),
+    @executedByUserID = 1,
+    @errorMessage = @error OUTPUT;
+SELECT @error AS Result;

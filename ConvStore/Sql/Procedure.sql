@@ -65,6 +65,18 @@ IF OBJECT_ID('usp_DeleteUser', 'P') IS NOT NULL
     DROP PROCEDURE usp_DeleteUser;
 GO
 
+IF OBJECT_ID('usp_RevokeUserRole', 'P') IS NOT NULL
+    DROP PROCEDURE usp_RevokeUserRole;
+GO
+
+IF OBJECT_ID('usp_GrantSpecificPermission', 'P') IS NOT NULL
+    DROP PROCEDURE usp_GrantSpecificPermission;
+GO
+
+IF OBJECT_ID('usp_RevokeSpecificPermission', 'P') IS NOT NULL
+    DROP PROCEDURE usp_RevokeSpecificPermission;
+GO
+
 IF OBJECT_ID('usp_AddSupplier', 'P') IS NOT NULL
     DROP PROCEDURE usp_AddSupplier;
 GO
@@ -280,7 +292,7 @@ BEGIN
 
         -- Assign user to SQL Server role
         IF @roleName = 'Manager'
-            SET @sqlString = 'ALTER SERVER ROLE sysadmin ADD MEMBER [' + @username + ']';
+            SET @sqlString = 'ALTER SERVER ROLE Manager ADD MEMBER [' + @username + ']';
         ELSE
             SET @sqlString = 'ALTER ROLE Staff ADD MEMBER [' + @username + ']';
         EXEC (@sqlString);
@@ -600,6 +612,107 @@ BEGIN
     BEGIN CATCH
         ROLLBACK;
         SET @errorMessage = 'Error: ' + ERROR_MESSAGE();
+    END CATCH;
+END;
+GO
+
+CREATE PROCEDURE usp_RevokeUserRole
+    @userID INT,
+    @executedByUserID INT,
+    @errorMessage NVARCHAR(MAX) OUTPUT
+AS
+BEGIN
+    SET XACT_ABORT ON; BEGIN TRAN;
+    BEGIN TRY
+        IF NOT EXISTS (SELECT 1 FROM [User] WHERE UserID = @executedByUserID AND Role = 'Manager' AND Permission = 'FullAccess')
+        BEGIN
+            SET @errorMessage = 'Only Managers with FullAccess can revoke roles.'; ROLLBACK; RETURN;
+        END;
+        DECLARE @username VARCHAR(50), @role VARCHAR(50);
+        SELECT @username = Username, @role = Role FROM [User] WHERE UserID = @userID;
+        IF @username IS NULL
+        BEGIN
+            SET @errorMessage = 'User not found.'; ROLLBACK; RETURN;
+        END;
+        DECLARE @sqlString NVARCHAR(1000);
+        IF @role = 'Manager'
+            SET @sqlString = 'ALTER SERVER ROLE sysadmin DROP MEMBER [' + @username + ']';
+        ELSE
+            SET @sqlString = 'ALTER ROLE Staff DROP MEMBER [' + @username + ']';
+        EXEC (@sqlString);
+        UPDATE [User] SET Role = NULL WHERE UserID = @userID;
+        INSERT INTO Changelog (UserID, ChangedData, Timestamp, PaymentAmount, Invoice)
+        VALUES (@executedByUserID, 'Revoked role for user: ' + @username, GETDATE(), 0, NULL);
+        SET @errorMessage = 'Role revoked successfully.'; COMMIT TRAN;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK; SET @errorMessage = 'Error: ' + ERROR_MESSAGE();
+    END CATCH;
+END;
+GO
+
+CREATE PROCEDURE usp_GrantSpecificPermission
+    @userID INT,
+    @tableName NVARCHAR(128),
+    @permission NVARCHAR(50), -- e.g., 'SELECT', 'INSERT', 'UPDATE', 'DELETE'
+    @executedByUserID INT,
+    @errorMessage NVARCHAR(MAX) OUTPUT
+AS
+BEGIN
+    SET XACT_ABORT ON; BEGIN TRAN;
+    BEGIN TRY
+        IF NOT EXISTS (SELECT 1 FROM [User] WHERE UserID = @executedByUserID AND Role = 'Manager' AND Permission = 'FullAccess')
+        BEGIN
+            SET @errorMessage = 'Only Managers with FullAccess can grant permissions.'; ROLLBACK; RETURN;
+        END;
+        DECLARE @username VARCHAR(50);
+        SELECT @username = Username FROM [User] WHERE UserID = @userID;
+        IF @username IS NULL
+        BEGIN
+            SET @errorMessage = 'User not found.'; ROLLBACK; RETURN;
+        END;
+        DECLARE @sqlString NVARCHAR(1000);
+        SET @sqlString = 'GRANT ' + @permission + ' ON [' + @tableName + '] TO [' + @username + ']';
+        EXEC (@sqlString);
+        INSERT INTO Changelog (UserID, ChangedData, Timestamp, PaymentAmount, Invoice)
+        VALUES (@executedByUserID, 'Granted ' + @permission + ' on ' + @tableName + ' to ' + @username, GETDATE(), 0, NULL);
+        SET @errorMessage = 'Permission granted successfully.'; COMMIT TRAN;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK; SET @errorMessage = 'Error: ' + ERROR_MESSAGE();
+    END CATCH;
+END;
+GO
+
+CREATE PROCEDURE usp_RevokeSpecificPermission
+    @userID INT,
+    @tableName NVARCHAR(128),
+    @permission NVARCHAR(50),
+    @executedByUserID INT,
+    @errorMessage NVARCHAR(MAX) OUTPUT
+AS
+BEGIN
+    SET XACT_ABORT ON; BEGIN TRAN;
+    BEGIN TRY
+        IF NOT EXISTS (SELECT 1 FROM [User] WHERE UserID = @executedByUserID AND Role = 'Manager' AND Permission = 'FullAccess')
+        BEGIN
+            SET @errorMessage = 'Only Managers with FullAccess can revoke permissions.'; ROLLBACK; RETURN;
+        END;
+        DECLARE @username VARCHAR(50);
+        SELECT @username = Username FROM [User] WHERE UserID = @userID;
+        IF @username IS NULL
+        BEGIN
+            SET @errorMessage = 'User not found.'; ROLLBACK; RETURN;
+        END;
+        DECLARE @sqlString NVARCHAR(1000);
+        SET @sqlString = 'REVOKE ' + @permission + ' ON [' + @tableName + '] FROM [' + @username + ']';
+        EXEC (@sqlString);
+        INSERT INTO Changelog (UserID, ChangedData, Timestamp, PaymentAmount, Invoice)
+        VALUES (@executedByUserID, 'Revoked ' + @permission + ' on ' + @tableName + ' from ' + @username, GETDATE(), 0, NULL);
+        SET @errorMessage = 'Permission revoked successfully.'; COMMIT TRAN;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK; SET @errorMessage = 'Error: ' + ERROR_MESSAGE();
     END CATCH;
 END;
 GO
