@@ -151,6 +151,7 @@
     <Content Include="sql\Database.sql" />
     <Content Include="sql\Table.sql" />
     <Content Include="sql\Function.sql" />
+    <Content Include="sql\Authorization_test.sql" />
     <Content Include="sql\Trigger.sql" />
     <Content Include="sql\View.sql" />
     <Content Include="sql\Procedure.sql" />

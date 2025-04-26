@@ -20,6 +20,9 @@ DENY EXECUTE ON usp_AssignUserRole TO Staff;
 DENY EXECUTE ON usp_AddUser TO Staff;
 DENY EXECUTE ON usp_UpdateUser TO Staff;
 DENY EXECUTE ON usp_DeleteUser TO Staff;
+DENY EXECUTE ON usp_RevokeUserRole TO Staff;
+DENY EXECUTE ON usp_GrantSpecificPermission TO Staff;
+DENY EXECUTE ON usp_RevokeSpecificPermission TO Staff;
 
 -- Permissions for Manager Role (full access)
 GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES ON [User] TO Manager;

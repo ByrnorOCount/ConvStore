@@ -79,7 +79,7 @@ BEGIN
 
     -- Create SQL Server login
     SET @sqlString = 'CREATE LOGIN [' + @username + '] WITH PASSWORD = ''' + @password + ''', ' +
-                     'DEFAULT_DATABASE = [YourDatabaseName], CHECK_EXPIRATION = OFF, CHECK_POLICY = OFF';
+                     'DEFAULT_DATABASE = [ConvStore_DB], CHECK_EXPIRATION = OFF, CHECK_POLICY = OFF';
     EXEC (@sqlString);
 
     -- Create SQL Server user

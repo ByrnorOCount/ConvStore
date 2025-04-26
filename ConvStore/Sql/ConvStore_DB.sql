@@ -405,6 +405,30 @@ IF OBJECT_ID('usp_DeleteUser', 'P') IS NOT NULL
     DROP PROCEDURE usp_DeleteUser;
 GO
 
+IF OBJECT_ID('usp_RevokeUserRole', 'P') IS NOT NULL
+    DROP PROCEDURE usp_RevokeUserRole;
+GO
+
+IF OBJECT_ID('usp_GrantSpecificPermission', 'P') IS NOT NULL
+    DROP PROCEDURE usp_GrantSpecificPermission;
+GO
+
+IF OBJECT_ID('usp_RevokeSpecificPermission', 'P') IS NOT NULL
+    DROP PROCEDURE usp_RevokeSpecificPermission;
+GO
+
+IF OBJECT_ID('usp_AddSupplier', 'P') IS NOT NULL
+    DROP PROCEDURE usp_AddSupplier;
+GO
+
+IF OBJECT_ID('usp_UpdateSupplier', 'P') IS NOT NULL
+    DROP PROCEDURE usp_UpdateSupplier;
+GO
+
+IF OBJECT_ID('usp_DeleteSupplier', 'P') IS NOT NULL
+    DROP PROCEDURE usp_DeleteSupplier;
+GO
+
 --No parameters
 CREATE PROCEDURE usp_GetAllUsers
 AS
@@ -608,7 +632,7 @@ BEGIN
 
         -- Assign user to SQL Server role
         IF @roleName = 'Manager'
-            SET @sqlString = 'ALTER SERVER ROLE sysadmin ADD MEMBER [' + @username + ']';
+            SET @sqlString = 'ALTER SERVER ROLE Manager ADD MEMBER [' + @username + ']';
         ELSE
             SET @sqlString = 'ALTER ROLE Staff ADD MEMBER [' + @username + ']';
         EXEC (@sqlString);
@@ -813,7 +837,7 @@ BEGIN
             DECLARE @sqlString NVARCHAR(1000);
             DECLARE @currentUsername VARCHAR(50) = (SELECT Username FROM [User] WHERE UserID = @userID);
             IF @currentRole = 'Manager'
-                SET @sqlString = 'ALTER SERVER ROLE sysadmin DROP MEMBER [' + @currentUsername + ']';
+                SET @sqlString = 'ALTER SERVER ROLE Manager DROP MEMBER [' + @currentUsername + ']';
             ELSE
                 SET @sqlString = 'ALTER ROLE Staff DROP MEMBER [' + @currentUsername + ']';
             EXEC (@sqlString);
@@ -896,7 +920,7 @@ BEGIN
         -- Remove from SQL Server role
         DECLARE @sqlString NVARCHAR(1000);
         IF @role = 'Manager'
-            SET @sqlString = 'ALTER SERVER ROLE sysadmin DROP MEMBER [' + @username + ']';
+            SET @sqlString = 'ALTER SERVER ROLE Manager DROP MEMBER [' + @username + ']';
         ELSE
             SET @sqlString = 'ALTER ROLE Staff DROP MEMBER [' + @username + ']';
         EXEC (@sqlString);
@@ -932,12 +956,241 @@ BEGIN
 END;
 GO
 
+CREATE PROCEDURE usp_RevokeUserRole
+    @userID INT,
+    @executedByUserID INT,
+    @errorMessage NVARCHAR(MAX) OUTPUT
+AS
+BEGIN
+    SET XACT_ABORT ON;
+    BEGIN TRAN;
+    BEGIN TRY
+        -- Check if executedByUserID has Manager role and FullAccess permission
+        IF NOT EXISTS (SELECT 1 FROM [User] WHERE UserID = @executedByUserID AND Role = 'Manager' AND Permission = 'FullAccess')
+        BEGIN
+            SET @errorMessage = 'Only Managers with FullAccess can revoke roles.';
+            ROLLBACK;
+            RETURN;
+        END;
+
+        -- Get username and role
+        DECLARE @username VARCHAR(50), @role VARCHAR(50);
+        SELECT @username = Username, @role = Role FROM [User] WHERE UserID = @userID;
+        IF @username IS NULL
+        BEGIN
+            SET @errorMessage = 'User not found.';
+            ROLLBACK;
+            RETURN;
+        END;
+
+        -- Remove from SQL Server role
+        DECLARE @sqlString NVARCHAR(1000);
+        IF @role = 'Manager'
+            SET @sqlString = 'ALTER SERVER ROLE Manager DROP MEMBER [' + @username + ']';
+        ELSE
+            SET @sqlString = 'ALTER ROLE Staff DROP MEMBER [' + @username + ']';
+        EXEC (@sqlString);
+
+        -- Update Role to a non-NULL value (e.g., 'None') instead of NULL
+        UPDATE [User] SET Role = 'None' WHERE UserID = @userID;
+
+        -- Log action in Changelog
+        INSERT INTO Changelog (UserID, ChangedData, Timestamp, PaymentAmount, Invoice)
+        VALUES (@executedByUserID, 'Revoked role for user: ' + @username, GETDATE(), 0, NULL);
+
+        SET @errorMessage = 'Role revoked successfully.';
+        COMMIT TRAN;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK;
+        SET @errorMessage = 'Error: ' + ERROR_MESSAGE();
+    END CATCH;
+END;
+GO
+
+CREATE PROCEDURE usp_GrantSpecificPermission
+    @userID INT,
+    @tableName NVARCHAR(128),
+    @permission NVARCHAR(50), -- e.g., 'SELECT', 'INSERT', 'UPDATE', 'DELETE'
+    @executedByUserID INT,
+    @errorMessage NVARCHAR(MAX) OUTPUT
+AS
+BEGIN
+    SET XACT_ABORT ON; BEGIN TRAN;
+    BEGIN TRY
+        IF NOT EXISTS (SELECT 1 FROM [User] WHERE UserID = @executedByUserID AND Role = 'Manager' AND Permission = 'FullAccess')
+        BEGIN
+            SET @errorMessage = 'Only Managers with FullAccess can grant permissions.'; ROLLBACK; RETURN;
+        END;
+        DECLARE @username VARCHAR(50);
+        SELECT @username = Username FROM [User] WHERE UserID = @userID;
+        IF @username IS NULL
+        BEGIN
+            SET @errorMessage = 'User not found.'; ROLLBACK; RETURN;
+        END;
+        DECLARE @sqlString NVARCHAR(1000);
+        SET @sqlString = 'GRANT ' + @permission + ' ON [' + @tableName + '] TO [' + @username + ']';
+        EXEC (@sqlString);
+        INSERT INTO Changelog (UserID, ChangedData, Timestamp, PaymentAmount, Invoice)
+        VALUES (@executedByUserID, 'Granted ' + @permission + ' on ' + @tableName + ' to ' + @username, GETDATE(), 0, NULL);
+        SET @errorMessage = 'Permission granted successfully.'; COMMIT TRAN;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK; SET @errorMessage = 'Error: ' + ERROR_MESSAGE();
+    END CATCH;
+END;
+GO
+
+CREATE PROCEDURE usp_RevokeSpecificPermission
+    @userID INT,
+    @tableName NVARCHAR(128),
+    @permission NVARCHAR(50),
+    @executedByUserID INT,
+    @errorMessage NVARCHAR(MAX) OUTPUT
+AS
+BEGIN
+    SET XACT_ABORT ON; BEGIN TRAN;
+    BEGIN TRY
+        IF NOT EXISTS (SELECT 1 FROM [User] WHERE UserID = @executedByUserID AND Role = 'Manager' AND Permission = 'FullAccess')
+        BEGIN
+            SET @errorMessage = 'Only Managers with FullAccess can revoke permissions.'; ROLLBACK; RETURN;
+        END;
+        DECLARE @username VARCHAR(50);
+        SELECT @username = Username FROM [User] WHERE UserID = @userID;
+        IF @username IS NULL
+        BEGIN
+            SET @errorMessage = 'User not found.'; ROLLBACK; RETURN;
+        END;
+        DECLARE @sqlString NVARCHAR(1000);
+        SET @sqlString = 'REVOKE ' + @permission + ' ON [' + @tableName + '] FROM [' + @username + ']';
+        EXEC (@sqlString);
+        INSERT INTO Changelog (UserID, ChangedData, Timestamp, PaymentAmount, Invoice)
+        VALUES (@executedByUserID, 'Revoked ' + @permission + ' on ' + @tableName + ' from ' + @username, GETDATE(), 0, NULL);
+        SET @errorMessage = 'Permission revoked successfully.'; COMMIT TRAN;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK; SET @errorMessage = 'Error: ' + ERROR_MESSAGE();
+    END CATCH;
+END;
+GO
+
 --DECLARE @error NVARCHAR(MAX);
 --EXEC DeleteUser
 --    @userID = 2,
 --    @executedByUserID = 1,
 --    @errorMessage = @error OUTPUT;
 --SELECT @error;
+
+CREATE PROCEDURE usp_AddSupplier
+    @name VARCHAR(50),
+    @email VARCHAR(100),
+    @code VARCHAR(50),
+    @phoneNumber VARCHAR(20),
+    @isActive BIT,
+    @errorMessage NVARCHAR(MAX) OUTPUT
+AS
+BEGIN
+    SET XACT_ABORT ON;
+    BEGIN TRAN;
+    BEGIN TRY
+        -- Validate inputs
+        IF LEN(@name) = 0 OR LEN(@email) = 0 OR LEN(@code) = 0 OR LEN(@phoneNumber) = 0
+        BEGIN
+            SET @errorMessage = 'All fields are required.';
+            ROLLBACK;
+            RETURN;
+        END;
+        -- Check if supplier code is unique
+        IF EXISTS (SELECT 1 FROM Supplier WHERE Code = @code)
+        BEGIN
+            SET @errorMessage = 'Supplier code already exists.';
+            ROLLBACK;
+            RETURN;
+        END;
+        -- Insert supplier
+        INSERT INTO Supplier (Name, Email, Code, PhoneNumber, IsActive)
+        VALUES (@name, @email, @code, @phoneNumber, @isActive);
+        SET @errorMessage = 'Supplier added successfully.';
+        COMMIT TRAN;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK;
+        SET @errorMessage = 'Error: ' + ERROR_MESSAGE();
+    END CATCH;
+END;
+GO
+
+CREATE PROCEDURE usp_UpdateSupplier
+    @supplierID INT,
+    @name VARCHAR(50),
+    @email VARCHAR(100),
+    @code VARCHAR(50),
+    @phoneNumber VARCHAR(20),
+    @isActive BIT,
+    @errorMessage NVARCHAR(MAX) OUTPUT
+AS
+BEGIN
+    SET XACT_ABORT ON;
+    BEGIN TRAN;
+    BEGIN TRY
+        -- Validate inputs
+        IF LEN(@name) = 0 OR LEN(@email) = 0 OR LEN(@code) = 0 OR LEN(@phoneNumber) = 0
+        BEGIN
+            SET @errorMessage = 'All fields are required.';
+            ROLLBACK;
+            RETURN;
+        END;
+        -- Check if supplier exists
+        IF NOT EXISTS (SELECT 1 FROM Supplier WHERE SupplierID = @supplierID)
+        BEGIN
+            SET @errorMessage = 'Supplier not found.';
+            ROLLBACK;
+            RETURN;
+        END;
+        -- Update supplier
+        UPDATE Supplier
+        SET Name = @name,
+            Email = @email,
+            Code = @code,
+            PhoneNumber = @phoneNumber,
+            IsActive = @isActive
+        WHERE SupplierID = @supplierID;
+        SET @errorMessage = 'Supplier updated successfully.';
+        COMMIT TRAN;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK;
+        SET @errorMessage = 'Error: ' + ERROR_MESSAGE();
+    END CATCH;
+END;
+GO
+
+CREATE PROCEDURE usp_DeleteSupplier
+    @supplierID INT,
+    @errorMessage NVARCHAR(MAX) OUTPUT
+AS
+BEGIN
+    SET XACT_ABORT ON;
+    BEGIN TRAN;
+    BEGIN TRY
+        -- Check if supplier exists
+        IF NOT EXISTS (SELECT 1 FROM Supplier WHERE SupplierID = @supplierID)
+        BEGIN
+            SET @errorMessage = 'Supplier not found.';
+            ROLLBACK;
+            RETURN;
+        END;
+        -- Delete supplier
+        DELETE FROM Supplier WHERE SupplierID = @supplierID;
+        SET @errorMessage = 'Supplier deleted successfully.';
+        COMMIT TRAN;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK;
+        SET @errorMessage = 'Error: ' + ERROR_MESSAGE();
+    END CATCH;
+END;
+GO
 -- End File: Procedure.sql
 
 -- Begin File: Function.sql

@@ -410,7 +410,7 @@ GO
 --    @errorMessage = @error OUTPUT;
 --SELECT @error;
 
-CREATE PROCEDURE [dbo].[UpdateUser]
+CREATE PROCEDURE usp_UpdateUser
     @userID INT,
     @username VARCHAR(50),
     @password VARCHAR(255) = NULL, -- Optional
@@ -497,7 +497,7 @@ BEGIN
             DECLARE @sqlString NVARCHAR(1000);
             DECLARE @currentUsername VARCHAR(50) = (SELECT Username FROM [User] WHERE UserID = @userID);
             IF @currentRole = 'Manager'
-                SET @sqlString = 'ALTER SERVER ROLE sysadmin DROP MEMBER [' + @currentUsername + ']';
+                SET @sqlString = 'ALTER SERVER ROLE Manager DROP MEMBER [' + @currentUsername + ']';
             ELSE
                 SET @sqlString = 'ALTER ROLE Staff DROP MEMBER [' + @currentUsername + ']';
             EXEC (@sqlString);
@@ -580,7 +580,7 @@ BEGIN
         -- Remove from SQL Server role
         DECLARE @sqlString NVARCHAR(1000);
         IF @role = 'Manager'
-            SET @sqlString = 'ALTER SERVER ROLE sysadmin DROP MEMBER [' + @username + ']';
+            SET @sqlString = 'ALTER SERVER ROLE Manager DROP MEMBER [' + @username + ']';
         ELSE
             SET @sqlString = 'ALTER ROLE Staff DROP MEMBER [' + @username + ']';
         EXEC (@sqlString);
@@ -622,31 +622,48 @@ CREATE PROCEDURE usp_RevokeUserRole
     @errorMessage NVARCHAR(MAX) OUTPUT
 AS
 BEGIN
-    SET XACT_ABORT ON; BEGIN TRAN;
+    SET XACT_ABORT ON;
+    BEGIN TRAN;
     BEGIN TRY
+        -- Check if executedByUserID has Manager role and FullAccess permission
         IF NOT EXISTS (SELECT 1 FROM [User] WHERE UserID = @executedByUserID AND Role = 'Manager' AND Permission = 'FullAccess')
         BEGIN
-            SET @errorMessage = 'Only Managers with FullAccess can revoke roles.'; ROLLBACK; RETURN;
+            SET @errorMessage = 'Only Managers with FullAccess can revoke roles.';
+            ROLLBACK;
+            RETURN;
         END;
+
+        -- Get username and role
         DECLARE @username VARCHAR(50), @role VARCHAR(50);
         SELECT @username = Username, @role = Role FROM [User] WHERE UserID = @userID;
         IF @username IS NULL
         BEGIN
-            SET @errorMessage = 'User not found.'; ROLLBACK; RETURN;
+            SET @errorMessage = 'User not found.';
+            ROLLBACK;
+            RETURN;
         END;
+
+        -- Remove from SQL Server role
         DECLARE @sqlString NVARCHAR(1000);
         IF @role = 'Manager'
-            SET @sqlString = 'ALTER SERVER ROLE sysadmin DROP MEMBER [' + @username + ']';
+            SET @sqlString = 'ALTER SERVER ROLE Manager DROP MEMBER [' + @username + ']';
         ELSE
             SET @sqlString = 'ALTER ROLE Staff DROP MEMBER [' + @username + ']';
         EXEC (@sqlString);
-        UPDATE [User] SET Role = NULL WHERE UserID = @userID;
+
+        -- Update Role to a non-NULL value (e.g., 'None') instead of NULL
+        UPDATE [User] SET Role = 'None' WHERE UserID = @userID;
+
+        -- Log action in Changelog
         INSERT INTO Changelog (UserID, ChangedData, Timestamp, PaymentAmount, Invoice)
         VALUES (@executedByUserID, 'Revoked role for user: ' + @username, GETDATE(), 0, NULL);
-        SET @errorMessage = 'Role revoked successfully.'; COMMIT TRAN;
+
+        SET @errorMessage = 'Role revoked successfully.';
+        COMMIT TRAN;
     END TRY
     BEGIN CATCH
-        ROLLBACK; SET @errorMessage = 'Error: ' + ERROR_MESSAGE();
+        ROLLBACK;
+        SET @errorMessage = 'Error: ' + ERROR_MESSAGE();
     END CATCH;
 END;
 GO
