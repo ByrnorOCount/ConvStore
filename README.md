@@ -3,6 +3,7 @@
 2. Execute `ConvStore_DB.sql` to create the database
 3. Execute `Authorization.sql` to create roles
 4. Execute `InsertData.sql` to populate it with data
+   
 Note: You can repeat step 2 and THEN 4 (not step 3) if you want to reset the database.
 
 ### Consistency
