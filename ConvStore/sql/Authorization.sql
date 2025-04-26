@@ -1,4 +1,7 @@
-﻿-- Create SQL Server roles
+﻿USE ConvStore_DB;
+GO
+
+-- Create SQL Server roles
 CREATE ROLE Staff;
 CREATE ROLE Manager;
 
