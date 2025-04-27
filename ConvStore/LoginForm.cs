@@ -56,6 +56,7 @@ namespace ConvStore
                                 UserSession.StoreBranch = reader.GetString(3);
                                 UserSession.Permission = reader.GetString(4);
 
+                                Hide();
                                 MainForm mainForm = new MainForm();
                                 mainForm.Show();
                             }
