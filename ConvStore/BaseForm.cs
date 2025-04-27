@@ -40,7 +40,7 @@ namespace ConvStore
         {
             UserSession.Clear();
             LoginForm loginForm = new LoginForm();
-            loginForm.Show();
+            //loginForm.Show();
             Close();
         }
 

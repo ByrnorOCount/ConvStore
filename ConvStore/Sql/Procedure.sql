@@ -851,3 +851,76 @@ BEGIN
     END CATCH;
 END;
 GO
+
+-- PRODUCT
+CREATE OR ALTER PROCEDURE usp_AddProductAndInventory
+    @Name NVARCHAR(100),
+    @Origin NVARCHAR(100),
+    @Status NVARCHAR(50),
+    @Price DECIMAL(10,2),
+    @ImportLocation NVARCHAR(100),
+    @Category NVARCHAR(100), 
+    @Code NVARCHAR(50),
+    @ProductionDate DATE,
+    @ExpiryDate DATE,
+    @ImportTime DATETIME2(7),
+    @Preservation NVARCHAR(50)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO Product (Name, Origin, ProductionDate, ExpiryDate, Status, Price, ImportLocation, Code, ImportTime, Preservation)
+    VALUES (@Name, @Origin, @ProductionDate, @ExpiryDate, @Status, @Price, @ImportLocation, @Code, @ImportTime, @Preservation);
+
+    DECLARE @NewProductID INT = SCOPE_IDENTITY();
+
+    INSERT INTO Inventory (ProductID, StorageLocation, Quantity, Category, Status)
+    VALUES (@NewProductID, @ImportLocation, 0, @Category, 'In Stock');
+END
+GO
+
+CREATE PROCEDURE usp_FindProduct
+    @Supplier NVARCHAR(100) = NULL,
+    @ImportDay NVARCHAR(100) = NULL,
+    @ExportDay NVARCHAR(100) = NULL
+AS
+BEGIN
+    SELECT i.InventoryID, p.Name AS ProductName, i.StorageLocation, i.Quantity, i.Category, i.Status
+    FROM Inventory i
+    INNER JOIN Product p ON i.ProductID = p.ProductID
+    WHERE 
+        (@Supplier IS NULL OR p.Origin = @Supplier)
+        AND (@ImportDay IS NULL OR FORMAT(p.ImportTime, 'yyyy-MM-dd') = @ImportDay)
+        AND (@ExportDay IS NULL OR FORMAT(p.ExpiryDate, 'yyyy-MM-dd') = @ExportDay)
+END
+GO
+
+CREATE PROCEDURE usp_DeleteProduct
+    @ProductID INT
+AS
+BEGIN
+    DELETE FROM Product
+    WHERE ProductID = @ProductID
+END
+GO
+
+CREATE OR ALTER PROCEDURE usp_FindProduct
+    @Supplier NVARCHAR(100) = NULL,
+    @ImportDay NVARCHAR(100) = NULL,
+    @ExportDay NVARCHAR(100) = NULL
+AS
+BEGIN
+    SELECT 
+        p.ProductID,
+        p.Name AS ProductName,
+        p.Origin AS Supplier,
+        FORMAT(p.ImportTime, 'yyyy-MM-dd') AS ImportDay,
+        FORMAT(p.ExpiryDate, 'yyyy-MM-dd') AS ExpiryDay,
+        p.Price
+    FROM Product p
+    WHERE 
+        (@Supplier IS NULL OR p.Origin = @Supplier)
+        AND (@ImportDay IS NULL OR FORMAT(p.ImportTime, 'yyyy-MM-dd') = @ImportDay)
+        AND (@ExportDay IS NULL OR FORMAT(p.ExpiryDate, 'yyyy-MM-dd') = @ExportDay)
+END
+GO

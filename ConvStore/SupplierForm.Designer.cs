@@ -49,22 +49,22 @@
             // dgvSupplier
             // 
             this.dgvSupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSupplier.Location = new System.Drawing.Point(220, 92);
+            this.dgvSupplier.Location = new System.Drawing.Point(196, 74);
             this.dgvSupplier.Margin = new System.Windows.Forms.Padding(2);
             this.dgvSupplier.Name = "dgvSupplier";
             this.dgvSupplier.RowHeadersWidth = 72;
             this.dgvSupplier.RowTemplate.Height = 31;
-            this.dgvSupplier.Size = new System.Drawing.Size(956, 300);
+            this.dgvSupplier.Size = new System.Drawing.Size(850, 240);
             this.dgvSupplier.TabIndex = 9;
             // 
             // btnAddSupplier
             // 
             this.btnAddSupplier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnAddSupplier.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnAddSupplier.Location = new System.Drawing.Point(260, 408);
+            this.btnAddSupplier.Location = new System.Drawing.Point(231, 326);
             this.btnAddSupplier.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddSupplier.Name = "btnAddSupplier";
-            this.btnAddSupplier.Size = new System.Drawing.Size(106, 48);
+            this.btnAddSupplier.Size = new System.Drawing.Size(94, 38);
             this.btnAddSupplier.TabIndex = 10;
             this.btnAddSupplier.Text = "Add";
             this.btnAddSupplier.UseVisualStyleBackColor = false;
@@ -73,10 +73,10 @@
             // 
             this.btnUpdateSupplier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnUpdateSupplier.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnUpdateSupplier.Location = new System.Drawing.Point(435, 408);
+            this.btnUpdateSupplier.Location = new System.Drawing.Point(387, 326);
             this.btnUpdateSupplier.Margin = new System.Windows.Forms.Padding(2);
             this.btnUpdateSupplier.Name = "btnUpdateSupplier";
-            this.btnUpdateSupplier.Size = new System.Drawing.Size(106, 48);
+            this.btnUpdateSupplier.Size = new System.Drawing.Size(94, 38);
             this.btnUpdateSupplier.TabIndex = 11;
             this.btnUpdateSupplier.Text = "Update";
             this.btnUpdateSupplier.UseVisualStyleBackColor = false;
@@ -85,10 +85,10 @@
             // 
             this.btnDeleteSupplier.BackColor = System.Drawing.Color.Red;
             this.btnDeleteSupplier.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnDeleteSupplier.Location = new System.Drawing.Point(610, 408);
+            this.btnDeleteSupplier.Location = new System.Drawing.Point(542, 326);
             this.btnDeleteSupplier.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeleteSupplier.Name = "btnDeleteSupplier";
-            this.btnDeleteSupplier.Size = new System.Drawing.Size(106, 48);
+            this.btnDeleteSupplier.Size = new System.Drawing.Size(94, 38);
             this.btnDeleteSupplier.TabIndex = 12;
             this.btnDeleteSupplier.Text = "Delete";
             this.btnDeleteSupplier.UseVisualStyleBackColor = false;
@@ -97,10 +97,10 @@
             // 
             this.btnResetFields.BackColor = System.Drawing.Color.Peru;
             this.btnResetFields.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.btnResetFields.Location = new System.Drawing.Point(260, 662);
+            this.btnResetFields.Location = new System.Drawing.Point(231, 530);
             this.btnResetFields.Margin = new System.Windows.Forms.Padding(2);
             this.btnResetFields.Name = "btnResetFields";
-            this.btnResetFields.Size = new System.Drawing.Size(149, 32);
+            this.btnResetFields.Size = new System.Drawing.Size(131, 35);
             this.btnResetFields.TabIndex = 14;
             this.btnResetFields.Text = "Reset Fields";
             this.btnResetFields.UseVisualStyleBackColor = false;
@@ -109,10 +109,10 @@
             // 
             this.lblSupplierEmail.AutoSize = true;
             this.lblSupplierEmail.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblSupplierEmail.Location = new System.Drawing.Point(259, 520);
+            this.lblSupplierEmail.Location = new System.Drawing.Point(230, 416);
             this.lblSupplierEmail.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSupplierEmail.Name = "lblSupplierEmail";
-            this.lblSupplierEmail.Size = new System.Drawing.Size(153, 28);
+            this.lblSupplierEmail.Size = new System.Drawing.Size(132, 23);
             this.lblSupplierEmail.TabIndex = 15;
             this.lblSupplierEmail.Text = "Supplier Email:";
             // 
@@ -120,10 +120,10 @@
             // 
             this.lblSupplierCode.AutoSize = true;
             this.lblSupplierCode.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblSupplierCode.Location = new System.Drawing.Point(264, 571);
+            this.lblSupplierCode.Location = new System.Drawing.Point(235, 457);
             this.lblSupplierCode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSupplierCode.Name = "lblSupplierCode";
-            this.lblSupplierCode.Size = new System.Drawing.Size(148, 28);
+            this.lblSupplierCode.Size = new System.Drawing.Size(129, 23);
             this.lblSupplierCode.TabIndex = 16;
             this.lblSupplierCode.Text = "Supplier Code:";
             // 
@@ -131,10 +131,10 @@
             // 
             this.lblSupplierName.AutoSize = true;
             this.lblSupplierName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblSupplierName.Location = new System.Drawing.Point(255, 470);
+            this.lblSupplierName.Location = new System.Drawing.Point(227, 376);
             this.lblSupplierName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSupplierName.Name = "lblSupplierName";
-            this.lblSupplierName.Size = new System.Drawing.Size(157, 28);
+            this.lblSupplierName.Size = new System.Drawing.Size(135, 23);
             this.lblSupplierName.TabIndex = 17;
             this.lblSupplierName.Text = "Supplier Name:";
             // 
@@ -142,61 +142,62 @@
             // 
             this.lblSupplierPhone.AutoSize = true;
             this.lblSupplierPhone.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblSupplierPhone.Location = new System.Drawing.Point(218, 617);
+            this.lblSupplierPhone.Location = new System.Drawing.Point(194, 494);
             this.lblSupplierPhone.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSupplierPhone.Name = "lblSupplierPhone";
-            this.lblSupplierPhone.Size = new System.Drawing.Size(194, 28);
+            this.lblSupplierPhone.Size = new System.Drawing.Size(165, 23);
             this.lblSupplierPhone.TabIndex = 19;
             this.lblSupplierPhone.Text = "Supplier Phone No:";
             // 
             // txtSupplierEmail
             // 
-            this.txtSupplierEmail.Location = new System.Drawing.Point(435, 522);
+            this.txtSupplierEmail.Location = new System.Drawing.Point(387, 418);
             this.txtSupplierEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtSupplierEmail.Name = "txtSupplierEmail";
-            this.txtSupplierEmail.Size = new System.Drawing.Size(281, 26);
+            this.txtSupplierEmail.Size = new System.Drawing.Size(250, 22);
             this.txtSupplierEmail.TabIndex = 20;
             // 
             // txtSupplierCode
             // 
-            this.txtSupplierCode.Location = new System.Drawing.Point(435, 571);
+            this.txtSupplierCode.Location = new System.Drawing.Point(387, 457);
             this.txtSupplierCode.Margin = new System.Windows.Forms.Padding(2);
             this.txtSupplierCode.Name = "txtSupplierCode";
-            this.txtSupplierCode.Size = new System.Drawing.Size(281, 26);
+            this.txtSupplierCode.Size = new System.Drawing.Size(250, 22);
             this.txtSupplierCode.TabIndex = 21;
             // 
             // txtSupplierName
             // 
-            this.txtSupplierName.Location = new System.Drawing.Point(435, 474);
+            this.txtSupplierName.Location = new System.Drawing.Point(387, 379);
             this.txtSupplierName.Margin = new System.Windows.Forms.Padding(2);
             this.txtSupplierName.Name = "txtSupplierName";
-            this.txtSupplierName.Size = new System.Drawing.Size(281, 26);
+            this.txtSupplierName.Size = new System.Drawing.Size(250, 22);
             this.txtSupplierName.TabIndex = 22;
             // 
             // txtSupplierPhone
             // 
-            this.txtSupplierPhone.Location = new System.Drawing.Point(435, 621);
+            this.txtSupplierPhone.Location = new System.Drawing.Point(387, 497);
             this.txtSupplierPhone.Margin = new System.Windows.Forms.Padding(2);
             this.txtSupplierPhone.Name = "txtSupplierPhone";
-            this.txtSupplierPhone.Size = new System.Drawing.Size(281, 26);
+            this.txtSupplierPhone.Size = new System.Drawing.Size(250, 22);
             this.txtSupplierPhone.TabIndex = 24;
             // 
             // chkSupplierIsActive
             // 
             this.chkSupplierIsActive.AutoSize = true;
             this.chkSupplierIsActive.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.chkSupplierIsActive.Location = new System.Drawing.Point(435, 662);
+            this.chkSupplierIsActive.Location = new System.Drawing.Point(387, 530);
+            this.chkSupplierIsActive.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkSupplierIsActive.Name = "chkSupplierIsActive";
-            this.chkSupplierIsActive.Size = new System.Drawing.Size(232, 32);
+            this.chkSupplierIsActive.Size = new System.Drawing.Size(196, 27);
             this.chkSupplierIsActive.TabIndex = 26;
             this.chkSupplierIsActive.Text = "Is an Active Supplier";
             this.chkSupplierIsActive.UseVisualStyleBackColor = true;
             // 
             // SupplierForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 720);
+            this.ClientSize = new System.Drawing.Size(1067, 576);
             this.Controls.Add(this.chkSupplierIsActive);
             this.Controls.Add(this.txtSupplierPhone);
             this.Controls.Add(this.txtSupplierName);
