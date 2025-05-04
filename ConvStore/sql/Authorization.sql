@@ -40,34 +40,9 @@ GO
 USE ConvStore_DB;
 GO
 
--- 1. Create User
+-- Step 1: Create login and user
 CREATE LOGIN [AshKetchum_Login] WITH PASSWORD = '1234';
-CREATE USER [Ash Ketchum] FOR LOGIN [AshKetchum_Login]; -- Assuming the login exists already
-GO
+CREATE USER [Ash Ketchum] FOR LOGIN [AshKetchum_Login];
 
--- 2. Grant other necessary permissions
-GRANT SELECT ON [User] TO [Ash Ketchum];
-GRANT SELECT ON Supplier TO [Ash Ketchum];
--- You can grant other permissions as needed
-
--- 3. Revoke the permission to execute usp_AddSupplier
-DENY EXECUTE ON usp_AddSupplier TO [Ash Ketchum];
-GO
-
-GRANT SELECT, REFERENCES ON [User] TO [Ash Ketchum];
-GRANT SELECT, REFERENCES ON Supplier TO [Ash Ketchum];
-GRANT SELECT, INSERT, UPDATE, REFERENCES ON [Order] TO [Ash Ketchum];
-GRANT SELECT, REFERENCES ON Product TO [Ash Ketchum];
-GRANT SELECT, INSERT, UPDATE, REFERENCES ON OrderProducts TO [Ash Ketchum];
-GRANT SELECT, REFERENCES ON Inventory TO [Ash Ketchum];
-GRANT SELECT, INSERT, REFERENCES ON Notification TO [Ash Ketchum];
-GRANT SELECT, REFERENCES ON Changelog TO [Ash Ketchum];
-DENY INSERT, UPDATE, DELETE ON [User] TO [Ash Ketchum];
-GRANT EXECUTE TO [Ash Ketchum];
-DENY EXECUTE ON usp_AssignUserRole TO [Ash Ketchum];
-DENY EXECUTE ON usp_AddUser TO [Ash Ketchum];
-DENY EXECUTE ON usp_UpdateUser TO [Ash Ketchum];
-DENY EXECUTE ON usp_DeleteUser TO [Ash Ketchum];
-DENY EXECUTE ON usp_RevokeUserRole TO [Ash Ketchum];
-DENY EXECUTE ON usp_GrantSpecificPermission TO [Ash Ketchum];
-DENY EXECUTE ON usp_RevokeSpecificPermission TO [Ash Ketchum];
+-- Step 2: Add user to Staff role
+ALTER ROLE Staff ADD MEMBER [Ash Ketchum];

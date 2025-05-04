@@ -93,7 +93,65 @@ namespace ConvStore
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loading order products: " + ex.Message);
+                MessageBox.Show("Error loading order Orders: " + ex.Message);
+            }
+        }
+
+        private void btnAddOrder_Click(object sender, EventArgs e)
+        {
+            AddOrderForm form = new AddOrderForm();
+            form.ShowDialog();
+            LoadOrders();
+        }
+
+        private void btnUpdateOrder_Click(object sender, EventArgs e)
+        {
+            if (dgvOrder.SelectedRows.Count > 0)
+            {
+                int orderId = Convert.ToInt32(dgvOrder.SelectedRows[0].Cells["OrderID"].Value);
+                UpdateOrderForm form = new UpdateOrderForm(orderId);
+                form.ShowDialog();
+                LoadOrders();
+            }
+            else
+            {
+                MessageBox.Show("Please select a order to modify.");
+            }
+        }
+
+        private void btnDeleteOrder_Click(object sender, EventArgs e)
+        {
+            if (dgvOrder.SelectedRows.Count > 0)
+            {
+                int OrderId = Convert.ToInt32(dgvOrder.SelectedRows[0].Cells["OrderID"].Value);
+
+                var confirm = MessageBox.Show("Are you sure you want to remove this Order?", "Confirm", MessageBoxButtons.YesNo);
+                if (confirm == DialogResult.Yes)
+                {
+                    try
+                    {
+                        string deleteOrderQuery = "usp_DeleteOrder";
+                        using (SqlCommand cmdOrder = new SqlCommand(deleteOrderQuery, db.Connection))
+                        {
+                            cmdOrder.CommandType = CommandType.StoredProcedure;
+                            cmdOrder.Parameters.AddWithValue("@OrderID", OrderId);
+                            db.OpenConnection();
+                            cmdOrder.ExecuteNonQuery();
+                            db.CloseConnection();
+                        }
+
+                        MessageBox.Show("Order removed successfully.");
+                        LoadOrders();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error removing Order: " + ex.Message);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a Order to remove.");
             }
         }
     }
