@@ -57,5 +57,21 @@ namespace ConvStore
                 MessageBox.Show("Error loading notifications: " + ex.Message);
             }
         }
+
+        private void btnAddUser_Click(object sender, EventArgs e)
+        {
+            AddUserForm form = new AddUserForm();
+            form.ShowDialog();
+        }
+
+        private void btnUpdateUser_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDeleteUser_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 namespace ConvStore
 {
-    partial class UpdateOrderForm
+    partial class UpdateUserForm
     {
         /// <summary>
         /// Required designer variable.

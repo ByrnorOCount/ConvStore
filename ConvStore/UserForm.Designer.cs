@@ -38,6 +38,10 @@
             this.lblRole = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblStoreBranch = new System.Windows.Forms.Label();
+            this.btnAddUser = new System.Windows.Forms.Button();
+            this.btnUpdateUser = new System.Windows.Forms.Button();
+            this.btnDeleteUser = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.picIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNotification)).BeginInit();
             this.SuspendLayout();
             // 
@@ -156,11 +160,53 @@
             this.lblStoreBranch.Text = "User Page";
             this.lblStoreBranch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnAddUser
+            // 
+            this.btnAddUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnAddUser.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnAddUser.Location = new System.Drawing.Point(185, 290);
+            this.btnAddUser.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddUser.Name = "btnAddUser";
+            this.btnAddUser.Size = new System.Drawing.Size(94, 38);
+            this.btnAddUser.TabIndex = 36;
+            this.btnAddUser.Text = "Add";
+            this.btnAddUser.UseVisualStyleBackColor = false;
+            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
+            // 
+            // btnUpdateUser
+            // 
+            this.btnUpdateUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnUpdateUser.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnUpdateUser.Location = new System.Drawing.Point(297, 290);
+            this.btnUpdateUser.Margin = new System.Windows.Forms.Padding(2);
+            this.btnUpdateUser.Name = "btnUpdateUser";
+            this.btnUpdateUser.Size = new System.Drawing.Size(94, 38);
+            this.btnUpdateUser.TabIndex = 37;
+            this.btnUpdateUser.Text = "Update";
+            this.btnUpdateUser.UseVisualStyleBackColor = false;
+            this.btnUpdateUser.Click += new System.EventHandler(this.btnUpdateUser_Click);
+            // 
+            // btnDeleteUser
+            // 
+            this.btnDeleteUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnDeleteUser.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnDeleteUser.Location = new System.Drawing.Point(407, 290);
+            this.btnDeleteUser.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDeleteUser.Name = "btnDeleteUser";
+            this.btnDeleteUser.Size = new System.Drawing.Size(94, 38);
+            this.btnDeleteUser.TabIndex = 38;
+            this.btnDeleteUser.Text = "Delete";
+            this.btnDeleteUser.UseVisualStyleBackColor = false;
+            this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
+            // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 576);
+            this.Controls.Add(this.btnDeleteUser);
+            this.Controls.Add(this.btnUpdateUser);
+            this.Controls.Add(this.btnAddUser);
             this.Controls.Add(this.lblStoreBranch);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.lblRole);
@@ -171,9 +217,24 @@
             this.Controls.Add(this.lblTitleRole);
             this.Controls.Add(this.lblTitleUserID);
             this.Controls.Add(this.dgvNotification);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UserForm";
             this.Text = "UserForm";
+            this.Controls.SetChildIndex(this.dgvNotification, 0);
+            this.Controls.SetChildIndex(this.lblTitleUserID, 0);
+            this.Controls.SetChildIndex(this.lblTitleRole, 0);
+            this.Controls.SetChildIndex(this.lblTitleStoreBranch, 0);
+            this.Controls.SetChildIndex(this.lblNotification, 0);
+            this.Controls.SetChildIndex(this.lblUserID, 0);
+            this.Controls.SetChildIndex(this.lblTitleUsername, 0);
+            this.Controls.SetChildIndex(this.lblRole, 0);
+            this.Controls.SetChildIndex(this.lblUsername, 0);
+            this.Controls.SetChildIndex(this.lblStoreBranch, 0);
+            this.Controls.SetChildIndex(this.picIcon, 0);
+            this.Controls.SetChildIndex(this.lblTitle, 0);
+            this.Controls.SetChildIndex(this.btnAddUser, 0);
+            this.Controls.SetChildIndex(this.btnUpdateUser, 0);
+            this.Controls.SetChildIndex(this.btnDeleteUser, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.picIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNotification)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -192,5 +253,8 @@
         private System.Windows.Forms.Label lblRole;
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label lblStoreBranch;
+        private System.Windows.Forms.Button btnAddUser;
+        private System.Windows.Forms.Button btnUpdateUser;
+        private System.Windows.Forms.Button btnDeleteUser;
     }
 }

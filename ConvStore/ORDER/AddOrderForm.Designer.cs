@@ -42,7 +42,6 @@ namespace ConvStore
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.txtTypeOfGoods = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
 
             int labelX = 30, inputX = 150, startY = 30, gapY = 40;
@@ -102,6 +101,5 @@ namespace ConvStore
         private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.TextBox txtTypeOfGoods;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnCancel;
     }
 }
